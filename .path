@@ -1,0 +1,36 @@
+# The following functions are added here instead of the .functions file
+pathappend() {
+  for ARG in "$@"; do
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+      PATH="${PATH:+"$PATH:"}$ARG"
+    fi
+  done
+}
+
+pathprepend() {
+  for ((i=$#; i>0; i--)); do
+    ARG=${!i}
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+      PATH="$ARG${PATH:+":$PATH"}"
+    fi
+  done
+}
+
+
+PATH="$HOME/bin:/usr/local/bin:$PATH"
+PATH=/usr/local/share/python:$PATH
+PATH=/usr/local/share/npm/bin:$PATH
+PATH=/usr/local/Cellar/qt5/5.7.0/bin:$PATH
+PATH="$HOME/.cargo/bin:$PATH"
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+PATH=$PATH:/Users/davidrosenberg/.local/bin
+export PATH
+
+export FULL_GHC_PACKAGE_PATH=/Users/davidrosenberg/.ghcup/ghc/8.8.3/lib/ghc-8.8.3/package.conf.d:/Users/davidrosenberg/.cabal/store/ghc-8.8.3/package.db
+export GLOBAL_PACKAGE_PATH=/Users/davidrosenberg/.ghcup/ghc/8.8.3/lib/ghc-8.8.3/package.conf.d
+export USER_PACKAGE_PATH=/Users/davidrosenberg/.cabal/store/ghc-8.8.3/package.db
+
+
+ANDROID_HOME=/usr/local/opt/android-sdk
+
+# vim: ft=sh
