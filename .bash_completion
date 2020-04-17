@@ -1,0 +1,10 @@
+
+eval "$(stack --bash-completion-script stack)"
+eval "$(pandoc --bash-completion)"
+
+for f in $HOME/bash_completion.d/*; do
+    source "$f"
+done
+
+
+

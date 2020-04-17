@@ -1,0 +1,3 @@
+complete -f _git dotfiles
+
+# vim: ft=sh
