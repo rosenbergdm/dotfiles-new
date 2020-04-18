@@ -1,0 +1,8 @@
+
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export NIX_IGNORE_SYMLINK_STORE=1
+export FULL_GHC_PACKAGE_PATH=/Users/davidrosenberg/.ghcup/ghc/8.8.3/lib/ghc-8.8.3/package.conf.d:/Users/davidrosenberg/.cabal/store/ghc-8.8.3/package.db
+export GLOBAL_PACKAGE_PATH=/Users/davidrosenberg/.ghcup/ghc/8.8.3/lib/ghc-8.8.3/package.conf.d
+export USER_PACKAGE_PATH=/Users/davidrosenberg/.cabal/store/ghc-8.8.3/package.db
+
+# vim: ft=sh
