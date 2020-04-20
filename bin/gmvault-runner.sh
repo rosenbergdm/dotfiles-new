@@ -15,7 +15,7 @@ tmplogfile="$(mktemp)"
 
 
 function cleanup() {
-  rm -rf "$tmplogfile"
+  rm -f "${tmplogfile:-NOTEMPLOGFILE}"
 }
 trap cleanup EXIT
 

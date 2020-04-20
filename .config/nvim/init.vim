@@ -131,3 +131,8 @@ let g:coc_snippet_next = '<tab>'
 let g:markdown_fenced_languages = [ 'vim', 'help' ]
 
 
+
+" Filetype specific
+
+au BufNewFile *.sh        CocCommand template.templateTop
+
