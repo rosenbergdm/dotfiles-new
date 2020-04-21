@@ -26,4 +26,13 @@ set_python_3() {
     alias pip="$(which pip3)"
 }
 
+adialog() {
+  message="$@"
+  {
+    osascript -e "tell app \"System Events\" to display dialog \"$message\"" >/dev/null 2>&1 && echo 0
+  } || {
+    echo 1
+  }
+}
+
 # vim: ft=sh
