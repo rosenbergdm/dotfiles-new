@@ -79,20 +79,23 @@ urxvt*scrollColor:        #777777
 urxvt*cursorColor:        #ffcc00
 urxvt*loginShell:         true
 urxvt*termName:           urxvt
-urxvt*cutchars:           "()*,<>[]{}|"''
+urxvt*cutchars:           "()*,<>[]{}|'
 urxvt*print-pipe:         cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
 urxvt*secondaryScroll:    true
 urxvt*mapAlert:           true
 urxvt*utmpInhibit:        true
-urxvt*perl-lib:           /opt/local/lib/urxvt/perl/
-urxvt*perl-ext-common:    default,matcher
+urxvt*perl-lib:           /opt/local/lib/urxvt/perl:/usr/local/Cellar/perl/5.30.1/lib/perl5/site_perl/5.30.1/darwin-thread-multi-2level:/usr/local/Cellar/perl/5.30.1/lib/perl5/site_perl/5.30.1:/usr/local/Cellar/perl/5.30.1/lib/perl5/5.30.1/darwin-thread-multi-2level:/usr/local/Cellar/perl/5.30.1/lib/perl5/5.30.1
+urxvt*perl-ext-common:    default,matcher,macosx-clipboard,selection,mark-yank-urls
+urxvt*keysym.M-c:         perl:macosx-clipboard:copy
+urxvt*keysym.M-v:         perl:macosx-clipboard:paste
+urxvt*keysym.M-u:         perl:mark-yank-urls:activate_mark_mode
 urxvt*urlLauncher:        /opt/local/bin/surf
 urxvt*matcher.button:     1
 urxvt*background:         #000000
 !urxvt*background:         rgba:2222/2222/2222/dddd
 !urxvt*background:         rgba:0000/0000/0000/dddd
 
-*VT100.translations: #override  Meta <KeyPress> V:  insert-selection(PRIMARY, CUT_BUFFER0)
+! *VT100.translations: #override  Meta <KeyPress> V:  insert-selection(PRIMARY, CUT_BUFFER0)
 
 URxvt.keysym.C-Left:        \033[1;3D
 URxvt.keysym.C-Right:       \033[1;3C
