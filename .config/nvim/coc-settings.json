@@ -2,7 +2,28 @@
   "tsserver.npm": "/usr/local/bin/npm",
   "html.enable": false,
   "html.filetypes": ["html", "handlebars", "htmldjango"],
-  "coc.preferences.colorSupport": false
+  "coc.preferences.colorSupport": false,
+  "languageserver": {
+    "haskell": {
+      "command": "hie-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml"
+      ],
+      "filetypes": [
+        "hs",
+        "lhs",
+        "haskell"
+      ],
+      "initializationOptions": {
+        "languageServerHaskell": {
+        }
+      }
+    }
+  }
 }
   
 
