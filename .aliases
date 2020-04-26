@@ -30,5 +30,6 @@ alias gmvault=/usr/local/bin/gmvault
 alias dotfiles='/usr/local/bin/git --git-dir=$HOME/dotfiles-new.git/ --work-tree=$HOME'
 
 
+alias ldd="echo -e 'USE otool -L instead' && echo && echo && otool -L $@"
 
 # vim: ft=sh
