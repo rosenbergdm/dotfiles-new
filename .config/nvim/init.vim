@@ -62,7 +62,8 @@ set termguicolors
 colorscheme gruvbox
 
 
-set hlsearch
+set nohlsearch
+set number
 set showmatch
 set smartcase
 set wildmode=longest,list
