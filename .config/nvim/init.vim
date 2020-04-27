@@ -61,7 +61,7 @@ set nofoldenable
 set termguicolors
 colorscheme gruvbox
 
-
+set clipboard=unnamedplus
 set nohlsearch
 set number
 set showmatch
