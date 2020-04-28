@@ -1,6 +1,8 @@
+#!/usr/local/bin/bash 
+
+
 backup_my_passwords() {
-    startdir="$PWD"
-    pushd "$HOME/dropbox"
+    pushd "$HOME/dropbox" || exit 1
     tgtfile="./passwords-backup/passwords-$(date +%Y%m%d).kdbx"
     if [[ -f "$tgtfile"  ]]; then
         echo "FILE ALREADY EXISTS"
@@ -8,7 +10,7 @@ backup_my_passwords() {
         cp "./passwords.kdbx" "$tgtfile"
         echo "FILE COPY COMPLETE"
     fi
-    popd
+    popd || exit
 }
 
 
@@ -27,7 +29,7 @@ set_python_3() {
 }
 
 adialog() {
-  message="$@"
+  message="$*"
   {
     osascript -e "tell app \"System Events\" to display dialog \"$message\"" >/dev/null 2>&1 && echo 0
   } || {
@@ -44,7 +46,7 @@ function logtask() {
   else
     taskname="$1" 
     startstop="${2:-start}" 
-    echo "${startstop[@]^} task '$taskname' at $(date +'%Y-%m-%d %H:%M:%S')" | tee -a $HOME/mytasks.txt 
+    echo "${startstop[*]^} task '$taskname' at $(date +'%Y-%m-%d %H:%M:%S')" | tee -a $HOME/mytasks.txt 
   fi
 }
 
@@ -59,7 +61,7 @@ function lintr() {
 }
 
 function styler() {
-  Rscript -e 'require('readr'); require('styler'); style_text(read_file(commandArgs(trailingOnly = TRUE)))' "$1"
+  Rscript -e 'require("readr"); require("styler"); style_text(read_file(commandArgs(trailingOnly = TRUE)))' "$1"
 }
 
 # vim: ft=sh
