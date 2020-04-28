@@ -38,6 +38,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})            
   call dein#add('psf/black', {'tag': '19.10b0'})
   call dein#add('autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh' })
+  call dein#add('jalvesaq/Nvim-R')
 
   
   if !has('nvim')
@@ -147,9 +148,11 @@ function Map_for_haskell()
   map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 endfunction
 
+function Map_for_R()
+  " remapping the basic :: send linenmap , <Plug>RDSendLine
+  " remapping selection :: send multiple linesvmap , <Plug>RDSendSelection
+  " remapping selection :: send multiple lines + echo linesvmap ,e <Plug>RESendSelection
+endfunction
 
-" Filetype specific
-
-au BufNewFile *.sh        CocCommand template.templateTop
-au Filetype haskell       call Map_for_haskell()
-
+" let g:ale_fixers = { 'r': ['styler'] }
+let g:ale_open_list = 1
