@@ -39,6 +39,10 @@ if dein#load_state('~/.cache/dein')
   call dein#add('psf/black', {'tag': '19.10b0'})
   call dein#add('autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh' })
   call dein#add('jalvesaq/Nvim-R')
+  call dein#add('chrisbra/csv.vim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('ncm2/ncm2')
+  call dein#add('gaalcaras/ncm-R')
 
   
   if !has('nvim')
@@ -156,3 +160,6 @@ endfunction
 
 " let g:ale_fixers = { 'r': ['styler'] }
 let g:ale_open_list = 1
+let g:rout_follow_colorscheme = 1
+let g:Rout_more_colors = 1
+
