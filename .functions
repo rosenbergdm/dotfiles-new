@@ -72,11 +72,11 @@ function settruecolor() {
   red="$1"
   green="$2"
   blue="$3"
-  printf "\033[38;2;%d;%d;%d;%dm", red, green, blue;
+  printf "\x1b[38;2;%d;%d;%dm" $red $green $blue
 }
 
 function resettruecolor() {
-  printf "\33[0m"
+  printf "\x1b[0m"
 }
 
 
