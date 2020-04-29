@@ -37,6 +37,13 @@ adialog() {
   }
 }
 
+
+function logtimesplit() { 
+  t1="$(tail -n2 $HOME/mytasks.txt | head -n1 | perl -p -e 's/^.*\047 at //g')"
+  t2="$(tail -n1 $HOME/mytasks.txt | perl -p -e 's/^.*\047 at //g')"
+  ddiff "$t1" "$t2" -f '%H %M'
+}
+
 function logtask() { 
   if [[ $# -eq 0 ]]; then
     tail -n20 $HOME/mytasks.txt
@@ -47,13 +54,10 @@ function logtask() {
     taskname="$1" 
     startstop="${2:-start}" 
     echo "${startstop[*]^} task '$taskname' at $(date +'%Y-%m-%d %H:%M:%S')" | tee -a $HOME/mytasks.txt 
+    if [ $startstop == "stop" ]; then
+      logtimesplit
+    fi
   fi
-}
-
-function logtimesplit() { 
-  t1="$(tail -n2 $HOME/mytasks.txt | head -n1 | perl -p -e 's/^.*\047 at //g')"
-  t2="$(tail -n1 $HOME/mytasks.txt | perl -p -e 's/^.*\047 at //g')"
-  ddiff "$t1" "$t2" -f '%H %M'
 }
 
 function lintr() {
@@ -63,5 +67,18 @@ function lintr() {
 function styler() {
   Rscript -e 'require("readr"); require("styler"); style_text(read_file(commandArgs(trailingOnly = TRUE)))' "$1"
 }
+
+function settruecolor() {
+  red="$1"
+  green="$2"
+  blue="$3"
+  printf "\033[38;2;%d;%d;%d;%dm", red, green, blue;
+}
+
+function resettruecolor() {
+  printf "\33[0m"
+}
+
+
 
 # vim: ft=sh
