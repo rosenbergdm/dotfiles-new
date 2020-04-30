@@ -106,6 +106,15 @@ set encoding=utf-8
 set cmdheight=2
 set signcolumn=yes
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+set viewoptions
+set showmode
+set cursorline
+set incsearch
+set whichwrap=b,s,h,l,<,>,[,]
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+
 let mapleader=","
 
 
@@ -163,3 +172,4 @@ let g:ale_open_list = 1
 let g:rout_follow_colorscheme = 1
 let g:Rout_more_colors = 1
 
+autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
