@@ -56,6 +56,8 @@ function logtask() {
     echo "${startstop[*]^} task '$taskname' at $(date +'%Y-%m-%d %H:%M:%S')" | tee -a $HOME/mytasks.txt 
     if [ $startstop == "stop" ]; then
       logtimesplit
+      logtimesplit | sed -e 's/ /:/g' >> $HOME/mytimes.txt
+      sum_times.py $HOME/mytimes.txt
     fi
   fi
 }
