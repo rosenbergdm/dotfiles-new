@@ -7,5 +7,8 @@ export USER_PACKAGE_PATH=/Users/davidrosenberg/.cabal/store/ghc-8.8.3/package.db
 export PERLLIB=/usr/local/Cellar/perl/5.30.1/lib/perl5/site_perl/5.30.1/darwin-thread-multi-2level:/usr/local/Cellar/perl/5.30.1/lib/perl5/site_perl/5.30.1:/usr/local/Cellar/perl/5.30.1/lib/perl5/5.30.1/darwin-thread-multi-2level:/usr/local/Cellar/perl/5.30.1/lib/perl5/5.30.1
 export PERL5LIB=$PERLLIB
 export URXVT_PERL_LIB=$PERLLIB:/usr/local/lib/urxvt/perl
+export extra_cabal_flags="'--package-db=/Users/davidrosenberg/.ghcup/ghc/8.8.3/lib/ghc-8.8.3/package.conf.d' '--package-db=/Users/davidrosenberg/.cabal/store/ghc-8.8.3/package.db' --extra-lib-dirs='/usr/X11/lib' --ghc-options='-L/usr/X11/lib'"
+export VISUAL=/usr/local/bin/nvim
+export EDITOR=/usr/local/bin/nvim
 
 # vim: ft=sh
