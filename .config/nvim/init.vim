@@ -116,6 +116,10 @@ set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
 let mapleader=","
+nmap :NERDTreeToggle
+set autochdir
+inoremap <C-Space> <C-x><C-o>
+
 
 
 
@@ -161,11 +165,6 @@ function Map_for_haskell()
   map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 endfunction
 
-function Map_for_R()
-  " remapping the basic :: send linenmap , <Plug>RDSendLine
-  " remapping selection :: send multiple linesvmap , <Plug>RDSendSelection
-  " remapping selection :: send multiple lines + echo linesvmap ,e <Plug>RESendSelection
-endfunction
 
 " let g:ale_fixers = { 'r': ['styler'] }
 let g:ale_open_list = 1
