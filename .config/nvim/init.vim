@@ -62,7 +62,8 @@ syntax enable
 "   call dein#install()
 " endif
 
-set nofoldenable
+set foldenable
+set foldmethod=marker
 set termguicolors
 colorscheme gruvbox
 
@@ -80,7 +81,6 @@ set wildignore+=*/node_modules/*
 set diffopt+=iwhite
 set expandtab
 set foldlevelstart=20
-set foldmethod=syntax
 set hidden
 set linebreak
 set listchars=tab:——,trail:_
