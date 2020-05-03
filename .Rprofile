@@ -19,10 +19,11 @@ suppressLoadMessage <- function(pkgname) {
   suppressWarnings(suppressPackageStartupMessages(library(pkgname, character.only=TRUE)))
 }
 
-auto.loads <-c("dplyr", "ggplot2")
+auto.loads <-c("plyr", "dplyr", "ggplot2")
  
 if(Sys.getenv("TERM") == "xterm-256color") {
   library("colorout")
+
 }
 
 if(interactive()){
@@ -43,4 +44,7 @@ attach(.env)
   df
 }
 
-message("*** Successfully loaded .Rpofile ***")
+if(interactive()){
+  message("*** Successfully loaded .Rpofile ***")
+}
+
