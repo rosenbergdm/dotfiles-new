@@ -19,7 +19,7 @@ suppressLoadMessage <- function(pkgname) {
   suppressWarnings(suppressPackageStartupMessages(library(pkgname, character.only=TRUE)))
 }
 
-auto.loads <-c("plyr", "dplyr", "ggplot2")
+auto.loads <-c("plyr", "dplyr", "ggplot2", 'devtools')
  
 if(Sys.getenv("TERM") == "xterm-256color") {
   library("colorout")
