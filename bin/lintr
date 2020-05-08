@@ -1,6 +1,6 @@
 #!/usr/local/bin/bash
 #
-LINT_FILE=$HOME/bin/lintr.R
+LINT_FILE=$HOME/lib/R/lintr.R
 
 Rscript $LINT_FILE $@
 
