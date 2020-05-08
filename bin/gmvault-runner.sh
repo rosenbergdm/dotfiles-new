@@ -24,6 +24,8 @@ $GMVAULT_EXE sync "$ACCOUNT" -d "$GMVAULT_DB" >> "$tmplogfile" 2>&1
 gmvaultstatus=$?
 if [ $gmvaultstatus -eq 0 ]; then
   echo -e "GMVAULT backed up $ACCOUNT to $GMVAULT_DB successfully on $(date)" | tee -a $LOGFILE
+  rm "$tmplogfile"
+  trap - EXIT
 else
   echo -e "GMVAULT FAILED to backp $ACCOUNT to $GMVAULT_DB on $(date); gmvault log stored at $tmplogfile"
   trap - EXIT
