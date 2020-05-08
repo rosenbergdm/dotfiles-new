@@ -1,0 +1,7 @@
+#!/usr/local/bin/bash
+#
+LINT_FILE=$HOME/bin/lintr.R
+
+Rscript $LINT_FILE $@
+
+# vim: ft=sh

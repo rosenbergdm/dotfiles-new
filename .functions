@@ -78,10 +78,6 @@ logstop() {
   fi
 }
 
-function lintr() {
-  Rscript -e 'lintr::lint(commandArgs(trailingOnly = TRUE))' "$1"
-}
-
 function styler() {
   Rscript -e 'require("readr"); require("styler"); style_text(read_file(commandArgs(trailingOnly = TRUE)))' "$1"
 }
