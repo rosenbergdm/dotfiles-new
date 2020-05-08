@@ -166,9 +166,15 @@ function Map_for_haskell()
 endfunction
 
 
+" Filetype specific
+" R
 " let g:ale_fixers = { 'r': ['styler'] }
 let g:ale_open_list = 1
 let g:rout_follow_colorscheme = 1
 let g:Rout_more_colors = 1
+let g:ale_r_lintr_options = "with_defaults(line_length_linter(120))"
+let R_assign = 2 " Replacement of `__` with `<-` in R code instead of `_`
+
 
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+
