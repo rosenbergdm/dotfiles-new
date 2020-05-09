@@ -9,9 +9,9 @@
 
 GMVAULT_EXE=/usr/local/bin/gmvault
 LOGFILE=/var/log/gmvault.log
-GMVAULT_DB=/Volumes/LaptopBackup2/gmvault-backup-uic/uic-db
+GMVAULT_DB=/Volumes/LaptopBackup2/uic-backups/gmvault-backup-uic/uic-db
 ACCOUNT="dmrosenb@uic.edu"
-tmplogfile="$(mktemp)"
+tmplogfile="$(mktemp -t gmv.runner)"
 
 
 function cleanup() {
