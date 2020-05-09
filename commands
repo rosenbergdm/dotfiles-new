@@ -1,0 +1,9 @@
+# Start a tmux session group
+# In iterm window 1:
+tmux new-session -s left
+# In iterm window 2: 
+tmux new-session -t left -s right
+
+
+
+# vim: ft=sh
