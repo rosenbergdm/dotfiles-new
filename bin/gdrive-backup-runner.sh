@@ -38,12 +38,14 @@ function sync_dir() {
   shared="$3"
   if [[ $shared == "shared" ]]; then
     [[ "$DEBUG_RCLONE:" == "1:" ]] && $RUNCMD "$RCLONE $SHARED_ARGS $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\"" > /dev/stderr
-    $RUNCMD "$RCLONE $SHARED_ARGS $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\""
+    $RUNCMD "$RCLONE $SHARED_ARGS $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\"" 2>&1
+    retstatus=${PIPESTATUS[0]}
   else
     [[ "$DEBUG_RCLONE:" == "1:" ]] && $RUNCMD "$RCLONE $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\"" > /dev/stderr
-
-    $RUNCMD "$RCLONE $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\""
+    $RUNCMD "$RCLONE $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\"" 2>&1
+    retstatus=${PIPESTATUS[0]}
   fi
+  return $retstatus
 }
 
 function _cleanup() {
@@ -55,7 +57,7 @@ trap _cleanup EXIT
 running_status=0
 
 for ((i=0; i<${#SOURCES_SHARED[@]}; i++)); do
-  sync_dir "${SOURCES_SHARED[$i]}" "${TARGETS_SHARED[$i]}" shared >> "$scriptlog" 2>&1
+  sync_dir "${SOURCES_SHARED[$i]}" "${TARGETS_SHARED[$i]}" shared >> "$scriptlog"
   if [[ $? -gt 0 ]]; then
     running_status=$((running_status+1))
     echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" FAILED" | $LOGCMD
@@ -65,7 +67,7 @@ for ((i=0; i<${#SOURCES_SHARED[@]}; i++)); do
 done
 
 for ((i=0; i<${#SOURCES_NONSHARED[@]}; i++)); do
-  sync_dir "${SOURCES_NONSHARED[$i]}" "${TARGETS_NONSHARED[$i]}" nonshared >> "$scriptlog" 2>&1
+  sync_dir "${SOURCES_NONSHARED[$i]}" "${TARGETS_NONSHARED[$i]}" nonshared >> "$scriptlog"
   if [[ $? -gt 0 ]]; then
     running_status=$((running_status+1))
     echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" FAILED" | $LOGCMD
