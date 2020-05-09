@@ -11,5 +11,6 @@ export extra_cabal_flags="'--package-db=/Users/davidrosenberg/.ghcup/ghc/8.8.3/l
 export VISUAL=/usr/local/bin/nvim
 export EDITOR=/usr/local/bin/nvim
 export GOPATH=$HOME/go
+export BKPATH=/Volumes/LaptopBackup2/uic-backups
 
 # vim: ft=sh

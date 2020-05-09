@@ -19,7 +19,7 @@ SOURCES_NONSHARED=( "/syncable/" )
 TARGETS_NONSHARED=( "MyDrive/syncable/" )
 SHARED_ARGS='--drive-shared-with-me'
 ARGS='--drive-formats "docx,xlsx,pdf" -v'
-scriptlog="$(mktemp)"
+scriptlog="$(mktemp -t gdbkrun)"
 LOGFILE=/var/log/rclone.log
 
 function sync_dir() {
