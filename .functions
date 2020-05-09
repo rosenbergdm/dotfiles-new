@@ -133,5 +133,11 @@ save_last_command() {
   echo !! >> $function_file
 }
 
+dotfiles() {
+  pushd $HOME > /dev/null
+  /usr/local/bin/git --git-dir=$HOME/dotfiles-new.git/ --work-tree=$HOME "$@"
+  popd > /dev/null
+}
+
 
 # vim: ft=sh
