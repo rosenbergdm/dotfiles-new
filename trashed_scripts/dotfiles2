@@ -1,0 +1,8 @@
+dotf2() {
+  pushd $HOME >/dev/null
+  /usr/local/bin/git --git-dir=$HOME/dotfiles-new.git/ --work-tree=$HOME "$@"
+  popd >/dev/null
+}
+__git_complete dotf2 __git_main
+
+# vim: ft=sh

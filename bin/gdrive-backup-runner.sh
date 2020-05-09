@@ -55,7 +55,7 @@ trap _cleanup EXIT
 running_status=0
 
 for ((i=0; i<${#SOURCES_SHARED[@]}; i++)); do
-  sync_dir "${SOURCES_SHARED[$i]}" "${TARGETS_SHARED[$i]}" shared >> "$scriptlog"
+  sync_dir "${SOURCES_SHARED[$i]}" "${TARGETS_SHARED[$i]}" shared >> "$scriptlog" 2>&1
   if [[ $? -gt 0 ]]; then
     running_status=$((running_status+1))
     echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" FAILED" | $LOGCMD
@@ -65,7 +65,7 @@ for ((i=0; i<${#SOURCES_SHARED[@]}; i++)); do
 done
 
 for ((i=0; i<${#SOURCES_NONSHARED[@]}; i++)); do
-  sync_dir "${SOURCES_NONSHARED[$i]}" "${TARGETS_NONSHARED[$i]}" nonshared >> "$scriptlog"
+  sync_dir "${SOURCES_NONSHARED[$i]}" "${TARGETS_NONSHARED[$i]}" nonshared >> "$scriptlog" 2>&1
   if [[ $? -gt 0 ]]; then
     running_status=$((running_status+1))
     echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" FAILED" | $LOGCMD
