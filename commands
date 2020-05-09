@@ -7,3 +7,4 @@ tmux new-session -t left -s right
 
 
 # vim: ft=sh
+DEBUG_RCLONE=1 gdrive-backup-runner.sh 
