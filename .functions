@@ -28,6 +28,34 @@ set_python_3() {
     alias pip="$(which pip3)"
 }
 
+set_perl() {
+  if [ "$1:" == ":" ]; then 
+    echo "USAGE: set_perl [SYSTEM|HOMEBREW]"
+  elif [ $1 == "SYSTEM" ]; then
+    unset PERLLIB
+    unset PERL5LIB
+    export PERL=/usr/bin/perl
+  elif [ "$1" == "HOMEBREW" ]; then
+    export PERLLIB=/usr/local/Cellar/perl/5.30.1/lib/perl5/site_perl/5.30.1/darwin-thread-multi-2level:/usr/local/Cellar/perl/5.30.1/lib/perl5/site_perl/5.30.1:/usr/local/Cellar/perl/5.30.1/lib/perl5/5.30.1/darwin-thread-multi-2level:/usr/local/Cellar/perl/5.30.1/lib/perl5/5.30.1
+    export PERL5LIB=$PERLLIB
+    export PERL=/usr/local/bin/perl
+  else
+    echo "USAGE: set_perl [SYSTEM|HOMEBREW]"
+  fi
+}
+
+set_python() {
+  if [ "$1:" == ":" ]; then
+    echo "USAGE: set_python [2|3]"
+  elif [ "$1" == "2" ]; then
+    set_python_2
+  elif [ "$1" == "3" ]; then
+    set_python_3
+  else
+    echo "USAGE: set_python [2|3]"
+  fi
+}
+
 adialog() {
   message="$*"
   {

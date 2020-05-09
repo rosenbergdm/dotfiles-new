@@ -10,8 +10,8 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done
 
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+if [ -f /usr/local/etc/bash_completion ]; then
+  . /usr/local/etc/bash_completion
 fi
 # NOTE this sources ~/.bash_completion as well
 

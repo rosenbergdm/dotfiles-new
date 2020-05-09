@@ -27,7 +27,7 @@ function sync_dir() {
   tgt="$2"
   shared="$3"
   if [[ $shared == "shared" ]]; then
-    echo "Executing: >$RCLONE $SHARED_ARGS $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\"" 
+    echo "Executing: >$RCLONE $SHARED_ARGS $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\""
     eval "$RCLONE $SHARED_ARGS $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\""
   else
     eval "$RCLONE $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\""
@@ -46,9 +46,9 @@ for ((i=0; i<${#SOURCES_SHARED[@]}; i++)); do
   sync_dir "${SOURCES_SHARED[$i]}" "${TARGETS_SHARED[$i]}" shared | tee -a "$scriptlog"
   if [[ $? -gt 0 ]]; then
     running_status+=1
-    echo "$(date) sync of "${SOURCES_SHARED[$i]}" to "${TARGETS_SHARED[$i]}" FAILED" | tee -a $LOGFILE 
+    echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" FAILED" | tee -a $LOGFILE
   else
-    echo "$(date) sync of "${SOURCES_SHARED[$i]}" to "${TARGETS_SHARED[$i]}" Succeeded" | tee -a $LOGFILE
+    echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" Succeeded" | tee -a $LOGFILE
   fi
 done
 
@@ -56,14 +56,14 @@ for ((i=0; i<${#SOURCES_NONSHARED[@]}; i++)); do
   sync_dir "${SOURCES_NONSHARED[$i]}" "${TARGETS_NONSHARED[$i]}" nonshared | tee -a "$scriptlog"
   if [[ $? -gt 0 ]]; then
     running_status+=1
-    echo "$(date) sync of "${SOURCES_NONSHARED[$i]}" to "${TARGETS_NONSHARED[$i]}" FAILED" | tee -a $LOGFILE 
+    echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" FAILED" | tee -a $LOGFILE 
   else
-    echo "$(date) sync of "${SOURCES_NONSHARED[$i]}" to "${TARGETS_NONSHARED[$i]}" Succeeded" | tee -a $LOGFILE
+    echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" Succeeded" | tee -a $LOGFILE
   fi
 done
 
 if [[ $running_status -gt 0 ]]; then
-  echo "$(date) SYNC FAILED, log at $scriptlog" > /dev/stderr
+  echo "$(date) SYNC FAILED, log at $scriptlog"
   trap - EXIT
   exit $running_status
 else
@@ -72,7 +72,3 @@ else
   trap - EXIT
   exit $running_status
 fi
-
-
-
-
