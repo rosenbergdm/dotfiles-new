@@ -18,19 +18,31 @@ TARGETS_SHARED=( "Texts/Phase 2/" "Texts/M2 Google Drive/")
 SOURCES_NONSHARED=( "/syncable/" )
 TARGETS_NONSHARED=( "MyDrive/syncable/" )
 SHARED_ARGS='--drive-shared-with-me'
-ARGS='--drive-formats "docx,xlsx,pdf" -v'
+ARGS='--drive-formats "docx,xlsx,pdf" -v --update --exclude-from "/Users/davidrosenberg/.config/rclone/M2_exclusions.txt"'
+
 scriptlog="$(mktemp -t gdbkrun)"
 LOGFILE=/var/log/rclone.log
+LOGCMD="tee -a $LOGFILE"
+
+RUNCMD=eval
+if [[ "$DEBUG_RCLONE:" == "1:" ]]; then
+  RUNCMD=echo
+  LOGCMD="xargs echo"
+  echo "Running in debug mode"
+fi
+
 
 function sync_dir() {
   src="$1"
   tgt="$2"
   shared="$3"
   if [[ $shared == "shared" ]]; then
-    echo "Executing: >$RCLONE $SHARED_ARGS $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\""
-    eval "$RCLONE $SHARED_ARGS $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\""
+    [[ "$DEBUG_RCLONE:" == "1:" ]] && $RUNCMD "$RCLONE $SHARED_ARGS $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\"" > /dev/stderr
+    $RUNCMD "$RCLONE $SHARED_ARGS $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\""
   else
-    eval "$RCLONE $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\""
+    [[ "$DEBUG_RCLONE:" == "1:" ]] && $RUNCMD "$RCLONE $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\"" > /dev/stderr
+
+    $RUNCMD "$RCLONE $ARGS sync \"dmrosenb-uic-google:$src\" \"$TGT_DIR/$tgt\""
   fi
 }
 
@@ -43,22 +55,22 @@ trap _cleanup EXIT
 running_status=0
 
 for ((i=0; i<${#SOURCES_SHARED[@]}; i++)); do
-  sync_dir "${SOURCES_SHARED[$i]}" "${TARGETS_SHARED[$i]}" shared | tee -a "$scriptlog"
+  sync_dir "${SOURCES_SHARED[$i]}" "${TARGETS_SHARED[$i]}" shared >> "$scriptlog"
   if [[ $? -gt 0 ]]; then
-    running_status+=1
-    echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" FAILED" | tee -a $LOGFILE
+    running_status=$((running_status+1))
+    echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" FAILED" | $LOGCMD
   else
-    echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" Succeeded" | tee -a $LOGFILE
+    echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" Succeeded" | $LOGCMD
   fi
 done
 
 for ((i=0; i<${#SOURCES_NONSHARED[@]}; i++)); do
-  sync_dir "${SOURCES_NONSHARED[$i]}" "${TARGETS_NONSHARED[$i]}" nonshared | tee -a "$scriptlog"
+  sync_dir "${SOURCES_NONSHARED[$i]}" "${TARGETS_NONSHARED[$i]}" nonshared >> "$scriptlog"
   if [[ $? -gt 0 ]]; then
-    running_status+=1
-    echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" FAILED" | tee -a $LOGFILE 
+    running_status=$((running_status+1))
+    echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" FAILED" | $LOGCMD
   else
-    echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" Succeeded" | tee -a $LOGFILE
+    echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" Succeeded" | $LOGCMD
   fi
 done
 
