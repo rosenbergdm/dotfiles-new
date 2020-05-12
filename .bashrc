@@ -1,23 +1,32 @@
+#!/usr/local/bin/bash
+[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.bashrc" 
+
+declare -a STARTUP_SOURCED
+STARTUP_SOURCED+=("$HOME/bashrc")
+_d_source_and_log() {
+  [ -r "$1" ] && source "$1" && STARTUP_SOURCED+=("$1")
+}
+source_and_log() {
+  [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "Sourcing '$1'" 
+  echo "${STARTUP_SOURCED[@]}" | grep -v "$1" >/dev/null && _d_source_and_log "$1" || echo "$1 already sourced, skipping"
+}
+
 export BASHRC_RUN=1
 if [[ -z "$BASH_PROFILE_RUN" ]]; then
+  [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "running . ~/.bash_profile"
     # bash_profile hasn't been run
   . ~/.bash_profile
 fi
 
 
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
-  [ -r "$file" ] && source "$file"
+for file in ~/.{functions,path,bash_prompt,exports,aliases,extra}; do
+  source_and_log "$file"
 done
 
 
 if [ -f /usr/local/etc/bash_completion ]; then
-  . /usr/local/etc/bash_completion
+  source_and_log /usr/local/etc/bash_completion
 fi
 # NOTE this sources ~/.bash_completion as well
 
-
-
-set_python_3
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"

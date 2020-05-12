@@ -1,3 +1,5 @@
+#!/usr/local/bin/bash
+[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.aliases"
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
   colorflag="--color"
@@ -26,9 +28,6 @@ alias vimdiff='/usr/local/bin/nvim -d'
 
 # enforcing correct gmvault execution
 alias gmvault=/usr/local/bin/gmvault
-
-# Management of dotfiles
-# alias dotfiles='/usr/local/bin/git --git-dir=$HOME/dotfiles-new.git/ --work-tree=$HOME'
 
 
 alias ldd="echo -e 'USE otool -L instead' && echo && echo && otool -L $@"

@@ -1,32 +1,6 @@
 #!/usr/local/bin/bash 
+[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.functions"
 
-
-backup_my_passwords() {
-    pushd "$HOME/dropbox" || exit 1
-    tgtfile="./passwords-backup/passwords-$(date +%Y%m%d).kdbx"
-    if [[ -f "$tgtfile"  ]]; then
-        echo "FILE ALREADY EXISTS"
-    else
-        cp "./passwords.kdbx" "$tgtfile"
-        echo "FILE COPY COMPLETE"
-    fi
-    popd || exit
-}
-
-
-set_python_2() {
-    export PYTHONPATH=/usr/local/lib/python2.7/site-packages:~/Library/Python/2.7/lib/python/site-packages
-    alias ipython="$(which ipython2)"
-    alias python="$(which python2.7)"
-    alias pip="$(which pip2.7)"
-}
-
-set_python_3() {
-    unset PYTHONPATH
-    alias ipython="$(which ipython3)"
-    alias python="$(which python3)"
-    alias pip="$(which pip3)"
-}
 
 set_perl() {
   if [ "$1:" == ":" ]; then 
@@ -48,9 +22,15 @@ set_python() {
   if [ "$1:" == ":" ]; then
     echo "USAGE: set_python [2|3]"
   elif [ "$1" == "2" ]; then
-    set_python_2
+    export PYTHONPATH=/usr/local/lib/python2.7/site-packages:~/Library/Python/2.7/lib/python/site-packages
+    alias ipython="$(which ipython2)"
+    alias python="$(which python2.7)"
+    alias pip="$(which pip2.7)"
   elif [ "$1" == "3" ]; then
-    set_python_3
+    unset PYTHONPATH
+    alias ipython="$(which ipython3)"
+    alias python="$(which python3)"
+    alias pip="$(which pip3)"
   else
     echo "USAGE: set_python [2|3]"
   fi
@@ -64,7 +44,6 @@ adialog() {
     echo 1
   }
 }
-
 
 function logtimesplit() { 
   t1="$(tail -n2 $HOME/mytasks.txt | head -n1 | perl -p -e 's/^.*\047 at //g')"
@@ -125,8 +104,14 @@ function gitignore() {
 }
 
 save_last_command() {
-  function_file=$HOME/saved_functions.txt
-  echo !! >> $function_file
+  lastcommand="$(history | tail -n2 | head -n1  | perl -p -e 's/^\W*\d+\W+//g')"
+  function_file=${1:-$HOME/saved_functions.txt}
+  if [[ ! -f "$function_file" ]]; then
+    echo "Function file $function_file does not exist!"
+  else
+    echo "$lastcommand" >> "$function_file"
+    echo "Wrote '$lastcommand' to '$function_file'"
+  fi
 }
 
 dotfiles() {
@@ -135,5 +120,21 @@ dotfiles() {
   popd > /dev/null
 }
 
+pathappend() {
+  for ARG in "$@"; do
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+      PATH="${PATH:+"$PATH:"}$ARG"
+    fi
+  done
+}
+
+pathprepend() {
+  for ((i=$#; i>0; i--)); do
+    ARG=${!i}
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+      PATH="$ARG${PATH:+":$PATH"}"
+    fi
+  done
+}
 
 # vim: ft=sh

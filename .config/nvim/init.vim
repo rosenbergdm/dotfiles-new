@@ -119,7 +119,7 @@ let mapleader=","
 nmap :NERDTreeToggle
 set autochdir
 inoremap <C-Space> <C-x><C-o>
-
+cmap Q qall
 
 
 
