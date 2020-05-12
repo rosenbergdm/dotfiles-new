@@ -1,3 +1,4 @@
+[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.exports"
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export NIX_IGNORE_SYMLINK_STORE=1

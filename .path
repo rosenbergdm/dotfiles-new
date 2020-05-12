@@ -1,33 +1,19 @@
-# The following functions are added here instead of the .functions file
-pathappend() {
-  for ARG in "$@"; do
-    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
-      PATH="${PATH:+"$PATH:"}$ARG"
-    fi
-  done
-}
-
-pathprepend() {
-  for ((i=$#; i>0; i--)); do
-    ARG=${!i}
-    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
-      PATH="$ARG${PATH:+":$PATH"}"
-    fi
-  done
-}
-
+#!/usr/local/bin/bash
+[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.path"
 
 PATH="$HOME/bin:/usr/local/bin:$PATH"
 PATH=/usr/local/share/python:$PATH
 PATH=/usr/local/share/npm/bin:$PATH
 PATH=/usr/local/Cellar/qt5/5.7.0/bin:$PATH
 PATH="$HOME/.cargo/bin:$PATH"
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source_and_log "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 PATH=$PATH:/Users/davidrosenberg/.local/bin
 PATH=$PATH:/usr/local/Cellar/perl/5.30.1/bin
 PATH=$PATH:$HOME/edirect
 PATH=$PATH:$HOME/go/bin:/usr/local/go/bin
 export PATH
+
+set_python 3
 
 
 
