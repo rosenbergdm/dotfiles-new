@@ -106,10 +106,6 @@ logstop() {
   fi
 }
 
-function styler() {
-  Rscript -e 'require("readr"); require("styler"); style_text(read_file(commandArgs(trailingOnly = TRUE)))' "$1"
-}
-
 function settruecolor() {
   red="$1"
   green="$2"

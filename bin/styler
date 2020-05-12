@@ -1,21 +1,22 @@
 #!/usr/local/bin/bash
 #
-LINT_FILE=$HOME/lib/R/lintr.R
+STYLE_FILE=$HOME/lib/R/styler.R
 
 usage() {
   echo "USAGE: $0 SRC.R" 
-  echo "  Lint the R file SRC.R, printint to STDOUT"
+  echo "  Sends the styled SRC.R file to STDOUT"
 }
 
 if [[ "$1:" == ":" ]]; then
   usage
   exit 0
 elif [[ -f "$1" ]]; then
-  Rscript "$LINT_FILE" "$1"
+  Rscript "$STYLE_FILE" "$1"
 else
   usage
   exit 1
 fi
 
-# vim: ft=sh
 
+
+# vim: ft=sh
