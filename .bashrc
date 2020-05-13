@@ -27,6 +27,7 @@ done
 if [ -f /usr/local/etc/bash_completion ]; then
   source_and_log /usr/local/etc/bash_completion
 fi
-# NOTE this sources ~/.bash_completion as well
+# NOTE this sources ~/.bash_completion as well; ~/.bash_completion will source all files in $HOME/bash_completion.d/
+source_and_log $rvm_path/scripts/completion
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"
