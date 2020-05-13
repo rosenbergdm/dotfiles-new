@@ -137,4 +137,9 @@ pathprepend() {
   done
 }
 
+dedupe_pathvar() {
+  PATHVAR="${1:-PATH}"
+  export ${PATHVAR}="$(perl -e "print join(':', grep { not \$seen{\$_}++ } split(/:/, \$ENV{$PATHVAR}))")"
+}
+
 # vim: ft=sh
