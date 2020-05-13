@@ -35,7 +35,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('morhetz/gruvbox')
   call dein#add('numirias/semshi')
   call dein#add('scrooloose/nerdtree')
-  call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})            
+  call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('psf/black', {'tag': '19.10b0'})
   call dein#add('autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh' })
   call dein#add('jalvesaq/Nvim-R')
@@ -151,7 +151,8 @@ let g:coc_snippet_next = '<tab>'
 
 let g:markdown_fenced_languages = [ 'vim', 'help' ]
 set rtp+=~/.cache/dein/repos/github.com/autozimu/LanguageClient-neovim
-let g:LanguageClient_serverCommands = {'haskell': ['hie-wrapper', '--lsp'] }
+let g:LanguageClient_serverCommands = {'haskell': ['hie-wrapper', '--lsp'], 'sh': ['bash-language-server', 'start'] }
+let g:ale_open_list = 1
 
 
 function Map_for_haskell()
@@ -160,7 +161,7 @@ function Map_for_haskell()
   map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
   map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
   map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
-  map <Leader>lb :call LanguageClient#textDocument_references()<CR>
+  map <Leader>lb :call LanguageClient#textDocument_references()<CR>:
   map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
   map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 endfunction
@@ -173,7 +174,6 @@ autocmd BufNewFile *.R CocCommand template.templateTop
 
 " Shell 
 autocmd BufNewFile *.sh CocCommand template.templateTop
-
 
 
 

@@ -12,4 +12,4 @@ DEBUG_RCLONE=1 gdrive-backup-runner.sh
 tmutil listlocalsnapshots /
 echo "$PATHVAR=$(perl -e "print join(':', grep { not \$seen{\$_}++ } split(/:/, \$ENV{$PATHVAR}))")"
 stack --bash-completion-script stack >> ~/bash_completion.d/stack
- pandoc  --bash-completion  >> ~/bash_completion.d/pandoc
+ pandoc  --bash-completion  >> ~/bash_completion.d/pandocdotfiles add $(dotfiles status | grep '[modified|deleted]' | grep '^\W' | grep -v '<file>' | perl -p -e 's/^\W+\w+: +//g' )
