@@ -17,7 +17,7 @@ export BASHRC_RUN=1
 if [[ -z "$BASH_PROFILE_RUN" ]]; then
   [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "running . ~/.bash_profile"
     # bash_profile hasn't been run
-  . ~/.bash_profile
+  source_and_log ~/.bash_profile
 fi
 
 

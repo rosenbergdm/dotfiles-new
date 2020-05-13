@@ -1,4 +1,5 @@
 #!/bin/sh
+source "$HOME/.functions"
 
 cd $HOME/Dropbox
 tgtfile="$HOME/Dropbox/passwords-backup/passwords-$(date +%Y%m%d).kdbx"

@@ -1,6 +1,8 @@
 #!/usr/local/bin/bash
 [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.path"
 
+MANPATH=/usr/share/man:/usr/local/share/man:/opt/X11/share/man:/Library/TeX/Distributions/.DefaultTeX/Contents/Man:/usr/local/gfortran/share/man:/Users/davidrosenberg/CommandLineTools/usr/share/man:/Users/davidrosenberg/.ghcup/ghc/8.8.3/share/man:/Library/Apple/usr/share/man:/Library/Developer/CommandLineTools/usr/share/man:/Users/davidrosenberg/.rustup/toolchains/stable-x86_64-apple-darwin/share/man:/Users/davidrosenberg/.stack/programs/x86_64-osx/ghc-8.8.3/share/man
+export MANPATH
 
 PATH="$HOME/bin:/usr/local/bin:$PATH"
 PATH=/usr/local/share/python:$PATH
