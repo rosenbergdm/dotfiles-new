@@ -2,7 +2,9 @@
 [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.bashrc" 
 
 declare -a STARTUP_SOURCED
+declare -a MY_FUNCTIONS
 STARTUP_SOURCED+=("$HOME/bashrc")
+
 _d_source_and_log() {
   [ -r "$1" ] && source "$1" && STARTUP_SOURCED+=("$1")
 }

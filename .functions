@@ -1,11 +1,10 @@
 #!/usr/local/bin/bash 
 [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.functions"
 
+MY_FUNCTIONS=( )
 
 set_perl() {
-  if [ "$1:" == ":" ]; then 
-    echo "USAGE: set_perl [SYSTEM|HOMEBREW]"
-  elif [ $1 == "SYSTEM" ]; then
+  if [ $1 == "SYSTEM" ]; then
     unset PERLLIB
     unset PERL5LIB
     export PERL=/usr/bin/perl
@@ -17,11 +16,10 @@ set_perl() {
     echo "USAGE: set_perl [SYSTEM|HOMEBREW]"
   fi
 }
+MY_FUNCTIONS+=( "set_perl" )
 
 set_python() {
-  if [ "$1:" == ":" ]; then
-    echo "USAGE: set_python [2|3]"
-  elif [ "$1" == "2" ]; then
+  if [ "$1" == "2" ]; then
     export PYTHONPATH=/usr/local/lib/python2.7/site-packages:~/Library/Python/2.7/lib/python/site-packages
     alias ipython="$(which ipython2)"
     alias python="$(which python2.7)"
@@ -35,8 +33,13 @@ set_python() {
     echo "USAGE: set_python [2|3]"
   fi
 }
+MY_FUNCTIONS+=("set_python")
 
 adialog() {
+  if [[ -z "$1" ]]; then
+    echo "USAGE: adialog MESSAGE"
+    return 1
+  fi
   message="$*"
   {
     osascript -e "tell app \"System Events\" to display dialog \"$message\"" >/dev/null 2>&1 && echo 0
@@ -44,12 +47,14 @@ adialog() {
     echo 1
   }
 }
+MY_FUNCTIONS+=("adialog")
 
 function logtimesplit() { 
   t1="$(tail -n2 $HOME/mytasks.txt | head -n1 | perl -p -e 's/^.*\047 at //g')"
   t2="$(tail -n1 $HOME/mytasks.txt | perl -p -e 's/^.*\047 at //g')"
   ddiff "$t1" "$t2" -f '%H %M'
 }
+MY_FUNCTIONS+=("logtimesplit")
 
 function logtask() { 
   if [[ $# -eq 0 ]]; then
@@ -68,42 +73,91 @@ function logtask() {
     fi
   fi
 }
+MY_FUNCTIONS+=("logtask") 
 
-logstart() {
+function logstart() {
   if [[ $# -eq 0 ]]; then 
     echo "USAGE: logstart TASKNAME"
   else
     logtask "$*" start
   fi
 }
+MY_FUNCTIONS+=("logstart")
 
-logstop() {
+function logstop() {
   if [[ $# -eq 0 ]]; then 
     echo "USAGE: logstop TASKNAME"
   else
     logtask "$*" stop
   fi
 }
+MY_FUNCTIONS+=("logstop")
 
 function settruecolor() {
+  if [[ -z "$1" ]]; then 
+    echo "USAGE: settruecolor RED GREEN BLUE"
+    echo   "  Ex: \$ > echo \"\$(settruecolor 100 200 50)Hello\""
+    printf "         \x1b[38;2;100;200;50mHello\n"
+    return 1
+  fi
   red="$1"
   green="$2"
   blue="$3"
   printf "\x1b[38;2;%d;%d;%dm" $red $green $blue
 }
+MY_FUNCTIONS+=("settruecolor")
 
 function resettruecolor() {
   printf "\x1b[0m"
 }
+MY_FUNCTIONS+=("resettruecolor")
 
 function gitignore() {
+  if [[ -z "$1" ]]; then 
+    echo "USAGE: gitignore FILES"
+    echo "Adds FILES to the local .gitignore listing"
+  fi
   arg=("$@")
+  ignorefile=""
+  testfile=".gitignore"
+  for ((i=0; i<5; i++)); do
+    if [[ -f "$testfile" ]]; then
+      ignorefile="$testfile"
+      break
+    else
+      testfile="../$testfile"
+    fi
+  done
+  if [[ -z "$ignorefile" ]]; then
+    echo "ERROR: .gitignore could not be found!"
+    return 1
+  fi
   for ((i=0; i<$#; i++)); do
-    echo "${arg[i]}" >> .gitignore
+    if [[ -f "${arg[i]}" ]]; then
+      # this is an actual file
+      tgtfile="$(realpath --relative-to=$ignorefile "${arg[i]}" | sed -e 's/^\.\.\///g')"
+      echo "echo \"$tgtfile\" >> \"$ignorefile\""
+    else
+      # this is a patterny thing
+      if [[ "$ignorefile" == ".gitignore" ]]; then
+        echo "echo \"${arg[i]}\" >> \"$ignorefile\""
+      else 
+        echo "ERROR: Nonfile target and not in same directory as .gitignore is not supported... not adding '${arg[i]}'"
+        return 1
+      fi
+    fi
   done
 }
+MY_FUNCTIONS+=("gitignore")
 
-save_last_command() {
+function save_last_command() {
+  function_file=${1:-$HOME/saved_functions.txt}
+  if [[ "$1" == "--help" || "$1" == "-help" || "$1" == "-h" ]]; then
+    echo "USAGE: $FUNCNAME [FUNCTION_FILE]"
+    echo "  Default FUNCTIONFILE is \$HOME/saved_functions.txt"
+    echo "  Saves the last entered to 'FUNCTION_FILE'"
+    return 0
+  fi
   lastcommand="$(history | tail -n2 | head -n1  | perl -p -e 's/^\W*\d+\W+//g')"
   function_file=${1:-$HOME/saved_functions.txt}
   if [[ ! -f "$function_file" ]]; then
@@ -113,22 +167,33 @@ save_last_command() {
     echo "Wrote '$lastcommand' to '$function_file'"
   fi
 }
+MY_FUNCTIONS+=("save_last_command")
 
-dotfiles() {
+function dotfiles() {
+  if [[ "$1" == "--help" || "$1" == "-help" || "$1" == "-h" ]]; then
+    cat<<EOF 
+USAGE: $FUNCNAME ARGS
+  Run GIT commands on one's HOME directory 
+  This is the same as running 'git --git-dir=$HOME/dotfiles-new.git/ --work-tree=$HOME "\$@"'
+EOF
+    return 0
+  fi
   pushd $HOME > /dev/null
   /usr/local/bin/git --git-dir=$HOME/dotfiles-new.git/ --work-tree=$HOME "$@"
   popd > /dev/null
 }
+MY_FUNCTIONS+=("dotfiles")
 
-pathappend() {
+function pathappend() {
   for ARG in "$@"; do
     if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
       PATH="${PATH:+"$PATH:"}$ARG"
     fi
   done
 }
+MY_FUNCTIONS+=("pathappend")
 
-pathprepend() {
+function pathprepend() {
   for ((i=$#; i>0; i--)); do
     ARG=${!i}
     if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
@@ -136,10 +201,33 @@ pathprepend() {
     fi
   done
 }
+MY_FUNCTIONS+=("pathprepend")
 
-dedupe_pathvar() {
+function dedupe_pathvar() {
+  if [[ "$1" == "--help" || "$1" == "-help" || "$1" == "-h" ]]; then
+    cat<<EOF 
+USAGE: $FUNCNAME VAR
+  Remove duplicates from the list in variable \$VAR; default is \$PATH
+  Example:
+    \$ > echo \$PATH
+    /usr/bin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/sbin
+    \$ > dedupe_path
+    \$ > echo \$PATH
+    /usr/bin:/usr/local/bin:/usr/sbin:/usr/local/sbin
+
+EOF
+    return 0
+  fi
   PATHVAR="${1:-PATH}"
-  export ${PATHVAR}="$(perl -e "print join(':', grep { not \$seen{\$_}++ } split(/:/, \$ENV{$PATHVAR}))")"
+  if [[ -z "$(eval "echo \$$PATHVAR")" ]]; then
+    echo "$PATHVAR is not set or is empty!"
+    return 1
+  else
+    export ${PATHVAR}="$(perl -e "print join(':', grep { not \$seen{\$_}++ } split(/:/, \$ENV{$PATHVAR}))")"
+  fi
 }
+MY_FUNCTIONS+=("dedupe_pathvar")
+
+
 
 # vim: ft=sh

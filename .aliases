@@ -30,6 +30,6 @@ alias vimdiff='/usr/local/bin/nvim -d'
 alias gmvault=/usr/local/bin/gmvault
 
 
-alias ldd="echo -e 'USE otool -L instead' && echo && echo && otool -L $@"
+alias ldd="echo -e 'USE otool -L instead' && echo && echo && otool -L $*"
 
 # vim: ft=sh

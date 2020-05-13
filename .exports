@@ -13,5 +13,6 @@ export VISUAL=/usr/local/bin/nvim
 export EDITOR=/usr/local/bin/nvim
 export GOPATH=$HOME/go
 export BKPATH=/Volumes/LaptopBackup2/uic-backups
+export MY_FUNCTIONS
 
 # vim: ft=sh
