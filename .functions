@@ -141,7 +141,7 @@ function gitignore() {
       # this is a patterny thing
       if [[ "$ignorefile" == ".gitignore" ]]; then
         echo "echo \"${arg[i]}\" >> \"$ignorefile\""
-      else 
+      else
         echo "ERROR: Nonfile target and not in same directory as .gitignore is not supported... not adding '${arg[i]}'"
         return 1
       fi
@@ -151,7 +151,7 @@ function gitignore() {
 MY_FUNCTIONS+=("gitignore")
 
 function save_last_command() {
-  function_file=${1:-$HOME/saved_functions.txt}
+  function_file=${1:-$HOME/saved_commands.txt}
   if [[ "$1" == "--help" || "$1" == "-help" || "$1" == "-h" ]]; then
     echo "USAGE: $FUNCNAME [FUNCTION_FILE]"
     echo "  Default FUNCTIONFILE is \$HOME/saved_functions.txt"
@@ -192,6 +192,33 @@ function pathappend() {
   done
 }
 MY_FUNCTIONS+=("pathappend")
+
+function pathlistappend() {
+  if [[ "$1" == "--help" || "$1" == "-help" || "$1" == "-h" || $# -ne 2 ]]; then
+    cat<<EOF 
+USAGE: $FUNCNAME VARLIST NEWPATH
+  VARLIST               -- the name of a ':' separated path list, such as PATH, MANPATH, or PYTHONPTH
+  NEWPATH               -- new filepath to append to the END of the list if it isn't already included
+  Example:
+    \$ > export MANPATH=/usr/share/man:/usr/local/share/man
+    \$ > $FUNCNAME MANPATH $HOME/share/man
+    \$ > echo \$MANPATH
+    /usr/share/man:/usr/local/share/man:$HOME/share/man
+EOF
+    if [[ "$1" == "--help" || "$1" == "-help" || "$1" == "-h" ]]; then
+      return 0
+    else
+      return 1
+    fi
+  fi
+  PATHLIST="$1"
+  ARG="$2"
+  current_pathlist="$(eval "echo \$$(echo $PATHLIST)")"
+  if [ -d "$ARG" ] && [[ ":current_pathlist:" != *":$ARG:"* ]]; then
+    eval "$PATHLIST=$ARG:${current_pathlist:+"$current_pathlist"}"
+  fi
+}
+MY_FUNCTIONS+=("pathlistappend")
 
 function pathprepend() {
   for ((i=$#; i>0; i--)); do
