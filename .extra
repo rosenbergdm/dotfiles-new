@@ -3,5 +3,7 @@
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 dedupe_pathvar
+export MY_FUNCTIONS_STR="${MY_FUNCTIONS[@]}"
+export STARTUP_SOURCED_STR="${STARTUP_SOURCED[@]}"
 
 # vim: set ft=sh

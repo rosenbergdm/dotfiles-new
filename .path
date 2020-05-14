@@ -17,6 +17,8 @@ PATH=$PATH:$HOME/go/bin:/usr/local/go/bin
 export PATH
 
 set_python 3
+set_perl 5.18
+
 
 
 
