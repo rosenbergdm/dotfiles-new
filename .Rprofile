@@ -71,6 +71,14 @@ if (interactive()) {
   rm(package_string)
 }
 
+style_in_place <- function(fname, backup = FALSE) {
+  bkfile <- tempfile(pattern = "styler")
+  if (backup) {
+    file.copy(fname, bkfile, overwrite = TRUE)
+  }
+  styler::style_file(fname)
+}
+
 setHook(
   packageEvent("languageserver", "onLoad"),
   function(...) {

@@ -14,3 +14,4 @@ echo "$PATHVAR=$(perl -e "print join(':', grep { not \$seen{\$_}++ } split(/:/, 
 stack --bash-completion-script stack >> ~/bash_completion.d/stack
 pandoc  --bash-completion  >> ~/bash_completion.d/pandoc
 dotfiles add $(dotfiles status | grep '[modified|deleted]' | grep '^\W' | grep -v '<file>' | perl -p -e 's/^\W+\w+: +//g' )
+sudo launchctl limit maxfiles 65536 200000
