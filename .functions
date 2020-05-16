@@ -148,11 +148,11 @@ function gitignore() {
     if [[ -f "${arg[i]}" ]]; then
       # this is an actual file
       tgtfile="$(realpath --relative-to=$ignorefile "${arg[i]}" | sed -e 's/^\.\.\///g')"
-      echo "echo \"$tgtfile\" >> \"$ignorefile\""
+      echo "$tgtfile" >> "$ignorefile"
     else
       # this is a patterny thing
       if [[ "$ignorefile" == ".gitignore" ]]; then
-        echo "echo \"${arg[i]}\" >> \"$ignorefile\""
+        echo "${arg[i]}" >> "$ignorefile"
       else
         echo "ERROR: Nonfile target and not in same directory as .gitignore is not supported... not adding '${arg[i]}'"
         return 1
@@ -166,12 +166,12 @@ function save_last_command() {
   function_file=${1:-$HOME/saved_commands.txt}
   if [[ "$1" == "--help" || "$1" == "-help" || "$1" == "-h" ]]; then
     echo "USAGE: $FUNCNAME [FUNCTION_FILE]"
-    echo "  Default FUNCTIONFILE is \$HOME/saved_functions.txt"
+    echo "  Default FUNCTIONFILE is \$HOME/saved_commands.txt"
     echo "  Saves the last entered to 'FUNCTION_FILE'"
     return 0
   fi
   lastcommand="$(history | tail -n2 | head -n1  | perl -p -e 's/^\W*\d+\W+//g')"
-  function_file=${1:-$HOME/saved_functions.txt}
+  function_file=${1:-$HOME/saved_commands.txt}
   if [[ ! -f "$function_file" ]]; then
     echo "Function file $function_file does not exist!"
   else
