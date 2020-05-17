@@ -14,7 +14,7 @@ local({
 })
 
 options(stringsAsFactors = FALSE) # matches R 4.0
-options(max.print = 100)
+options(max.print = 500)
 options(scipen = 10)
 options(editor = "nvim")
 options(width = 120)
@@ -72,8 +72,8 @@ if (interactive()) {
 }
 
 style_in_place <- function(fname, backup = FALSE) {
-  bkfile <- tempfile(pattern = "styler")
   if (backup) {
+    bkfile <- tempfile(pattern = "styler")
     file.copy(fname, bkfile, overwrite = TRUE)
   }
   styler::style_file(fname)
@@ -85,6 +85,3 @@ setHook(
     options(languageserver.default_linters = lintr::with_defaults(line_length_linter(120), object_usage_linter = NULL))
   }
 )
-
-
-# TEST
