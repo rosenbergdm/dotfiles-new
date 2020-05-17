@@ -6,4 +6,8 @@ dedupe_pathvar
 export MY_FUNCTIONS_STR="${MY_FUNCTIONS[@]}"
 export STARTUP_SOURCED_STR="${STARTUP_SOURCED[@]}"
 
-# vim: set ft=sh
+# if [[ -z "$DISPLAY" ]]; then 
+#   echo -e "$(settruecolor 175 200 125)DISPLAY WAS NOT SET\n$(resettruecolor)"
+#   DISPLAY=$(cat ~/DISPLAY)
+# fi
+# # vim: set ft=sh

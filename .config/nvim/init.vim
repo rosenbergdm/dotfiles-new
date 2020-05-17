@@ -181,3 +181,10 @@ autocmd BufNewFile *.sh CocCommand template.templateTop
 
 " Generic autocommands
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+function! DRStyleFileR()
+  :w
+
+  let fname = expand("%:p")
+  execute "! RScript /Users/davidrosenberg/lib/R/styler.R -i \"" . fname . "\""
+  :e %
+endfunction
