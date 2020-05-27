@@ -87,11 +87,11 @@ else
 	OFILE="-"
 fi
 
-# Output resolution defaults to 72 unless given:
+# Output resolution defaults to 150 unless given:
 if [ ! -z "$3" ]; then
 	res="$3"
 else
-	res="72"
+	res="150"
 fi
 
 shrink "$IFILE" "$OFILE" "$res" || exit $?
