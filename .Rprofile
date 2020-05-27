@@ -24,7 +24,7 @@ suppress_load_message <- function(pkgname) {
   suppressWarnings(suppressPackageStartupMessages(library(pkgname, character.only = TRUE)))
 }
 
-auto_loads <- c("plyr", "dplyr", "ggplot2", "devtools")
+auto_loads <- c("plyr", "dplyr", "devtools")
 if (interactive()) {
   invisible(sapply(auto_loads, suppress_load_message))
 }
@@ -58,6 +58,31 @@ attach(.rprofile_env)
   rownames(x) <- NULL
   x
 }
+
+.rprofile_env$original_plus <- `+`
+.rprofile_env$overload_plus_character <- function() {
+  cat(
+    "Overloading the `+` operator for strings to allow concatenation.",
+    "Please don't use this in scripts.  Use .rprofile_env$unoverload_plus_character() to ",
+    "revert behavior.",
+    sep = "\n"
+  )
+  .GlobalEnv[["+"]] <- function(...) UseMethod("+")
+  .GlobalEnv[["+.default"]] <- .Primitive("+")
+  .GlobalEnv[["+.character"]] <- function(...) {
+    arg_list <- list(...)
+    if (!is.character(arg_list[[2]])) {
+      stop(simpleError(message = "Attempting to use + with character and another type while overloading + is not a good idea.  Use .rprofile_env$unoverload_plus_character() to revert to default behavior"))
+    } else {
+      paste(..., sep = "")
+    }
+  }
+}
+
+.rprofile_env$unoverload_plus_character <- function() {
+  rm("+", envir = .GlobalEnv)
+}
+
 .rprofile_env$unfactor <- function(df) {
   id <- sapply(df, is.factor)
   df[id] <- lapply(df[id], as.character)
@@ -69,9 +94,10 @@ if (interactive()) {
   package_string <- paste("`", paste(.rprofile_env$auto_loads, collapse = "`, `"), "`", sep = "")
   message(paste("*** Successfully loaded .Rprofile including packages ", package_string, " ***", sep = ""))
   rm(package_string)
+  .rprofile_env$overload_plus_character()
 }
 
-style_in_place <- function(fname, backup = FALSE) {
+.rprofile_env$style_in_place <- function(fname, backup = FALSE) {
   if (backup) {
     bkfile <- tempfile(pattern = "styler")
     file.copy(fname, bkfile, overwrite = TRUE)
