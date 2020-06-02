@@ -80,7 +80,9 @@ attach(.rprofile_env)
 }
 
 .rprofile_env$unoverload_plus_character <- function() {
-  rm("+", envir = .GlobalEnv)
+  if ("+" %in% ls(.GlobalEnv)) {
+    rm("+", envir = .GlobalEnv)
+  }
 }
 
 .rprofile_env$unfactor <- function(df) {
