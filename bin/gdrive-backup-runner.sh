@@ -56,33 +56,43 @@ function _cleanup() {
 trap _cleanup EXIT
 running_status=0
 
-for ((i=0; i<${#SOURCES_SHARED[@]}; i++)); do
-  sync_dir "${SOURCES_SHARED[$i]}" "${TARGETS_SHARED[$i]}" shared >> "$scriptlog"
-  if [[ $? -gt 0 ]]; then
-    running_status=$((running_status+1))
-    echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" FAILED" | $LOGCMD
-  else
-    echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" Succeeded" | $LOGCMD
-  fi
-done
 
-for ((i=0; i<${#SOURCES_NONSHARED[@]}; i++)); do
-  sync_dir "${SOURCES_NONSHARED[$i]}" "${TARGETS_NONSHARED[$i]}" nonshared >> "$scriptlog"
-  if [[ $? -gt 0 ]]; then
-    running_status=$((running_status+1))
-    echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" FAILED" | $LOGCMD
-  else
-    echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" Succeeded" | $LOGCMD
-  fi
-done
+if [ -d $TGT_DIR ]; then 
+  for ((i=0; i<${#SOURCES_SHARED[@]}; i++)); do
+    sync_dir "${SOURCES_SHARED[$i]}" "${TARGETS_SHARED[$i]}" shared >> "$scriptlog"
+    if [[ $? -gt 0 ]]; then
+      running_status=$((running_status+1))
+      echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" FAILED" | $LOGCMD
+    else
+      echo "$(date) sync of \"${SOURCES_SHARED[$i]}\" to \"${TARGETS_SHARED[$i]}\" Succeeded" | $LOGCMD
+    fi
+  done
 
-if [[ $running_status -gt 0 ]]; then
-  echo "$(date) SYNC FAILED, log at $scriptlog"
-  trap - EXIT
-  exit $running_status
+  for ((i=0; i<${#SOURCES_NONSHARED[@]}; i++)); do
+    sync_dir "${SOURCES_NONSHARED[$i]}" "${TARGETS_NONSHARED[$i]}" nonshared >> "$scriptlog"
+    if [[ $? -gt 0 ]]; then
+      running_status=$((running_status+1))
+      echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" FAILED" | $LOGCMD
+    else
+      echo "$(date) sync of \"${SOURCES_NONSHARED[$i]}\" to \"${TARGETS_NONSHARED[$i]}\" Succeeded" | $LOGCMD
+    fi
+  done
+
+  if [[ $running_status -gt 0 ]]; then
+    echo "$(date) SYNC FAILED, log at $scriptlog"
+    trap - EXIT
+    exit $running_status
+  else
+    echo "$(date) SYNC SUCCEEDED"
+    rm "$scriptlog"
+    trap - EXIT
+    exit $running_status
+  fi
 else
-  echo "$(date) SYNC SUCCEEDED"
+  echo "$(date) SYNC SKIPPED DUE TO '$TGT_DIR' not existing"
   rm "$scriptlog"
   trap - EXIT
-  exit $running_status
+  exit 1
 fi
+
+
