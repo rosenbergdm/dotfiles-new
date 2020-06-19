@@ -7,4 +7,11 @@ MAILTO=davidrosenberg
 @daily  /usr/bin/rsync -arvh /Users/davidrosenberg/Box/ /Volumes/LaptopBackup2/uic-backups/Box
 @daily  /Users/davidrosenberg/bin/gdrive-backup-runner.sh
 @daily  /Users/davidrosenberg/bin/recreate_completions.sh
+@daily  /Users/davidrosenberg/src/radoncreview_backup/scripts/dump_pages.sh
 
+
+
+
+
+
+# 17 * * * * /Users/davidrosenberg/bin/recreate_completions.sh
