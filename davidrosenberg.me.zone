@@ -1,0 +1,76 @@
+﻿; Domain: davidrosenberg.me
+; Exported (y-m-d hh:mm:ss): 2020-06-27 08:56:32
+;
+; This file is intended for use for informational and archival
+; purposes ONLY and MUST be edited before use on a production
+; DNS server.
+;
+; In particular, you must update the SOA record with the correct
+; authoritative name server and contact e-mail address information,
+; and add the correct NS records for the name servers which will
+; be authoritative for this domain.
+;
+; For further information, please consult the BIND documentation
+; located on the following website:
+;
+; http://www.isc.org/
+;
+; And RFC 1035:
+;
+; http://www.ietf.org/rfc/rfc1035.txt
+;
+; Please note that we do NOT offer technical support for any use
+; of this zone data, the BIND name server, or any other third-
+; party DNS software.
+;
+; Use at your own risk.
+
+
+; SOA Record
+davidrosenberg.me.	3600	 IN 	SOA	ns33.domaincontrol.com.	dns.jomax.net. (
+					2020062705
+					28800
+					7200
+					604800
+					3600
+					) 
+
+; A Records
+@	3600	 IN 	A	67.245.96.114
+covidrrt	3600	 IN 	A	74.112.72.154
+
+; CNAME Records
+ftp	3600	 IN 	CNAME	@
+git	3600	 IN 	CNAME	@
+google88c49fd232af9242	3600	 IN 	CNAME	google.com.
+imap	3600	 IN 	CNAME	@
+mail	3600	 IN 	CNAME	ghs.google.com.
+plone	3600	 IN 	CNAME	@
+pop	3600	 IN 	CNAME	@
+smtp	3600	 IN 	CNAME	@
+svn	3600	 IN 	CNAME	@
+trac	3600	 IN 	CNAME	@
+wimaxmodem	3600	 IN 	CNAME	@
+www	3600	 IN 	CNAME	@
+_domainconnect	3600	 IN 	CNAME	_domainconnect.gd.domaincontrol.com.
+
+; MX Records
+@	604800	 IN 	MX	10	aspmx.l.google.com.
+@	604800	 IN 	MX	20	alt1.aspmx.l.google.com.
+@	604800	 IN 	MX	30	alt2.aspmx.l.google.com.
+@	604800	 IN 	MX	40	aspmx2.googlemail.com.
+@	604800	 IN 	MX	50	aspmx3.googlemail.com.
+
+; TXT Records
+@	3600	 IN 	TXT	"google-site-verification=HGQDZIXEEwaGHa3XVzrrPBfgmHNj2JQCOz32-Lqi9Gg"
+
+; SRV Records
+
+; AAAA Records
+
+; CAA Records
+
+; NS Records
+@	3600	 IN 	NS	ns33.domaincontrol.com.
+@	3600	 IN 	NS	ns34.domaincontrol.com.
+

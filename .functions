@@ -267,6 +267,26 @@ EOF
 }
 MY_FUNCTIONS+=("dedupe_pathvar")
 
+randomwords () 
+{ 
+    thewords="";
+    for i in $(seq $1);
+    do
+        thewords="$thewords $(cat /usr/share/dict/words | head -n $(echo 'print int(rand() * 235886)' | perl ) | tail -n1)";
+    done;
+    echo $thewords
+}
+
+doiify ()
+{
+    echo "https://dx.doi.org/$(pbpaste)" | pbcopy
+}
+
+
+pubmedify ()
+{
+    echo "https://pubmed.ncbi.nlm.nih.gov/$(pbpaste)/" | pbcopy
+}
 
 
 # vim: ft=sh
