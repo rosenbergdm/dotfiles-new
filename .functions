@@ -267,26 +267,23 @@ EOF
 }
 MY_FUNCTIONS+=("dedupe_pathvar")
 
-randomwords () 
-{ 
-    thewords="";
-    for i in $(seq $1);
-    do
-        thewords="$thewords $(cat /usr/share/dict/words | head -n $(echo 'print int(rand() * 235886)' | perl ) | tail -n1)";
-    done;
-    echo $thewords
+function randomwords() {
+  thewords="";
+  for i in $(seq $1); do
+    thewords="$thewords $(cat /usr/share/dict/words | head -n $(echo 'print int(rand() * 235886)' | perl ) | tail -n1)";
+  done;
+  echo $thewords
 }
+MY_FUNCTIONS+=("randomwords")
 
-doiify ()
-{
-    echo "https://dx.doi.org/$(pbpaste)" | pbcopy
+function doiify() {
+  echo "https://dx.doi.org/$(pbpaste)" | pbcopy
 }
+MY_FUNCTIONS+=("doiify")
 
-
-pubmedify ()
-{
-    echo "https://pubmed.ncbi.nlm.nih.gov/$(pbpaste)/" | pbcopy
+pubmedify() {
+  echo "https://pubmed.ncbi.nlm.nih.gov/$(pbpaste)/" | pbcopy
 }
-
+MY_FUNCTIONS+=("pubmedify")
 
 # vim: ft=sh
