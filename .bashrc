@@ -1,5 +1,5 @@
 #!/usr/local/bin/bash
-[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.bashrc" 
+[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.bashrc" 1>&2
 
 declare -a STARTUP_SOURCED
 declare -a MY_FUNCTIONS
@@ -9,13 +9,13 @@ _d_source_and_log() {
   [ -r "$1" ] && source "$1" && STARTUP_SOURCED+=("$1")
 }
 source_and_log() {
-  [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "Sourcing '$1'" 
-  echo "${STARTUP_SOURCED[@]}" | grep -v "$1" >/dev/null && _d_source_and_log "$1" || echo "$1 already sourced, skipping"
+  [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "Sourcing '$1'" 1>&2
+  echo "${STARTUP_SOURCED[@]}" | grep -v "$1" >/dev/null && _d_source_and_log "$1" || echo "$1 already sourced, skipping" 1>&2
 }
 
 export BASHRC_RUN=1
 if [[ -z "$BASH_PROFILE_RUN" ]]; then
-  [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "running . ~/.bash_profile"
+  [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "running . ~/.bash_profile" 1>&2
     # bash_profile hasn't been run
   source_and_log ~/.bash_profile
 fi

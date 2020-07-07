@@ -1,0 +1,18 @@
+# Router Configuration
+Public IP Address: 67.245.96.114
+
+IP Address Reservations:
+
+David's macbook pro (pascal): 192.168.1.41
+  Port forwards:
+    8022 -> 22
+
+Lenovo thinkpad (gauss): 192.168.1.10
+  Port forwards:
+    80 -> 80
+    443 -> 443
+    7122 -> 22
+
+Brother printer (BRN30055CAAA9D8): 192.168.1.182
+
+
