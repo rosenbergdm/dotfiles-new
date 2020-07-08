@@ -1,5 +1,5 @@
 ﻿; Domain: davidrosenberg.me
-; Exported (y-m-d hh:mm:ss): 2020-06-27 08:56:32
+; Exported (y-m-d hh:mm:ss): 2020-07-06 14:12:26
 ;
 ; This file is intended for use for informational and archival
 ; purposes ONLY and MUST be edited before use on a production
@@ -28,7 +28,7 @@
 
 ; SOA Record
 davidrosenberg.me.	3600	 IN 	SOA	ns33.domaincontrol.com.	dns.jomax.net. (
-					2020062705
+					2020070601
 					28800
 					7200
 					604800
@@ -41,16 +41,13 @@ covidrrt	3600	 IN 	A	74.112.72.154
 
 ; CNAME Records
 ftp	3600	 IN 	CNAME	@
+gauss	3600	 IN 	CNAME	@
 git	3600	 IN 	CNAME	@
 google88c49fd232af9242	3600	 IN 	CNAME	google.com.
-imap	3600	 IN 	CNAME	@
 mail	3600	 IN 	CNAME	ghs.google.com.
-plone	3600	 IN 	CNAME	@
-pop	3600	 IN 	CNAME	@
-smtp	3600	 IN 	CNAME	@
+pascal	3600	 IN 	CNAME	@
+radoncreview	3600	 IN 	CNAME	@
 svn	3600	 IN 	CNAME	@
-trac	3600	 IN 	CNAME	@
-wimaxmodem	3600	 IN 	CNAME	@
 www	3600	 IN 	CNAME	@
 _domainconnect	3600	 IN 	CNAME	_domainconnect.gd.domaincontrol.com.
 
