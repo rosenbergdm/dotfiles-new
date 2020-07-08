@@ -65,6 +65,12 @@ if [[ $- == *i* ]]; then
   shopt -s histappend
   PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}builtin history -a; builtin history -c; builtin history -r"
   export PROMPT_COMMAND
+else
+  export HISTCONTROL=ignoredups:erasedups
+  export HISTSIZE=100000
+  export HISTFILESIZE=100000
+  shopt -s histappend
+  export PROMPT_COMMAND="builtin history -a; builtin history -c; builtin history -r"
 fi
 
 # vim: ft=sh

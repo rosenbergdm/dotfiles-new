@@ -16,3 +16,4 @@ pandoc  --bash-completion  >> ~/bash_completion.d/pandoc
 dotfiles add $(dotfiles status | grep '[modified|deleted]' | grep '^\W' | grep -v '<file>' | perl -p -e 's/^\W+\w+: +//g' )
 sudo launchctl limit maxfiles 65536 200000
 csrutil status
+git remote add origin dmr@gauss:/git/davidrosenberg.me.git
