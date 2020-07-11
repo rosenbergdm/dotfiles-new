@@ -33,7 +33,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-commentary')
 
   call dein#add('morhetz/gruvbox')
-  call dein#add('numirias/semshi')
+  "call dein#add('numirias/semshi')
   call dein#add('scrooloose/nerdtree')
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('psf/black', {'tag': '19.10b0'})
