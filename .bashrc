@@ -33,3 +33,4 @@ fi
 source_and_log $rvm_path/scripts/completion
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"
+
