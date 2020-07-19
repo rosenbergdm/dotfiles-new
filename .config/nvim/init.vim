@@ -27,7 +27,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('dense-analysis/ale')
   call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('honza/vim-snippets')
-  
+
   call dein#add('tpope/vim-repeat')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-commentary')
@@ -119,7 +119,7 @@ let mapleader=","
 nmap :NERDTreeToggle
 set autochdir
 inoremap <C-Space> <C-x><C-o>
-cmap Q qall
+" cmap Q qall
 
 
 
