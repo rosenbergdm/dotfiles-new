@@ -31,6 +31,8 @@ if [ -f /usr/local/etc/bash_completion ]; then
 fi
 # NOTE this sources ~/.bash_completion as well; ~/.bash_completion will source all files in $HOME/bash_completion.d/
 source_and_log $rvm_path/scripts/completion
+rvm use ruby-2.7.0 >/dev/null
+
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"
 

@@ -1,3 +1,5 @@
+# vim:set et fileencoding=utf8 sts=0 sw=4 ts=4:
+
 """Helper methods used in UltiSnips snippets."""
 
 import string, vim, re
@@ -110,6 +112,7 @@ def display_width(str):
 
 # http://stackoverflow.com/questions/2718196/find-all-chinese-text-in-a-string-using-python-and-regex
 def has_cjk(s):
-    return False
+    """Detect if s contains CJK characters."""
+    cjk_re = re.compile(u'[⺀-⺙⺛-⻳⼀-⿕々〇〡-〩〸-〺〻㐀-䶵一-鿃豈-鶴侮-頻並-龎]', re.UNICODE)
 
-# vim:set et sts=0 sw=4 ts=4:
+    return cjk_re.search(s) is not None
