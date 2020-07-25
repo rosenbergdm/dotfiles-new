@@ -1,5 +1,5 @@
 ﻿; Domain: davidrosenberg.me
-; Exported (y-m-d hh:mm:ss): 2020-03-28 10:23:48
+; Exported (y-m-d hh:mm:ss): 2020-07-25 12:05:37
 ;
 ; This file is intended for use for informational and archival
 ; purposes ONLY and MUST be edited before use on a production
@@ -28,7 +28,7 @@
 
 ; SOA Record
 davidrosenberg.me.	3600	 IN 	SOA	ns33.domaincontrol.com.	dns.jomax.net. (
-					2020032800
+					2020072502
 					28800
 					7200
 					604800
@@ -36,25 +36,23 @@ davidrosenberg.me.	3600	 IN 	SOA	ns33.domaincontrol.com.	dns.jomax.net. (
 					) 
 
 ; A Records
-@	3600	 IN 	A	184.78.34.31
+@	3600	 IN 	A	67.245.96.114
 covidrrt	3600	 IN 	A	74.112.72.154
 
 ; CNAME Records
-django	3600	 IN 	CNAME	@
 ftp	3600	 IN 	CNAME	@
-galileo	3600	 IN 	CNAME	@
+gauss	3600	 IN 	CNAME	@
 git	3600	 IN 	CNAME	@
 google88c49fd232af9242	3600	 IN 	CNAME	google.com.
-imap	3600	 IN 	CNAME	@
-lappy	3600	 IN 	CNAME	@
+idrac.pascal	3600	 IN 	CNAME	@
 mail	3600	 IN 	CNAME	ghs.google.com.
-plone	3600	 IN 	CNAME	@
-pop	3600	 IN 	CNAME	@
-smtp	3600	 IN 	CNAME	@
+pascal	3600	 IN 	CNAME	@
+radoncreview	3600	 IN 	CNAME	@
+share	3600	 IN 	CNAME	@
 svn	3600	 IN 	CNAME	@
-trac	3600	 IN 	CNAME	@
-wimaxmodem	3600	 IN 	CNAME	@
+wiki	3600	 IN 	CNAME	@
 www	3600	 IN 	CNAME	@
+www.radoncreview	3600	 IN 	CNAME	@
 _domainconnect	3600	 IN 	CNAME	_domainconnect.gd.domaincontrol.com.
 
 ; MX Records
@@ -65,12 +63,11 @@ _domainconnect	3600	 IN 	CNAME	_domainconnect.gd.domaincontrol.com.
 @	604800	 IN 	MX	50	aspmx3.googlemail.com.
 
 ; TXT Records
+@	3600	 IN 	TXT	"google-site-verification=HGQDZIXEEwaGHa3XVzrrPBfgmHNj2JQCOz32-Lqi9Gg"
 
 ; SRV Records
 
 ; AAAA Records
-lappy6	3600	 IN 	AAAA	2001:470:1f10:480::2
-workstation6	3600	 IN 	AAAA	2001:470:1f10:482::2
 
 ; CAA Records
 
