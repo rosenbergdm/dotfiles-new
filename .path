@@ -14,7 +14,7 @@ PATH=$PATH:/Users/davidrosenberg/.local/bin
 PATH=$PATH:/usr/local/Cellar/perl/5.30.1/bin
 PATH=$PATH:$HOME/edirect
 PATH=$PATH:$HOME/go/bin:/usr/local/go/bin
-PATH=/Library/Frameworks/R.framework/Versions/Current/Resources/bin:$PATH
+PATH=$PATH:/Library/Frameworks/R.framework/Versions/Current/Resources/bin
 export PATH
 
 set_python 3
