@@ -1,0 +1,35 @@
+; BIND data file for forward lookup on local zone
+;
+$TTL	604800
+@	IN	SOA	localhost. root.localhost. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	euler.davidrosenberg.me.
+@	IN	MX	10 euler.davidrosenberg.me.
+
+; HOSTS
+euler	IN	A	192.168.1.26
+euler-idrac	IN	A	192.168.1.29
+pascal	IN	A	192.168.1.41
+gauss	IN	A	192.168.1.10
+covidrrt	3600	 IN 	A	74.112.72.154
+
+
+
+; CNAMES
+ftp	3600	 IN 	CNAME	euler
+git	3600	 IN 	CNAME	euler
+mail	3600	 IN 	CNAME	ghs.google.com.
+radoncreview	3600	 IN 	CNAME	euler
+share	3600	 IN 	CNAME	euler
+svn	3600	 IN 	CNAME	euler
+wiki	3600	 IN 	CNAME	euler
+www	3600	 IN 	CNAME	euler
+www.radoncreview	3600	 IN 	CNAME	euler
+_domainconnect	3600	 IN 	CNAME	_domainconnect.gd.domaincontrol.com.
+
+; vim: set ft=bindzone: 
