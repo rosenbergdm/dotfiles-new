@@ -18,3 +18,4 @@ sudo launchctl limit maxfiles 65536 200000
 csrutil status
 git remote add origin dmr@gauss:/git/davidrosenberg.me.git
 named-compilezone -f raw -F text -o ~/davidrosenberg.me.zone.text davidrosenberg.me /var/cache/bind/slaves/davidrosenberg.me.zone
+sudo killall -HUP mDNSResponder
