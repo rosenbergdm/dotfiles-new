@@ -35,4 +35,3 @@ rvm use ruby-2.7.0 >/dev/null
 
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"
-eval "$(direnv hook bash)"
