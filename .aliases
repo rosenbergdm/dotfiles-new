@@ -33,4 +33,7 @@ alias gmvault=/usr/local/bin/gmvault
 alias ldd="echo -e 'USE otool -L instead' && echo && echo && otool -L $*"
 alias readlink="echo -e 'USE greadlink instead' > /dev/stderr && /usr/local/bin/greadlink"
 
+# I'm not sure why this needs to be done
+alias rsync=/usr/local/bin/rsync
+
 # vim: ft=sh
