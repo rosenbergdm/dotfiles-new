@@ -35,5 +35,6 @@ alias readlink="echo -e 'USE greadlink instead' > /dev/stderr && /usr/local/bin/
 
 # I'm not sure why this needs to be done
 alias rsync=/usr/local/bin/rsync
-
+alias lilypond=/Applications/LilyPond.app/Contents/MacOS/LilyPond
 # vim: ft=sh
+

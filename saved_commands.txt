@@ -27,6 +27,11 @@ csrutil status
 git remote add origin dmr@gauss:/git/davidrosenberg.me.git
 named-compilezone -f raw -F text -o ~/davidrosenberg.me.zone.text davidrosenberg.me /var/cache/bind/slaves/davidrosenberg.me.zone
 sudo killall -HUP mDNSResponder
+sudo killall -HUP mDNSResponder
 certbot certonly --manual --preferred-challenge=dns --email=dmr@davidrosenberg.me --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d *.davidrosenberg.me
 ./configure --enable-BLAS-shlib -x-libraries=/opt/X11/lib --x-include=/opt/X11/include --enable-R-framework --enable-R-shlib --enable-java --enable-prebuilt-html --enable-shared --with-aqua --with-blas --with-jpeglib --with-lapack --with-libpng --with-pcre2 --with-readline --with-recommended-packages --with-tcltk --with-x --with-cairo CC=gcc LDFLAGS=-L/usr/local/opt/readline/lib -L/usr/local/lib -I/usr/local/opt/cairo/include CPPFLAGS=-I/usr/local/opt/readline/include -I/usr/local/include -I/usr/local/cairo/include CXX=g++ 
-sudo killall -HUP mDNSResponder
+CPPFLAGS="-I/usr/local/opt/readline/include -I/usr/local/include -I/usr/local/cairo/include" \
+  LDFLAGS="-L/usr/local/opt/readline/lib -L/usr/local/lib -I/usr/local/opt/cairo/include" \
+  ./configure --enable-BLAS-shlib -x-libraries=/opt/X11/lib --x-include=/opt/X11/include --enable-R-framework --enable-R-shlib --enable-java --enable-prebuilt-html --enable-shared --with-aqua --with-blas --with-jpeglib --with-lapack --with-libpng --with-pcre2 --with-readline --with-recommended-packages --with-tcltk --with-x --with-cairo \
+  CPPFLAGS="-I/usr/local/opt/readline/include -I/usr/local/include -I/usr/local/cairo/include -I/opt/X11/include/cairo" \
+  LDFLAGS="-L/usr/local/opt/readline/lib -L/usr/local/lib -I/usr/local/opt/cairo/include -I/opt/X11/include/cairo/cairo-xlib.h -L/opt/X11/lib"

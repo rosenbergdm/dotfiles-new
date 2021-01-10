@@ -21,17 +21,17 @@ if [[ -z "$BASH_PROFILE_RUN" ]]; then
 fi
 
 
-for file in ~/.{functions,path,bash_prompt,exports,aliases,extra}; do
+for file in ~/.{functions,path,exports,aliases,bash_prompt,extra}; do
   source_and_log "$file"
 done
 
 
 if [ -f /usr/local/etc/bash_completion ]; then
-  source_and_log /usr/local/etc/bash_completion
+  source_and_log /usr/local/etc/profile.d/bash_completion.sh
 fi
 # NOTE this sources ~/.bash_completion as well; ~/.bash_completion will source all files in $HOME/bash_completion.d/
-source_and_log $rvm_path/scripts/completion
-rvm use ruby-2.7.0 >/dev/null
+# source_and_log $rvm_path/scripts/completion
+# rvm use ruby-2.7.0 >/dev/null
 
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"
