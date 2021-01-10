@@ -1,9 +1,32 @@
 #!/usr/local/bin/bash
 [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.extra"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+_rvm_first() {
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+  # eval "$(echo '_old_rvm()'; typeset -f rvm | tail -n212)"
+  rvm use ruby-2.7.0 >/dev/null
+  rvm "$@"
+}
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+rvm() {
+  unset rvm
+  _rvm_first
+}
+
+
+_nvm_first() {
+  unalias nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  nvm "$@"
+}
+alias nvm=_nvm_first
+
+_nix_first() {
+  unalias nix
+  if [ -e /Users/davidrosenberg/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/davidrosenberg/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+  nix "$@"
+}
+alias nix=_nix_first
 
 dedupe_pathvar
 
