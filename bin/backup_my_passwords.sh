@@ -1,13 +1,14 @@
-#!/bin/sh
-# source "$HOME/.functions"
+#!/usr/local/bin/bash
 
-cd $HOME/Dropbox
+DIRNAME=/usr/local/bin/gdirname
+BASENAME=/usr/local/bin/gbasename
+
 srcdbfile="$HOME/Dropbox/keepass/passwords-v3.kdbx"
 srckeyfile="$HOME/Dropbox/keepass/keepass-v3.keyx"
 zipfiles=""
 for f in "$srcdbfile" "$srckeyfile"; do
   ext="$(echo $f | sed -e 's/^.*\././g')"
-  tgt="$(gdirname $f)/passwords-backup/$(gbasename $f | sed -e 's/\.kdbx$//g' | sed -e 's/\.keyx$//g')-$(date +%Y%m%d)$ext"
+  tgt="$($DIRNAME $f)/passwords-backup/$($BASENAME $f | sed -e 's/\.kdbx$//g' | sed -e 's/\.keyx$//g')-$(date +%Y%m%d)$ext"
   ziptgt="${tgt//keyx/tar.gz}"
   zipfiles="$zipfiles $tgt"
   if [[ -f "$tgt" ]]; then
