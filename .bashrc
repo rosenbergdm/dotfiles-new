@@ -27,7 +27,10 @@ if [ -f /usr/local/etc/bash_completion ]; then
   source_and_log /usr/local/etc/profile.d/bash_completion.sh
 fi
 for fname in $HOME/bash_completion.d/*; do
-  source_and_log "$fname"
+  source "$fname"
+done
+for fname in /usr/local/etc/bash_completion.d/*; do
+  source "$fname"
 done
 complete -o default -F _pip_completion pip
 complete -o default -F _pip_completion pip2
