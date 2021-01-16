@@ -16,22 +16,21 @@ source_and_log() {
 export BASHRC_RUN=1
 if [[ -z "$BASH_PROFILE_RUN" ]]; then
   [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "running . ~/.bash_profile" 1>&2
-    # bash_profile hasn't been run
   source_and_log ~/.bash_profile
 fi
-
 
 for file in ~/.{functions,path,exports,aliases,bash_prompt,extra}; do
   source_and_log "$file"
 done
 
-
 if [ -f /usr/local/etc/bash_completion ]; then
   source_and_log /usr/local/etc/profile.d/bash_completion.sh
 fi
-# NOTE this sources ~/.bash_completion as well; ~/.bash_completion will source all files in $HOME/bash_completion.d/
-# source_and_log $rvm_path/scripts/completion
-# rvm use ruby-2.7.0 >/dev/null
-
+for fname in $HOME/bash_completion.d/*; do
+  source_and_log "$fname"
+done
+complete -o default -F _pip_completion pip
+complete -o default -F _pip_completion pip2
+complete -o default -F _pip_completion pip3
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"

@@ -1,20 +1,28 @@
 #!/bin/sh
-source "$HOME/.functions"
+# source "$HOME/.functions"
 
 cd $HOME/Dropbox
-tgtfile="$HOME/Dropbox/passwords-backup/passwords-v2-$(date +%Y%m%d).kdbx"
-keyfile="$HOME/Dropbox/passwords-backup/keepass-v2-$(date +%Y%m%d).key"
-if [[ -f "$tgtfile"  ]]; then
-    echo "FILE ALREADY EXISTS"
+srcdbfile="$HOME/Dropbox/keepass/passwords-v3.kdbx"
+srckeyfile="$HOME/Dropbox/keepass/keepass-v3.keyx"
+zipfiles=""
+for f in "$srcdbfile" "$srckeyfile"; do
+  ext="$(echo $f | sed -e 's/^.*\././g')"
+  tgt="$(gdirname $f)/passwords-backup/$(gbasename $f | sed -e 's/\.kdbx$//g' | sed -e 's/\.keyx$//g')-$(date +%Y%m%d)$ext"
+  ziptgt="${tgt//keyx/tar.gz}"
+  zipfiles="$zipfiles $tgt"
+  if [[ -f "$tgt" ]]; then
+    echo "FILE '$tgt' already exists"
+  else
+    cp "$f" "$tgt"
+    echo "FILE COPY of '$f' to '$tgt' COMPLETE"
+  fi
+done
+
+if [[ -f "$ziptgt" ]]; then
+  echo "FILE '$ziptgt' already exists"
 else
-    cp "./passwords-v2.kdbx" "$tgtfile"
-    echo "FILE COPY of passwords.kdbx to $tgtfile COMPLETE"
+  tar -czvf "$ziptgt" $zipfiles 2>/dev/null
 fi
-if [[ -f "$keyfile" ]]; then
-  echo "FILE ALREADY EXISTS"
-else
-  cp "./keepass2" "$keyfile"
-  echo "FILE COPY of keepass2 to $keyfile COMPLETE"
-fi
+
 
 
