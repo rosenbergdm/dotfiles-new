@@ -35,3 +35,5 @@ CPPFLAGS="-I/usr/local/opt/readline/include -I/usr/local/include -I/usr/local/ca
   ./configure --enable-BLAS-shlib -x-libraries=/opt/X11/lib --x-include=/opt/X11/include --enable-R-framework --enable-R-shlib --enable-java --enable-prebuilt-html --enable-shared --with-aqua --with-blas --with-jpeglib --with-lapack --with-libpng --with-pcre2 --with-readline --with-recommended-packages --with-tcltk --with-x --with-cairo \
   CPPFLAGS="-I/usr/local/opt/readline/include -I/usr/local/include -I/usr/local/cairo/include -I/opt/X11/include/cairo" \
   LDFLAGS="-L/usr/local/opt/readline/lib -L/usr/local/lib -I/usr/local/opt/cairo/include -I/opt/X11/include/cairo/cairo-xlib.h -L/opt/X11/lib"
+docker exec -ti  photoprism_photoprism_1 photoprism --import-path=/host-share/importer import
+ docker start photoprism_mariadb_1 photoprism_photoprism_1
