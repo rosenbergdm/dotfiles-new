@@ -15,6 +15,7 @@ export APACHEHOME=/usr/local/var/www
 export APACHECONFIG=/usr/local/etc/httpd
 export NVM_DIR="$HOME/.nvm"
 export ROH=/Users/davidrosenberg/src/radonchub
+export NVIM_LOG_FILE="$HOME/.config/nvim/nvimlog.txt"
 export MY_FUNCTIONS
 
 # vim: ft=sh

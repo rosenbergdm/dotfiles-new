@@ -8,6 +8,7 @@ STARTUP_SOURCED+=("$HOME/bashrc")
 _d_source_and_log() {
   [ -r "$1" ] && source "$1" && STARTUP_SOURCED+=("$1")
 }
+
 source_and_log() {
   [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "Sourcing '$1'" 1>&2
   echo "${STARTUP_SOURCED[@]}" | grep -v "$1" >/dev/null && _d_source_and_log "$1" || echo "$1 already sourced, skipping" 1>&2

@@ -43,6 +43,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('roxma/nvim-yarp')
   call dein#add('ncm2/ncm2')
   call dein#add('gaalcaras/ncm-R')
+  call dein#add('mbbill/undotree')
 
   
   if !has('nvim')
@@ -114,6 +115,17 @@ set incsearch
 set whichwrap=b,s,h,l,<,>,[,]
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+set expandtab
+
+
+set undodir^=~/.config/nvim/undo//
+set undofile
+set swapfile
+set directory^=~/.config/nvim/swap//
+set writebackup
+set nobackup
+set backupcopy
+set backupdir^=~/.config/nvim/backup//
 
 let mapleader=","
 nmap :NERDTreeToggle
@@ -122,7 +134,7 @@ inoremap <C-Space> <C-x><C-o>
 " cmap Q qall
 
 
-
+map <F6> :UndotreeToggle<CR>
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
