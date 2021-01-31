@@ -37,3 +37,4 @@ CPPFLAGS="-I/usr/local/opt/readline/include -I/usr/local/include -I/usr/local/ca
   LDFLAGS="-L/usr/local/opt/readline/lib -L/usr/local/lib -I/usr/local/opt/cairo/include -I/opt/X11/include/cairo/cairo-xlib.h -L/opt/X11/lib"
 docker exec -ti  photoprism_photoprism_1 photoprism --import-path=/host-share/importer import
  docker start photoprism_mariadb_1 photoprism_photoprism_1
+"update service set type='NF9132' where name like 'STR%'" | PGPASSWORD=lwAXvfd9emIyBpYQk8 psql -U signout signout
