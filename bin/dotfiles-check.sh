@@ -20,7 +20,7 @@ GIT_EXE=/usr/local/bin/git
 DOTFILES_GIT_DIR="$HOME/dotfiles-new.git"
 WORK_DIR="$HOME"
 # DOTFILES_COMMAND="/usr/local/bin/git --git-dir=$DOTFILES_GIT_DIR --work-tree=$WORK_DIR"
-DOTFILES_LOGFILE="/var/log/dotfiles-check.log"
+DOTFILES_LOGFILE="$HOME/.cache/log/dotfiles-check.log"
 
 declare -a modified_files
 modified_files=( $($GIT_EXE --git-dir="$DOTFILES_GIT_DIR/" --work-tree="$WORK_DIR" status | grep modified | awk '{print $2}' ) )

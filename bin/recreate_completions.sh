@@ -11,7 +11,7 @@
 #
 
 COMPLETION_DIR="$HOME/bash_completion.d"
-LOGFILE="/var/log/recreate_completions.log"
+LOGFILE="$HOME/.cache/log/recreate_completions.log"
 tmpfile="$(mktemp -t rcrt.compl)"
 script_status=0
 
