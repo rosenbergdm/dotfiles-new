@@ -50,6 +50,7 @@ for fname in $($FIND . -regextype egrep -regex "\./static/[A-z0-9].*.(j|c)s{1,2}
   ff="$($READLINK -f $fname)"
   if $(grep "$($BASENAME $ff)" <( ($ECHO $MOD_FILES | perl -p -e 's/ /\n/g' ) ) > /dev/null); then
     $ECHO -n "Running eslint on '$ff'..."
+    eslint --fix "$ff"
     ((_error+=$?))
     if [ $_error -gt 0 ]; then
       echo " ERROR running elsint on '$ff'"
