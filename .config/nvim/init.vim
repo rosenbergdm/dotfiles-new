@@ -1,10 +1,8 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell scriptencoding=utf-8:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell encoding=utf-8:
 " }
-
-if &compatible
-  set nocompatible
-endif
+set encoding=utf-8
+scriptencoding utf-8
 
 nnoremap ; :
 
@@ -15,10 +13,7 @@ nnoremap ; :
 
 
 " Add the dein installation directory into runtimepath
-
-set runtimepath+=/Users/davidrosenberg/.config/dein/repos/github.com/Shougo
-set runtimepath+=/Users/davidrosenberg/.config/dein/repos/github.com/Shougo/dein.vim
-" set runtimepath+=~/.config/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
@@ -44,17 +39,16 @@ if dein#load_state('~/.cache/dein')
   call dein#add('autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh' })
   call dein#add('jalvesaq/Nvim-R')
   call dein#add('chrisbra/csv.vim')
-  call dein#add('roxma/nvim-yarp')
+  "   call dein#add('roxma/nvim-yarp')
   call dein#add('ncm2/ncm2')
   call dein#add('gaalcaras/ncm-R')
-  call dein#add('mbbill/undotree')
-  call dein#add('SirVer/ultisnips')
+  call dein#add('tibabit/vim-templates')
 
 
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
+  " if !has('nvim')
+  "   call dein#add('roxma/nvim-yarp')
+  "   call dein#add('roxma/vim-hug-neovim-rpc')
+  " endif
 
   call dein#end()
   call dein#save_state()
@@ -63,10 +57,6 @@ endif
 filetype plugin indent on
 syntax enable
 
-
-" if dein#check_install()
-"   call dein#install()
-" endif
 
 set foldenable
 set foldmethod=marker
@@ -108,7 +98,6 @@ set textwidth=0
 set timeoutlen=300
 set updatetime=300
 set wrapmargin=0
-set encoding=utf-8
 set cmdheight=2
 set signcolumn=yes
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
@@ -120,23 +109,13 @@ set incsearch
 set whichwrap=b,s,h,l,<,>,[,]
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-set expandtab
 
-
-set undodir^=~/.config/nvim/undo//
-set undofile
-set swapfile
-set directory^=~/.config/nvim/swap//
-set writebackup
-set nobackup
-set backupcopy
-set backupdir^=~/.config/nvim/backup//
-
-let mapleader=","
+let mapleader=','
 nmap :NERDTreeToggle
 set autochdir
 inoremap <C-Space> <C-x><C-o>
-" cmap Q qall
+cmap Q wqa
+
 
 
 map <F6> :UndotreeToggle<CR>
@@ -167,9 +146,21 @@ endfunction
 let g:coc_snippet_next = '<tab>'
 
 let g:markdown_fenced_languages = [ 'vim', 'help' ]
-set rtp+=~/.cache/dein/repos/github.com/autozimu/LanguageClient-neovim
+set runtimepath+=~/.cache/dein/repos/github.com/autozimu/LanguageClient-neovim
 let g:LanguageClient_serverCommands = {'haskell': ['hie-wrapper', '--lsp'], 'sh': ['bash-language-server', 'start'] }
 let g:ale_open_list = 1
+
+
+
+let g:tmpl_search_paths = ['~/.config/nvim/templates']
+
+
+" Generic autocommands
+augroup generic
+  au BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+augroup END
+
+
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -177,43 +168,8 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-function Map_for_haskell()
-  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-  map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
-  map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
-  map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
-  map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
-  map <Leader>lb :call LanguageClient#textDocument_references()<CR>:
-  map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
-  map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
-endfunction
 
-
-" Filetype specific
-" R
-autocmd BufNewFile *.R CocCommand template.templateTop
-
-
-" Shell 
-autocmd BufNewFile *.sh CocCommand template.templateTop
-
-
-" Generic autocommands
-autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-function! DRStyleFileR()
-  :w
-
-  let fname = expand("%:p")
-  execute "! RScript /Users/davidrosenberg/lib/R/styler.R -i \"" . fname . "\""
-  :e %
-endfunction
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
 
 " How to use plugins
 " EasyAlign: visually select the text, then gaX where X is what you want to
 " align on
-"
