@@ -1,4 +1,7 @@
 #!/usr/local/bin/bash
+# shellcheck disable=SC1090
+# SC1090: Not all references will be resolvable
+
 [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.bashrc" 1>&2
 
 declare -a STARTUP_SOURCED
@@ -15,7 +18,7 @@ source_and_log() {
 }
 
 export BASHRC_RUN=1
-if [[ -z "$BASH_PROFILE_RUN" ]]; then
+if [ -z "$BASH_PROFILE_RUN" ]; then
   [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "running . ~/.bash_profile" 1>&2
   source_and_log ~/.bash_profile
 fi
@@ -24,17 +27,18 @@ for file in ~/.{functions,path,exports,aliases,bash_prompt,extra}; do
   source_and_log "$file"
 done
 
-if [ -f /usr/local/etc/bash_completion ]; then
+
+# For bash_completion@2
+if [ -f /usr/local/etc/profile.d/bash_completion.sh ]; then
+  # This will end up sourcing "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion"
+  # Then it will read from the following dirs for commands of the form 'cmd', 'cmd.bash' or '_cmd':
+  #   ${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions
+  #   ${XDG_DATA_DIRS:-/usr/local/share:/usr/share}/*/bash-completion/completions
+  #   ${BASH_SOURCE%/}/completions (for scripts) or ./completions (for not being in a script)
+  # For each of these it will load the completion when the command is required
+  # TLDR
+  #   Dynamically loaded completions go in  $HOME/.local/share/bash-completion/completions
+  #   Eagerly loaded completions should be loaded by $HOME/.config/bash/completion
+  #   In the end completions stored in $HOME/.bash_completion will be executed
   source_and_log /usr/local/etc/profile.d/bash_completion.sh
 fi
-for fname in $HOME/bash_completion.d/*; do
-  source "$fname"
-done
-for fname in /usr/local/etc/bash_completion.d/*; do
-  source "$fname"
-done
-complete -o default -F _pip_completion pip
-complete -o default -F _pip_completion pip2
-complete -o default -F _pip_completion pip3
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"

@@ -1,6 +1,7 @@
 #!/usr/local/bin/bash
 [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.extra"
 
+# Tricks to minimize startup time for infrequently used functions
 _rvm_first() {
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
   # eval "$(echo '_old_rvm()'; typeset -f rvm | tail -n212)"
@@ -12,7 +13,6 @@ rvm() {
   unset rvm
   _rvm_first
 }
-
 
 _nvm_first() {
   unalias nvm
@@ -33,4 +33,6 @@ dedupe_pathvar
 export MY_FUNCTIONS_STR="${MY_FUNCTIONS[@]}"
 export STARTUP_SOURCED_STR="${STARTUP_SOURCED[@]}"
 
-# # vim: set ft=sh
+test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"
+
+# vim: set ft=sh
