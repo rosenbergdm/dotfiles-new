@@ -20,8 +20,9 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('Vimjas/vim-python-pep8-indent')
+  " call dein#add('Vimjas/vim-python-pep8-indent')
   call dein#add('junegunn/fzf.vim')
+  call dein#add('mbbill/undotree')
   call dein#add('junegunn/vim-easy-align')
   call dein#add('dense-analysis/ale')
   call dein#add('wsdjeg/dein-ui.vim')
@@ -29,7 +30,7 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('tpope/vim-repeat')
   call dein#add('tpope/vim-surround')
-  call dein#add('tpope/vim-commentary')
+  " call dein#add('tpope/vim-commentary')
 
   call dein#add('morhetz/gruvbox')
   "call dein#add('numirias/semshi')
@@ -110,6 +111,14 @@ set whichwrap=b,s,h,l,<,>,[,]
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
+set undodir^=~/.config/nvim/undo//
+set undofile
+set swapfile
+set directory^=~/.config/nvim/swap//
+set writebackup
+set nobackup
+set backupcopy
+set backupdir^=~/.config/nvim/backup//
 let mapleader=','
 nmap :NERDTreeToggle
 set autochdir
