@@ -39,16 +39,16 @@ if dein#load_state('~/.cache/dein')
   call dein#add('autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh' })
   call dein#add('jalvesaq/Nvim-R')
   call dein#add('chrisbra/csv.vim')
-  "   call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/nvim-yarp')
   call dein#add('ncm2/ncm2')
   call dein#add('gaalcaras/ncm-R')
   call dein#add('tibabit/vim-templates')
 
 
-  " if !has('nvim')
-  "   call dein#add('roxma/nvim-yarp')
-  "   call dein#add('roxma/vim-hug-neovim-rpc')
-  " endif
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
 
   call dein#end()
   call dein#save_state()
