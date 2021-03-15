@@ -1,5 +1,22 @@
-#!/usr/bin/env bash
+#! /usr/bin/env bash
+# Copyright David M. Rosenberg
+# Distributed under terms of the MIT license.
+#
+# Usage: pre-commit
+#
+# Clean up code before pushing
+
+set +x
 set -o pipefail
+if [ ${DEBUG_SCRIPT:-0} -gt 1 ]; then
+  set -x
+fi
+if echo -- "$@" | grep -- ' -v'>/dev/null; then
+  echo "-v option passed, setting DEBUG_SCRIPT"
+  if [ ${DEBUG_SCRIPT:-0} -lt 2 ]; then
+    DEBUG_SCRIPT=1
+  fi
+fi
 
 WHICH=$(which gwhich || which which | head -n1)
 GITROOT=$(git rev-parse --show-toplevel)
@@ -29,7 +46,7 @@ pushd $STARTDIR
 
 MOD_FILES="$(git status | grep modified | awk '{print $2}')"
 $ECHO "Running black on .py files"
-/usr/local/bin/black `$FIND "$GITROOT" -name "*.py"` > $TMPFILE 2>&1
+/usr/local/bin/black `$FIND "$GITROOT" -name "*.py" | grep -v .venv` > $TMPFILE 2>&1
 ((_error+=$?))
 _check_error "Running /usr/local/bin/black' on py files"
 for fname in $(cat $TMPFILE | grep '^reformatted' | awk '{print $2}' 2>&1); do
@@ -45,7 +62,7 @@ done
 
 
 $ECHO "Running eslint on .js and .css files"
-for fname in $($FIND . -regextype egrep -regex "\./static/[A-z0-9].*.(j|c)s{1,2}"| grep -v sorttable | grep -v eslint); do
+for fname in $($FIND . -regextype egrep -regex "\./static/[A-z0-9].*.(j|c)s{1,2}"| grep -v sorttable | grep -v eslint | grep -v .venv); do
   ((_error+=$?)) && _check_error "Running eslint"
   ff="$($READLINK -f $fname)"
   if $(grep "$($BASENAME $ff)" <( ($ECHO $MOD_FILES | perl -p -e 's/ /\n/g' ) ) > /dev/null); then
@@ -65,8 +82,8 @@ for fname in $($FIND . -regextype egrep -regex "\./static/[A-z0-9].*.(j|c)s{1,2}
 done
 
 $ECHO "Running prettier on .js and .css files"
-/usr/local/bin/prettier `$FIND $GITROOT -regextype egrep -regex ".*static\/.*.(j|c)s{1,2}$"` -l > $TMPFILE 2>&1
-for fname in $($FIND . -regextype egrep -regex "\./static/[A-z0-9].*.(j|c)s{1,2}"); do
+/usr/local/bin/prettier `$FIND $GITROOT -regextype egrep -regex ".*static\/.*.(j|c)s{1,2}$"` -l | grep -v .venv > $TMPFILE 2>&1
+for fname in $($FIND . -regextype egrep -regex "\./static/[A-z0-9].*.(j|c)s{1,2}" | grep -v .venv); do
   ((_error+=$?)) && _check_error "Line 67"
   ff="$($READLINK -f $fname)"
   if $(grep "$($BASENAME $fname)" <( ($ECHO $MOD_FILES | perl -p -e 's/ /\n/g' ) ) > /dev/null); then
@@ -86,7 +103,7 @@ done
 
 
 $ECHO "Running shellcheck on shell files"
-for fname in $(find . -name "*.sh"); do
+for fname in $(find . -name "*.sh" | grep -v .venv); do
   ff="$($READLINK -f $fname)"
   if $(grep "$($BASENAME $ff)" <( ($ECHO $MOD_FILES | perl -p -e 's/ /\n/g' ) ) >/dev/null); then
     $ECHO -n "Checking '$ff'..."
