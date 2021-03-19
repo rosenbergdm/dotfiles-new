@@ -7,10 +7,6 @@ scriptencoding utf-8
 nnoremap ; :
 
 
-" let g:python_host_prog = '/usr/bin/python2'
-" let g:python2_host_prog = '/usr/bin/python2'
-" let g:python3_host_prog = '/usr/local/bin/python3.7'
-
 
 " Add the dein installation directory into runtimepath
 set runtimepath+=~/.config/dein/repos/github.com/Shougo/dein.vim
@@ -30,7 +26,7 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('tpope/vim-repeat')
   call dein#add('tpope/vim-surround')
-  " call dein#add('tpope/vim-commentary')
+  call dein#add('tpope/vim-commentary')
 
   call dein#add('morhetz/gruvbox')
   "call dein#add('numirias/semshi')
@@ -44,12 +40,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('ncm2/ncm2')
   call dein#add('gaalcaras/ncm-R')
   call dein#add('tibabit/vim-templates')
-
-
-  " if !has('nvim')
-  "   call dein#add('roxma/nvim-yarp')
-  "   call dein#add('roxma/vim-hug-neovim-rpc')
-  " endif
 
   call dein#end()
   call dein#save_state()
@@ -120,6 +110,9 @@ set nobackup
 set backupcopy
 set backupdir^=~/.config/nvim/backup//
 let mapleader=','
+set pyxversion=3
+
+
 nmap :NERDTreeToggle
 set autochdir
 inoremap <C-Space> <C-x><C-o>
@@ -177,8 +170,29 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+function! SQLFormat() range
+  let l:saved_a = @a
+  silent! normal! gv"ad
+  let l:text = @a
+  let l:text = substitute(l:text, '\n\s*\\\\', ' ', 'g')
+  let l:newtext = system('echo ' . shellescape(l:text) . ' | /Users/davidrosenberg/bin/fmtsql.sh')
+  let @a = l:newtext
+  normal! k
+  put a
+  let @a = l:saved_a
+endfunction
 
+vnoremap <leader>sq :call SQLFormat()<CR>
 
 " How to use plugins
 " EasyAlign: visually select the text, then gaX where X is what you want to
 " align on
+"
+" Commentary: easily comment and uncomment
+"   Visual mode - select section and hit 'gc' to comment/un-comment
+"   Normal mode - hit 'gcc' to comment/un-comment the current line
+"
+" SQLFormat: pretty-print a selection of SQL code
+"   Visual mode - highlight the selection and hit <leader>sq
+"
+"

@@ -1,21 +1,19 @@
 #! /usr/bin/env bash
-# {{FILE}}
-# Copyright (C) {{YEAR}} David Rosenberg <dmr@davidrosenberg.me>
-# Distributed under terms of the {{LICENSE}} license.
+# format-htmldjango.sh
+# Copyright (C) 2021 David Rosenberg <dmr@davidrosenberg.me>
+# Distributed under terms of the MIT license.
 #
-# Usage: {{FILE}} [-vhq] [--debug] [--optional-arg=<VALUE>] <REQUIREDARG>
+# Usage: format-htmldjango [-vhq] [--debug] <FILE>...
 #
 #
 # Arguments:
-#   <REQUIREDARG>            description
+#   <FILE>                   Files to format (jinja2 and/or django template files)
 #
 # Options:
 #   -h --help                display usage
 #   -v --verbose             verbose mode
 #   -q --quiet               quiet mode
 #   --debug                  debug this script
-#   --optional-arg=<VALUE>   Description [default: defaultval]
-#
 
 
 set +x
@@ -48,7 +46,9 @@ ECHO="$($WHICH gecho || $WHICH echo)"
 PRINTF="$($WHICH gprintf || $WHICH printf)"
 
 debuglog() {
-  if [ ${DEBUG_SCRIPT:-0} -gt 0 ]; then
+  if [ ${DEBUG_SCRIPT:-0} -gt 1 ]; then
+    ($ECHO "$@" > /dev/stderr) || $ECHO "$ECHO $* > /dev/stderr"
+  elif echo -- "$@" | grep -- ' --debug' >/dev/null; then
     ($ECHO "$@" > /dev/stderr) || $ECHO "$ECHO $* > /dev/stderr"
   fi
 }
@@ -88,7 +88,7 @@ failure() {
     rm -f "$TMPFILE"
   fi
 }
-# trap $'failure ${LINENO} "COMMAND=\'$BASH_COMMAND\'"' ERR
+trap $'failure ${LINENO} "COMMAND=\'$BASH_COMMAND\'"' ERR
 
 error() {
   printf "'%s': '%s' failed with exit code %d in function '%s' at line %d.\n" "${1-something}" "${BASH_COMMAND[0]}" "$?" "${FUNCNAME[1]}" "${BASH_LINENO[0]}"
@@ -105,7 +105,33 @@ if [[ "${ARGS[--verbose]}" == true ]]; then
 fi
 #}}}
 
-{{CURSOR}}
+declare -a files=( )
 
+for i in $(seq 0 $(("${ARGS[<FILE>,#]}"-1)) ); do
+  files+=( "$($READLINK -f "${ARGS[<FILE>,$i]}")" )
+done
+
+formatter="/Applications/PyCharm.app/Contents/MacOS/pycharm" && debuglog "formatter='$formatter'"
+
+if [ -f "$formatter" ]; then
+
+  debuglog "files=( ${files[@]} )"
+
+  cmdline="$formatter format ${files[@]} "
+  if [[ ${ARGS[--quiet]} == true ]]; then
+    cmdline="$cmdline >/dev/null 2>&1"
+  elif [[ ${ARGS[--verbose]} == false ]]; then
+    cmdline="$cmdline 2>&1 | grep '^Formatting'"
+  fi
+
+  eval "$cmdline"
+  errcode=$?
+else
+  echo "PyCharm not found.  No files formatted"
+  errcode=0
+fi
+
+trap - ERR
+exit $errcode
 
 # vim: ft=sh

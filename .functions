@@ -286,4 +286,12 @@ pubmedify() {
 }
 MY_FUNCTIONS+=("pubmedify")
 
+fmtsql() {
+    ws="$(pbpaste | head -n1 | perl -p -e 's/^(\s*).*$/$1/g')";
+    sqlformat -a -k upper -i lower <( pbpaste ) | /usr/bin/perl -p -e "s/^/$ws/g" | pbcopy;
+    pbpaste
+}
+MY_FUNCTIONS+=("fmtsql")
+
+
 # vim: ft=sh

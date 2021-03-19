@@ -1,20 +1,23 @@
 #! /usr/bin/env bash
-# {{FILE}}
-# Copyright (C) {{YEAR}} David Rosenberg <dmr@davidrosenberg.me>
-# Distributed under terms of the {{LICENSE}} license.
+# fmtsql.sh
+# Copyright (C) 2021 David Rosenberg <dmr@davidrosenberg.me>
+# Distributed under terms of the MIT license.
 #
-# Usage: {{FILE}} [-vhq] [--debug] [--optional-arg=<VALUE>] <REQUIREDARG>
+# Usage: fmtsql.sh [-vhq] [--debug] [--inplace] [--output=OUTPUT] FILE
+#        fmtsql.sh [-vhq] [--debug] --clipboard
+#        fmtsql.sh [-vhq] [--debug] [--output=OUTPUT]
 #
 #
 # Arguments:
-#   <REQUIREDARG>            description
+#   FILE                     File to read sql from
 #
 # Options:
 #   -h --help                display usage
 #   -v --verbose             verbose mode
 #   -q --quiet               quiet mode
 #   --debug                  debug this script
-#   --optional-arg=<VALUE>   Description [default: defaultval]
+#   --output=OUTPUT          Write output to file
+#   --clipboard              read and write from the clipboard/pasteboard
 #
 
 
@@ -104,8 +107,66 @@ if [[ "${ARGS[--verbose]}" == true ]]; then
   DEBUG_SCRIPT=${DEBUG_SCRIPT:-1}
 fi
 #}}}
+# docopt_print_ARGS => ARGS
+#             --output =
+#          --clipboard = false
+#            --verbose = false
+#              --debug = true
+#              --quiet = false
+#               FILE = thefile
+#               --help = false
+#            --inplace = false
 
-{{CURSOR}}
+
+tmpfile=$(mktemp)
+msg() {
+  if [[ ${ARGS[--quiet]} == false ]]; then
+    $PRINTF "%s\n" "$@"
+  fi
+}
+
+if [[ ${ARGS[--inplace]} == true ]]; then
+  sqlformat -a -k upper -i lower ${ARGS[FILE]} > $tmpfile
+  if [ $? -gt 0 ]; then
+    echo "FORMAT FAILURE" > /dev/stderr
+    exit 2
+  fi
+  mv $tmpfile ${ARGS[FILE]}
+  msg "Successfully reformatted ${ARGS[FILE]}"
+  exit 0
+fi
+
+if [[ ${ARGS[--clipboard]} == true ]]; then
+  ws="$(pbpaste | head -n1 | perl -p -e 's/^(\s*).*$/$1/g')"
+  sqlformat -a -k upper -i lower <( pbpaste ) | /usr/bin/perl -p -e "s/^/$ws/g" > $tmpfile
+elif [[ ${ARGS[FILE]}a == a ]]; then
+  thetext=""
+  IFS=''
+  while read LINE; do
+    thetext="$thetext$LINE"
+  done
+  ws="$(echo -e $thetext | head -n1 | perl -p -e 's/^(\s*).*$/$1/g')"
+  sqlformat -a -k upper -i lower <( echo $thetext ) | /usr/bin/perl -p -e "s/^/$ws/g" > $tmpfile
+else
+  sqlformat -a -k upper -i lower ${ARGS[FILE]} > $tmpfile
+fi
+
+if [ -n "${ARGS[--output]}" ]; then
+  if [ -f "${ARGS[--output]}" ]; then
+    msg "Can't write to file '${ARGS[--output]}' as it already exists\n"
+    exit 2
+  else
+    mv "$tmpfile" "${ARGS[--output]}"
+  fi
+elif [[ ${ARGS[--clipboard]} == true ]]; then
+  cat "$tmpfile" | pbcopy
+  rm "$tmpfile"
+  msg "Formatted text copied to clipboard"
+else
+  cat $tmpfile && rm $tmpfile
+fi
+
+
 
 
 # vim: ft=sh
