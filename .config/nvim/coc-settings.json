@@ -1,4 +1,4 @@
-{ 
+{
   "tsserver.npm": "/usr/local/bin/npm",
   "html.enable": false,
   "html.filetypes": ["html", "handlebars", "htmldjango"],
@@ -29,9 +29,26 @@
       "args": ["start"],
       "filetypes": ["sh"],
       "ignoredRootPaths": ["/Users/davidrosenberg"]
+    },
+    "R": {
+      "command": "/usr/local/bin/R",
+      "args": ["--slave", "-e", "languageserver::run()"],
+      "filetypes": ["r"]
+    }
+  },
+  "diagnostic-languageserver" : {
+    "filetypes": {
+      "sh": "shellcheck"
+    },
+    "formatFileTypes": {
+      "sh": "shfmt"
+    },
+    "formatters": {
+      "shfmt": {
+        "command": "shfmt",
+        "args": ["-i", "2", "-bn", "-ci", "sr"]
+      }
     }
   },
   "clangd.path": "/Users/davidrosenberg/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd"
 }
-  
-

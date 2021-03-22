@@ -13,13 +13,16 @@ set runtimepath+=~/.config/dein/repos/github.com/Shougo/dein.vim
 
 
 if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
 
   " Disabled plugins
   call dein#disable('Vimjas/vim-python-pep8-indent')
   call dein#disable('numirias/semshi')
   call dein#disable('autozimu/LanguageClient-neovim') ", {'branch': 'next', 'do': './install.sh' })
   call dein#disable('roxma/nvim-yarp')
+  call dein#disable('dense-analysis/ale')
+
+  " Enabled plugins go after the dein#begin call
+  call dein#begin('~/.cache/dein')
 
   " Enabled plugins
 
@@ -28,7 +31,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('junegunn/fzf.vim')
   call dein#add('mbbill/undotree')
   call dein#add('junegunn/vim-easy-align')
-  call dein#add('dense-analysis/ale')
+  " call dein#add('dense-analysis/ale')
   call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('honza/vim-snippets')
 

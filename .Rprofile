@@ -111,7 +111,7 @@ setHook(
   packageEvent("languageserver", "onLoad"),
   function(...) {
     options(languageserver.default_linters = lintr::with_defaults(
-      line_length_linter(120),
+      lintr::line_length_linter(120),
       object_usage_linter = NULL,
       object_name_linter = NULL
     ))
