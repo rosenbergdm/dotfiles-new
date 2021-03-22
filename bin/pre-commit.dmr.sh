@@ -1,6 +1,23 @@
 #! /usr/bin/env bash
-# Copyright David M. Rosenberg
-# Distributed under terms of the MIT license.
+# -*- coding: utf-8 -*-
+# vim:enc=utf-8
+#
+#    This file is part of signout.py the house staff web-based signout
+#    manager for MSKCC.
+#    Copyright © 2020-2021 David M. Rosenberg <dmr@davidrosenberg.me>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 # Usage: pre-commit
 #
@@ -49,16 +66,25 @@ _check_error() {
 trap _cleanup EXIT
 pushd $STARTDIR
 
+declare -a ignores=( .venv .git __py sorttable.js jquery .eslintrc htmldjango docopts.sh )
+ignorestring="$(
+for a in ${ignores[@]}; do
+  echo -n "($a)|";
+done; )"
+ignorestring="${ignorestring%|}"
 
-MOD_FILES="$(git status | grep modified | awk '{print $2}')"
+
+
+
+MOD_FILES="$(git status | grep modified | awk '{print $2}' | egrep -v "$ignorestring")"
 if [ $PROCESS_ALL -gt 0 ]; then
-  MOD_FILES="$($FIND "$GITROOT" -regextype egrep -regex '.*.(py|html|sh|css|js)$' | egrep -v '(.venv)|(.git)|(__py)|(sorttable)|(eslint)')"
+  MOD_FILES="$($FIND "$GITROOT" -regextype egrep -regex '.*.(py|html|sh|css|js)$' | egrep -v "$ignorestring")"
 fi
 
 
 if grep '.py$' <( ($ECHO $MOD_FILES | tr ' ' "\n" | grep -v .venv) ) >/dev/null; then
   $ECHO "Running black on .py files"
-  /usr/local/bin/black `$GREP '.py$' <( ($ECHO $MOD_FILES | tr ' ' "\n" | grep -v .venv 2>&1) )` --verbose > $TMPFILE 2>&1
+  /usr/local/bin/black `$GREP '.py$' <( ($ECHO $MOD_FILES | tr ' ' "\n" 2>&1) )` --verbose > $TMPFILE 2>&1
   ((_error+=$?))
   cat $TMPFILE
   _check_error "Running /usr/local/bin/black' on py files"
@@ -77,9 +103,9 @@ else
 fi
 
 
-if grep '.js$' <( ($ECHO $MOD_FILES | tr ' ' "\n" | egrep -v '(.venv)|(eslint)|(sorttable)|(jquery)' ) ) >/dev/null; then
+if grep '.js$' <( ($ECHO $MOD_FILES | tr ' ' "\n" | egrep -v "$ignorestring" ) ) >/dev/null; then
   $ECHO "Running eslint on .js files"
-  for fname in $(grep '.js$' <( ($ECHO $MOD_FILES | tr ' ' "\n" | egrep -v '(.venv)|(eslint)|(sorttable)|(jquery)' ) ) ); do
+  for fname in $(grep '.js$' <( ($ECHO $MOD_FILES | tr ' ' "\n" ) ) ); do
     ((_error+=$?)) && _check_error "Running eslint"
     ff="$($READLINK -f $fname)"
     if $(grep "$($BASENAME $ff)" <( ($ECHO $MOD_FILES | perl -p -e 's/ /\n/g' ) ) > /dev/null); then
@@ -101,10 +127,10 @@ else
   $ECHO "Skipping eslint as no .js files to modify"
 fi
 
-if egrep '.(js)|(css)$' <( ($ECHO $MOD_FILES | egrep -v '(.venv)|(eslint)|(sorttable)' ) ) >/dev/null; then
+if egrep '.(js)|(css)$' <( ($ECHO $MOD_FILES | tr ' ' "\n" | egrep -v "$ignorestring"  ) ) >/dev/null; then
   $ECHO "Running prettier on .js and .css files"
-  /usr/local/bin/prettier `egrep '.(js)|(css)$' <( ($ECHO $MOD_FILES | tr ' ' "\n" | egrep -v '(.venv)|(eslint)|(sorttable)|(jquery)' ) )` -w > $TMPFILE 2>&1
-  ((_error+=$?)) && _check_error "Line 109"
+  /usr/local/bin/prettier `egrep '.(js)|(css)$' <( ($ECHO $MOD_FILES | tr ' ' "\n"  ) )` -w > $TMPFILE 2>&1
+  ((_error+=$?)) && _check_error "Melodie 109"
   cat $TMPFILE
   for fname in $(cat $TMPFILE | awk '{print $1}'); do
     ff="$($READLINK -f $fname)"
@@ -115,9 +141,9 @@ else
 fi
 
 
-if grep '.sh$' <( ($ECHO $MOD_FILES | tr ' ' "\n" | grep -v htmldjango ) )>/dev/null 2>&1; then
+if grep '.sh$' <( ($ECHO $MOD_FILES | tr ' ' "\n" ) )>/dev/null 2>&1; then
   $ECHO "Running shellcheck on shell files"
-  for fname in $(grep '.sh$' <( ($ECHO $MOD_FILES | tr ' ' "\n" | grep -v htmldjango | grep -v docopts.sh) ) ); do
+  for fname in $(grep '.sh$' <( ($ECHO $MOD_FILES | tr ' ' "\n" ) ) ); do
     ff="$($READLINK -f $fname)"
     $ECHO -n "Checking '$ff'..."
     /usr/local/bin/shellcheck -S error "$ff" >/dev/null 2>&1
@@ -137,7 +163,7 @@ fi
 
 if grep '.html$' <( ($ECHO $MOD_FILES | tr ' ' "\n") ) >/dev/null; then
   $ECHO "Running format-htmldjango.sh on html files"
-  $GITROOT/scripts/format-htmldjango.sh $(grep '.html$' <( ($ECHO $MOD_FILES | tr ' ' "\n") ) )
+  $GITROOT/src/signout/scripts/format-htmldjango.sh $(grep '.html$' <( ($ECHO $MOD_FILES | tr ' ' "\n") ) )
   ((_error+=$?))
   if [ $_error -gt 0 ]; then
     $ECHO " ERROR. format-htmldjango.sh failed"

@@ -11,12 +11,20 @@ nnoremap ; :
 " Add the dein installation directory into runtimepath
 set runtimepath+=~/.config/dein/repos/github.com/Shougo/dein.vim
 
+
 if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
 
+  " Disabled plugins
+  call dein#disable('Vimjas/vim-python-pep8-indent')
+  call dein#disable('numirias/semshi')
+  call dein#disable('autozimu/LanguageClient-neovim') ", {'branch': 'next', 'do': './install.sh' })
+  call dein#disable('roxma/nvim-yarp')
+
+  " Enabled plugins
+
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
   call dein#add('Shougo/deoplete.nvim')
-  " call dein#add('Vimjas/vim-python-pep8-indent')
   call dein#add('junegunn/fzf.vim')
   call dein#add('mbbill/undotree')
   call dein#add('junegunn/vim-easy-align')
@@ -29,17 +37,21 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-commentary')
 
   call dein#add('morhetz/gruvbox')
-  "call dein#add('numirias/semshi')
   call dein#add('scrooloose/nerdtree')
   call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
-  call dein#add('psf/black', {'tag': '19.10b0'})
-  call dein#add('autozimu/LanguageClient-neovim', {'branch': 'next', 'do': './install.sh' })
-  call dein#add('jalvesaq/Nvim-R')
-  call dein#add('chrisbra/csv.vim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('ncm2/ncm2')
-  call dein#add('gaalcaras/ncm-R')
   call dein#add('tibabit/vim-templates')
+
+  "CSV
+  call dein#add('chrisbra/csv.vim')
+
+  "Python
+  call dein#add('psf/black', {'tag': '19.10b0'})
+
+  "R
+  call dein#add('ncm2/ncm2')
+  call dein#add('jalvesaq/Nvim-R')
+  call dein#add('gaalcaras/ncm-R')
+
 
   call dein#end()
   call dein#save_state()
@@ -149,8 +161,9 @@ let g:coc_snippet_next = '<tab>'
 
 let g:markdown_fenced_languages = [ 'vim', 'help' ]
 set runtimepath+=~/.cache/dein/repos/github.com/autozimu/LanguageClient-neovim
-let g:LanguageClient_serverCommands = {'haskell': ['hie-wrapper', '--lsp'], 'sh': ['bash-language-server', 'start'] }
+let g:LanguageClient_serverCommands = {'haskell': ['hie-wrapper', '--lsp'], 'sh': ['bash-language-server', 'start']}
 let g:ale_open_list = 1
+let b:ale_r_lint_package = 0
 
 
 

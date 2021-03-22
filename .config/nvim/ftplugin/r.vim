@@ -1,4 +1,5 @@
-let g:ale_fixers = ['styler', 'remove_trailing_lines', 'trim_whitespace']
+let b:ale_fixers = ['styler', 'remove_trailing_lines', 'trim_whitespace']
+let b:ale_linters = ['languageserver']
 let g:ale_open_list = 1
 let g:rout_follow_colorscheme = 1
 let g:Rout_more_colors = 1

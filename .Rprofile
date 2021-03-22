@@ -96,7 +96,7 @@ if (interactive()) {
   package_string <- paste("`", paste(.rprofile_env$auto_loads, collapse = "`, `"), "`", sep = "")
   message(paste("*** Successfully loaded .Rprofile including packages ", package_string, " ***", sep = ""))
   rm(package_string)
-  .rprofile_env$overload_plus_character()
+  # .rprofile_env$overload_plus_character()
 }
 
 .rprofile_env$style_in_place <- function(fname, backup = FALSE) {
@@ -110,6 +110,10 @@ if (interactive()) {
 setHook(
   packageEvent("languageserver", "onLoad"),
   function(...) {
-    options(languageserver.default_linters = lintr::with_defaults(line_length_linter(120), object_usage_linter = NULL))
+    options(languageserver.default_linters = lintr::with_defaults(
+      line_length_linter(120),
+      object_usage_linter = NULL,
+      object_name_linter = NULL
+    ))
   }
 )
