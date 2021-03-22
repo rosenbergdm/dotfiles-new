@@ -1,8 +1,14 @@
 {
+  "coc": {
+    "preferences": {
+      "useQuickFixForLocations": true,
+      "snippets.enable": true,
+      "colorSupport": true
+    }
+  },
   "tsserver.npm": "/usr/local/bin/npm",
   "html.enable": false,
   "html.filetypes": ["html", "handlebars", "htmldjango"],
-  "coc.preferences.colorSupport": false,
   "languageserver": {
     "haskell": {
       "command": "hie-wrapper",

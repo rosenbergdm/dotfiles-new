@@ -4,15 +4,16 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-nnoremap ; :
 
 
+"{{{ Plugin Configuration
 
 " Add the dein installation directory into runtimepath
 set runtimepath+=~/.config/dein/repos/github.com/Shougo/dein.vim
 
-
 if dein#load_state('~/.cache/dein')
+  " To disable a plugin, remove the 'add' line, add a 'disable' line,
+  "   and then run :call dein#check_clean(), and :call dein#update()
 
   " Disabled plugins
   call dein#disable('Vimjas/vim-python-pep8-indent')
@@ -25,14 +26,36 @@ if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
 
   " Enabled plugins
-
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('wsdjeg/dein-ui.vim')
+
+  " Language Server / Completion
+  call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('Shougo/deoplete.nvim')
+  " Coc Extensions Installed:
+    " coc-clangd
+    " coc-css
+    " coc-diagnostic
+    " coc-eslint
+    " coc-git
+    " coc-go
+    " coc-highlight
+    " coc-html
+    " coc-jedi
+    " coc-json
+    " coc-markdownlint
+    " coc-prettier
+    " coc-python
+    " coc-r-lsp
+    " coc-sh
+    " coc-snippets
+    " coc-texlab
+    " coc-tsserver
+
+  " Generic / Universal extensions
   call dein#add('junegunn/fzf.vim')
   call dein#add('mbbill/undotree')
   call dein#add('junegunn/vim-easy-align')
-  " call dein#add('dense-analysis/ale')
-  call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('honza/vim-snippets')
 
   call dein#add('tpope/vim-repeat')
@@ -41,8 +64,9 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('morhetz/gruvbox')
   call dein#add('scrooloose/nerdtree')
-  call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
   call dein#add('tibabit/vim-templates')
+
+  " Filetype specific 
 
   "CSV
   call dein#add('chrisbra/csv.vim')
@@ -55,14 +79,16 @@ if dein#load_state('~/.cache/dein')
   call dein#add('jalvesaq/Nvim-R')
   call dein#add('gaalcaras/ncm-R')
 
-
+  " Plugin Finalization
   call dein#end()
   call dein#save_state()
 endif
 
+"}}} 
+
+"{{{ Settings and options
 filetype plugin indent on
 syntax enable
-
 
 set foldenable
 set foldmethod=marker
@@ -115,7 +141,6 @@ set incsearch
 set whichwrap=b,s,h,l,<,>,[,]
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-
 set undodir^=~/.config/nvim/undo//
 set undofile
 set swapfile
@@ -126,14 +151,37 @@ set backupcopy
 set backupdir^=~/.config/nvim/backup//
 let mapleader=','
 set pyxversion=3
+set autochdir
+
+"}}}
+
+
+"{{{ Key mappings
+" Everywhere
+
+" Normal
+nnoremap ; :
+
+" Visual
+
+" Insert
+inoremap jj <esc>
+
+" Command
+cnoremap qq wqa<enter>
+
+"}}}
 
 
 nmap :NERDTreeToggle
-set autochdir
 inoremap <C-Space> <C-x><C-o>
-cmap qq wqa<enter>
 
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 
 map <F6> :UndotreeToggle<CR>
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -149,11 +197,6 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -201,6 +244,14 @@ endfunction
 vnoremap <leader>sq :call SQLFormat()<CR>
 
 " How to use plugins
+" GLOBAL KEYBINDINGS:
+" Visual:
+"   ,f      Format selected
+" Normal:
+"   zM      Close all folds
+" Insert:
+"
+"------------------- PLUGINS --------------------------
 " EasyAlign: visually select the text, then gaX where X is what you want to
 " align on
 "
