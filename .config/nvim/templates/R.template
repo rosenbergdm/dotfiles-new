@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 #
-# {{FILE}}
-# Copyright (C) {{YEAR}} {{USER}} <{{MAIL}}>
+# {{FILE}}.R
+# Copyright (C) {{YEAR}} David M. Rosenberg <{{EMAIL}}>
 #
 # Distributed under terms of the {{LICENSE}} license.
 #

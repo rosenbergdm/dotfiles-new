@@ -6,6 +6,10 @@
       "colorSupport": true
     }
   },
+  "python.formatting.provider": "black",
+  "python.linting.pylintEnabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.venvPath": ".venv",
   "tsserver.npm": "/usr/local/bin/npm",
   "html.enable": false,
   "html.filetypes": ["html", "handlebars", "htmldjango"],

@@ -4,8 +4,6 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-
-
 "{{{ Plugin Configuration
 
 " Add the dein installation directory into runtimepath
@@ -41,11 +39,10 @@ if dein#load_state('~/.cache/dein')
     " coc-go
     " coc-highlight
     " coc-html
-    " coc-jedi
     " coc-json
     " coc-markdownlint
     " coc-prettier
-    " coc-python
+    " coc-pyright
     " coc-r-lsp
     " coc-sh
     " coc-snippets
@@ -155,79 +152,7 @@ set autochdir
 
 "}}}
 
-
-"{{{ Key mappings
-" Everywhere
-
-" Normal
-nnoremap ; :
-
-" Visual
-
-" Insert
-inoremap jj <esc>
-
-" Command
-cnoremap qq wqa<enter>
-
-"}}}
-
-
-nmap :NERDTreeToggle
-inoremap <C-Space> <C-x><C-o>
-
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-map <F6> :UndotreeToggle<CR>
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-vnoremap < <gv
-vnoremap > >gv
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
-
-let g:markdown_fenced_languages = [ 'vim', 'help' ]
-set runtimepath+=~/.cache/dein/repos/github.com/autozimu/LanguageClient-neovim
-let g:LanguageClient_serverCommands = {'haskell': ['hie-wrapper', '--lsp'], 'sh': ['bash-language-server', 'start']}
-let g:ale_open_list = 1
-let b:ale_r_lint_package = 0
-
-
-
-let g:tmpl_search_paths = ['~/.config/nvim/templates']
-
-
-" Generic autocommands
-augroup generic
-  au BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-augroup END
-
-
-
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+"{{{ Function Definitions
 
 function! SQLFormat() range
   let l:saved_a = @a
@@ -241,7 +166,147 @@ function! SQLFormat() range
   let @a = l:saved_a
 endfunction
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+"}}}
+
+"{{{ Key mappings
+" Everywhere-----------------------------
+map <F2> :NERDTreeToggle
+map <F6> :UndotreeToggle<CR>
+
+" Normal-----------------------------
+nnoremap ; :
+nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>rn <Plug>(coc-rename)
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Visual-----------------------------
+xmap <leader>f  <Plug>(coc-format-selected)
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 vnoremap <leader>sq :call SQLFormat()<CR>
+
+vnoremap < <gv
+vnoremap > >gv
+
+
+" Insert-----------------------------
+inoremap jj <esc>
+inoremap <C-Space> <C-x><C-o>
+
+" Command-----------------------------
+cnoremap qq wqa<enter>
+
+
+
+"{{{ COC Mappings: 
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Renaming of symbols
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+"}}}
+"}}}
+
+"{{{ Local config settings (let)
+let g:coc_snippet_next = '<tab>'
+let g:markdown_fenced_languages = [ 'vim', 'help' ]
+let g:tmpl_search_paths = ['~/.config/nvim/templates']
+let g:tmpl_author_email = 'dmr@davidrosenberg.me'
+let g:tmpl_author_name = 'David M. Rosenberg'
+let g:tmpl_license = 'GPLv3'
+
+" let g:LanguageClient_serverCommands = {'haskell': ['hie-wrapper', '--lsp'], 'sh': ['bash-language-server', 'start']}
+" let g:ale_open_list = 1
+" let b:ale_r_lint_package = 0
+"}}}
+
+"{{{ Autocommands
+"Generic autocommands
+augroup generic
+  au BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+augroup END
+autocmd CursorHold * silent call CocActionAsync('highlight')
+"}}}
 
 " How to use plugins
 " GLOBAL KEYBINDINGS:
@@ -252,6 +317,10 @@ vnoremap <leader>sq :call SQLFormat()<CR>
 " Insert:
 "
 "------------------- PLUGINS --------------------------
+" CoC:
+"   Format: select code and hit ',f'
+"
+
 " EasyAlign: visually select the text, then gaX where X is what you want to
 " align on
 "

@@ -78,7 +78,7 @@ urxvt*scrollBar_right:    true
 urxvt*scrollColor:        #777777
 urxvt*cursorColor:        #ffcc00
 urxvt*loginShell:         true
-urxvt*termName:           urxvt
+urxvt*termName:           rxvt-256color
 urxvt*cutchars:           "()*,<>[]{}|'
 urxvt*print-pipe:         cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
 urxvt*secondaryScroll:    true

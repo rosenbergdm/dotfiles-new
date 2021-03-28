@@ -2,10 +2,11 @@
 # shellcheck disable=SC1090
 # SC1090: Not all references will be resolvable
 
-[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.bashrc" 1>&2
+[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "Executing $HOME/.bashrc from the top" 1>&2
+export BASHRC_RUN=1
 
-declare -a STARTUP_SOURCED
-declare -a MY_FUNCTIONS
+declare -a STARTUP_SOURCED=( )
+declare -a MY_FUNCTIONS=( )
 STARTUP_SOURCED+=("$HOME/bashrc")
 
 _d_source_and_log() {
@@ -17,9 +18,8 @@ source_and_log() {
   echo "${STARTUP_SOURCED[@]}" | grep -v "$1" >/dev/null && _d_source_and_log "$1" || echo "$1 already sourced, skipping" 1>&2
 }
 
-export BASHRC_RUN=1
 if [ -z "$BASH_PROFILE_RUN" ]; then
-  [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "running . ~/.bash_profile" 1>&2
+  [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "$HOME/.bash_profile not sourced yet.  Sourcing" 1>&2
   source_and_log ~/.bash_profile
 fi
 

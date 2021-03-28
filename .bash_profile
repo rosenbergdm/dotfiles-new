@@ -1,11 +1,6 @@
-[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "RUNNING $HOME/.bash_profile"
+[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "Executing $HOME/.bash_profile from the top"
 export BASH_PROFILE_RUN=1
-if [[ -z "$BASHRC_RUN" ]]; then
+if [ -z "$BASHRC_RUN" ]; then
     # bash_rc has been run
-    . $HOME/.bashrc
+    source $HOME/.bashrc
 fi
-
-
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
