@@ -1,0 +1,6 @@
+env:
+  TERM: alacritty
+
+
+shell:
+  program: /usr/local/bin/bash
