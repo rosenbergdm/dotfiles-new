@@ -293,5 +293,12 @@ fmtsql() {
 }
 MY_FUNCTIONS+=("fmtsql")
 
+ansi2text() {
+  while IFS= read -r LINE; do
+    printf "%s\n" "$LINE" | perl -pe 's/\x1b\[[0-9;]*[mG]//g' | col -b
+  done
+}
+MY_FUNCTIONS+=("ansi2txt")
+
 
 # vim: ft=sh
