@@ -24,7 +24,8 @@ suppress_load_message <- function(pkgname) {
   suppressWarnings(suppressPackageStartupMessages(library(pkgname, character.only = TRUE)))
 }
 
-auto_loads <- c("plyr", "dplyr", "devtools")
+auto_loads <- character()
+# auto_loads <- c("plyr", "dplyr", "devtools")
 if (interactive()) {
   invisible(sapply(auto_loads, suppress_load_message))
 }
@@ -52,7 +53,7 @@ if (Sys.getenv("TERM") == "xterm-256color") {
 
 .rprofile_env <- new.env()
 attach(.rprofile_env)
-.rprofile_env$auto_loads <- auto_loads
+# .rprofile_env$auto_loads <- auto_loads
 .rprofile_env$suppress_load_message <- suppress_load_message
 .rprofile_env$unrowname <- function(x) {
   rownames(x) <- NULL
@@ -96,7 +97,7 @@ if (interactive()) {
   package_string <- paste("`", paste(.rprofile_env$auto_loads, collapse = "`, `"), "`", sep = "")
   message(paste("*** Successfully loaded .Rprofile including packages ", package_string, " ***", sep = ""))
   rm(package_string)
-  # .rprofile_env$overload_plus_character()
+  .rprofile_env$overload_plus_character()
 }
 
 .rprofile_env$style_in_place <- function(fname, backup = FALSE) {

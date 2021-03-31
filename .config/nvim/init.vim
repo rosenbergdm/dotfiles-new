@@ -75,6 +75,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('ncm2/ncm2')
   call dein#add('jalvesaq/Nvim-R')
   call dein#add('gaalcaras/ncm-R')
+  call dein#add('jalvesaq/R-Vim-runtime')
 
   " Plugin Finalization
   call dein#end()
