@@ -17,15 +17,14 @@ options(stringsAsFactors = FALSE) # matches R 4.0
 options(max.print = 500)
 options(scipen = 10)
 options(editor = "nvim")
-options(width = 120)
+options(width = as.integer(system("tput cols", intern = TRUE)))
 utils::rc.settings(ipck = TRUE)
 
 suppress_load_message <- function(pkgname) {
   suppressWarnings(suppressPackageStartupMessages(library(pkgname, character.only = TRUE)))
 }
 
-auto_loads <- character()
-# auto_loads <- c("plyr", "dplyr", "devtools")
+auto_loads <- c("devtools", "roxygen2")
 if (interactive()) {
   invisible(sapply(auto_loads, suppress_load_message))
 }
@@ -53,7 +52,7 @@ if (Sys.getenv("TERM") == "xterm-256color") {
 
 .rprofile_env <- new.env()
 attach(.rprofile_env)
-# .rprofile_env$auto_loads <- auto_loads
+.rprofile_env$auto_loads <- auto_loads
 .rprofile_env$suppress_load_message <- suppress_load_message
 .rprofile_env$unrowname <- function(x) {
   rownames(x) <- NULL
@@ -97,7 +96,7 @@ if (interactive()) {
   package_string <- paste("`", paste(.rprofile_env$auto_loads, collapse = "`, `"), "`", sep = "")
   message(paste("*** Successfully loaded .Rprofile including packages ", package_string, " ***", sep = ""))
   rm(package_string)
-  .rprofile_env$overload_plus_character()
+  # .rprofile_env$overload_plus_character()
 }
 
 .rprofile_env$style_in_place <- function(fname, backup = FALSE) {
