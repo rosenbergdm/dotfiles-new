@@ -18,6 +18,12 @@ options(max.print = 500)
 options(scipen = 10)
 options(editor = "nvim")
 options(width = as.integer(system("tput cols", intern = TRUE)))
+options(devtools.install.args = c("--with-keep.source",
+                                  "--with-keep.parse.data",
+                                  "--example",
+                                  "--html",
+                                  "--build-vignettes")
+)
 utils::rc.settings(ipck = TRUE)
 
 suppress_load_message <- function(pkgname) {
