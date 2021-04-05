@@ -77,12 +77,16 @@ if dein#load_state('~/.cache/dein')
   call dein#add('gaalcaras/ncm-R')
   call dein#add('jalvesaq/R-Vim-runtime')
 
+  "JSX / Javascript / TypeScript / React
+  call dein#add('MaxMEllon/vim-jsx-pretty')
+  call dein#add('yuezk/vim-js')
+
   " Plugin Finalization
   call dein#end()
   call dein#save_state()
 endif
 
-"}}} 
+"}}}
 
 "{{{ Settings and options
 filetype plugin indent on
