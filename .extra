@@ -21,12 +21,12 @@ _nvm_first() {
 }
 alias nvm=_nvm_first
 
-_nix_first() {
-  unalias nix
-  if [ -e /Users/davidrosenberg/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/davidrosenberg/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-  nix "$@"
-}
-alias nix=_nix_first
+# _nix_first() {
+#   unalias nix
+#   if [ -e /Users/davidrosenberg/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/davidrosenberg/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+#   nix "$@"
+# }
+# alias nix=_nix_first
 
 dedupe_pathvar
 
