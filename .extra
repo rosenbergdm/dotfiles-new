@@ -35,4 +35,5 @@ export STARTUP_SOURCED_STR="${STARTUP_SOURCED[@]}"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"
 
+[ -f "/Users/dmr/.ghcup/env" ] && source "/Users/dmr/.ghcup/env" # ghcup-env
 # vim: set ft=sh
