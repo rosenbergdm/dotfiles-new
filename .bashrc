@@ -8,22 +8,77 @@ export BASHRC_RUN=1
 declare -a STARTUP_SOURCED=( )
 declare -a MY_FUNCTIONS=( )
 STARTUP_SOURCED+=("$HOME/bashrc")
+source $HOME/.commands
+STARTUP_SOURCED+=( $HOME/.commands )
+declare -A thresholds=( [4]="4" [3]="3" [2]="2" [1]="1" [0]="0"\
+  [trace]="4" [info]="3" [warn]="2" [error]="1" [always]="0" )
+export MY_FUNCTIONS
+export thresholds
+export STARTUP_SOURCED
 
-_d_source_and_log() {
-  [ -r "$1" ] && source "$1" && STARTUP_SOURCED+=("$1")
+# debug messaging {{{
+_dbg() {
+  local thresh=${thresholds["${2:-1}"]}
+  if [ ! -z $3 ] && [[ ${3-0} == -n ]]; then
+    local newline=''
+  else
+    local newline='\n'
+  fi
+
+  if [ "${DEBUG_STARTUP-0}" -ge $thresh ]; then
+    $PRINTF "%s$newline" "$1"
+  fi
 }
+MY_FUNCTIONS+=( _dbg )
+
+set_debug () {
+  local lv=${1-always}
+  export DEBUG_STARTUP=${thresholds[$lv]};
+  echo "Set DEBUG_STARTUP to '${thresholds[$lv]}'"
+}
+MY_FUNCTIONS+=( set_debug )
 
 source_and_log() {
-  [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "Sourcing '$1'" 1>&2
-  echo "${STARTUP_SOURCED[@]}" | grep -v "$1" >/dev/null && _d_source_and_log "$1" || echo "$1 already sourced, skipping" 1>&2
+  local cmdfile="$1"
+  local status=1
+  local completionfile=${2-THISIS_NOT_A_FILE}
+  _dbg "Attempting to load '$cmdfile'..." error -n
+  if [ -e "$cmdfile" ]; then
+    if [[ ${STARTUP_SOURCED[*]} =~ (^|[[:space:]])"$($BASENAME "$cmdfile")"($|[[:space:]]) ]]; then
+      _dbg " FAIL.  Already sourced." error
+    else
+      source "$cmdfile"
+      status=0
+      if [ $? -gt 0 ]; then
+        _dbg " FAIL.  Error sourcing." error
+      else
+        _dbg " Success."
+        STARTUP_SOURCED+=( $($BASENAME "$cmdfile") )
+        if [ -e $completionfile ]; then
+          source "$completionfile"
+          if [ $? -gt 0 ]; then
+            _dbg "Attempting to load completions '$completionfile'... FAIL.  Error loading" error
+            status=1
+          else
+            _dbg "Attempting to load completions '$completionfile'... Success." error
+            status=0
+          fi
+        fi
+      fi
+    fi
+  else
+    _dbg " FAIL.  File does not exist."
+  fi
+  return $status
 }
+MY_FUNCTIONS+=( source_and_log )
+# }}}
 
 if [ -z "$BASH_PROFILE_RUN" ]; then
-  [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "$HOME/.bash_profile not sourced yet.  Sourcing" 1>&2
   source_and_log ~/.bash_profile
 fi
 
-for file in ~/.{functions,path,exports,aliases,bash_prompt,extra}; do
+for file in ~/.{functions,path,exports,aliases,bash_prompt}; do
   source_and_log "$file"
 done
 
@@ -42,3 +97,7 @@ if [ -f /usr/local/etc/profile.d/bash_completion.sh ]; then
   #   In the end completions stored in $HOME/.bash_completion will be executed
   source_and_log /usr/local/etc/profile.d/bash_completion.sh
 fi
+
+source_and_log $HOME/.extra
+
+# vim: ft=sh :

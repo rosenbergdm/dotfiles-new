@@ -21,19 +21,11 @@ _nvm_first() {
 }
 alias nvm=_nvm_first
 
-# _nix_first() {
-#   unalias nix
-#   if [ -e /Users/davidrosenberg/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/davidrosenberg/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-#   nix "$@"
-# }
-# alias nix=_nix_first
+
+source_and_log "$HOME/.iterm2_shell_integration.bash"
+[ -e $HOME/.iterm2/it2api ] && export PATH="$PATH:$HOME/.iterm2"
+source_and_log "$HOME/.ghcup/env" # ghcup-env
 
 dedupe_pathvar
 
-export MY_FUNCTIONS_STR="${MY_FUNCTIONS[@]}"
-export STARTUP_SOURCED_STR="${STARTUP_SOURCED[@]}"
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source_and_log "${HOME}/.iterm2_shell_integration.bash"
-
-[ -f "/Users/dmr/.ghcup/env" ] && source "/Users/dmr/.ghcup/env" # ghcup-env
 # vim: set ft=sh
