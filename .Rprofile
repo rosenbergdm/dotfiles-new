@@ -17,7 +17,11 @@ options(stringsAsFactors = FALSE) # matches R 4.0
 options(max.print = 500)
 options(scipen = 10)
 options(editor = "nvim")
-options(width = as.integer(system("tput cols", intern = TRUE)))
+if (interactive()) {
+  options(width = as.integer(system("tput cols", intern = TRUE)))
+} else {
+  options(width = 80)
+}
 options(devtools.install.args = c("--with-keep.source",
                                   "--with-keep.parse.data",
                                   "--example",
