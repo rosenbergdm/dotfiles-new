@@ -1,9 +1,9 @@
 #
-set show-all-if-ambiguous on
 
+set colored-stats on
+set show-all-if-ambiguous on
 # Immediately add a trailing slash when autocompleting symlinks to directories
 set mark-symlinked-directories on
-
 set visible-stats on
 
 # Be more intelligent when autocompleting by also looking at the text after
@@ -20,11 +20,46 @@ set convert-meta off
 
 "\e[A": history-search-backward
 "\e[B": history-search-forward
-
+Space: magic-space
 
 
 
 set show-mode-in-prompt
 set editing-mode vi
-"\e[A": history-search-backward
-"\e[B": history-search-forward
+
+$if mode=vi
+  set keymap vi-command
+  # Ctrl-{left,right} to jump over words
+  $if Bash
+    "\e[1;5C": shell-forward-word
+    "\e[1;5D": shell-backward-word
+    "\e[5C": shell-forward-word
+    "\e[5D": shell-backward-word
+  $else
+    "\e[1;5C": forward-word
+    "\e[1;5D": backward-word
+    "\e[5C": forward-word
+    "\e[5D": backward-word
+  $endif
+  "\e[A": history-search-backward
+  "\e[B": history-search-forward
+
+  set keymap vi-insert
+  $if Bash
+    "\e[1;5C": shell-forward-word
+    "\e[1;5D": shell-backward-word
+    "\e[5C": shell-forward-word
+    "\e[5D": shell-backward-word
+  $else
+    "\e[1;5C": forward-word
+    "\e[1;5D": backward-word
+    "\e[5C": forward-word
+    "\e[5D": backward-word
+  $endif
+  "\e[A": history-search-backward
+  "\e[B": history-search-forward
+$endif
+
+set keymap vi-insert
+
+

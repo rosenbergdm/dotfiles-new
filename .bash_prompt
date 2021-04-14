@@ -60,19 +60,33 @@ if [[ $- == *i* ]]; then
 
   export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
   export PS2="\[$ORANGE\]→ \[$RESET\]"
-
-  export HISTCONTROL=ignoredups:erasedups
-  export HISTSIZE=100000
-  export HISTFILESIZE=100000
-  shopt -s histappend
   PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}builtin history -a; builtin history -c; builtin history -r"
   export PROMPT_COMMAND
 else
-  export HISTCONTROL=ignoredups:erasedups
-  export HISTSIZE=100000
-  export HISTFILESIZE=100000
-  shopt -s histappend
+
+  parse_git_dirty() {
+    echo ''
+  }
+
+  parse_git_branch() {
+    echo ''
+  }
+
   export PROMPT_COMMAND="builtin history -a; builtin history -c; builtin history -r"
+fi
+
+export HISTCONTROL=ignoredups:erasedups
+export HISTSIZE=-1
+export HISTFILESIZE=-1
+shopt -s histappend
+export PROMPT_COMMAND
+
+touch "$HOME/.bash_eternal_history"
+
+if [ "$(wc -l $HOME/.bash_history | $AWK '{print $1}')" -gt "$(wc -l $HOME/.bash_eternal_history | $AWK '{print $1}')" ]; then
+  cp "$HOME/.bash_history" "$HOME/.bash_eternal_history"
+else
+  dbg "!!!! $HOME/.bash_eternal_history is longer than $HOME/.bash_history -- Something strange has happened." 0
 fi
 
 # vim: ft=sh
