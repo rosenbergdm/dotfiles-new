@@ -32,7 +32,7 @@
 
 shrink ()
 {
-	gs					\
+	/usr/local/bin/gs					\
 	  -q -dNOPAUSE -dBATCH -dSAFER		\
 	  -sDEVICE=pdfwrite			\
 	  -dCompatibilityLevel=1.3		\

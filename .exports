@@ -15,6 +15,8 @@ export APACHECONFIG=/usr/local/etc/httpd
 export NVM_DIR="$HOME/.nvm"
 export ROH=/Users/davidrosenberg/src/radonchub
 export NVIM_LOG_FILE="$HOME/.config/nvim/nvimlog.txt"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home
+export ANDROID_HOME=/Users/davidrosenberg/Library/Android/sdk
 export MY_FUNCTIONS
 
 # vim: ft=sh

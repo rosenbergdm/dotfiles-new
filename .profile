@@ -38,4 +38,9 @@ export HISTSIZE=-1
 export HISTFILESIZE=-1
 shopt -s histappend
 
-# [ -s "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[ -s "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+rvm use 3.0
+
+export NVM_DIR=$HOME/.nvm
+[ -s "$NVM_DIR/nvm.sh" ] && source_and_log "$NVM_DIR/nvm.sh"  # This loads nvm
+nvm use 16.0

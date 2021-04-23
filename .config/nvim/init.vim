@@ -81,6 +81,9 @@ if dein#load_state('~/.cache/dein')
   call dein#add('MaxMEllon/vim-jsx-pretty')
   call dein#add('yuezk/vim-js')
 
+  "JSON / JSONC
+  call dein#add('neoclide/jsonc.vim')
+
   " Plugin Finalization
   call dein#end()
   call dein#save_state()

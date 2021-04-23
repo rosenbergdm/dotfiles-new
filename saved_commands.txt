@@ -40,4 +40,5 @@ docker exec -ti  photoprism_photoprism_1 photoprism --import-path=/host-share/im
 "update service set type='NF9132' where name like 'STR%'" | PGPASSWORD=lwAXvfd9emIyBpYQk8 psql -U signout signout
 cat dbsettings.json | sed -e 's/\t/  /g' | jq  -rM '.' | cat > x
 git config --global merge.tool vimdiff && git config --global merge.conflictstyle diff3 && git config --global mergetool.prompt false
-    if [[ ${STARTUP_SOURCED[*]} =~ (^|[[:space:]])"$($BASENAME "$cmdfile")"($|[[:space:]]) ]]; then
+# if [[ ${STARTUP_SOURCED[*]} =~ (^|[[:space:]])"$($BASENAME "$cmdfile")"($|[[:space:]]) ]]; then
+/Users/davidrosenberg/Library/Android/sdk/emulator/emulator @Pixel_3a_API_30_x86

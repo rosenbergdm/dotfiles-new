@@ -99,5 +99,6 @@ if [ -f /usr/local/etc/profile.d/bash_completion.sh ]; then
 fi
 
 source_and_log $HOME/.extra
+[ -f ~/.fzf.bash ] && source_and_log ~/.fzf.bash
 
 # vim: ft=sh :

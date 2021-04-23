@@ -16,6 +16,7 @@ PATH=$PATH:$HOME/edirect
 PATH=$PATH:$HOME/go/bin:/usr/local/go/bin
 PATH=$PATH:$HOME/src/flutter/bin
 PATH=$PATH:/Library/Frameworks/R.framework/Versions/Current/Resources/bin
+PATH="/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/bin:$PATH"
 export PATH
 
 set_python 3
