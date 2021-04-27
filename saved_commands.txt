@@ -42,3 +42,4 @@ cat dbsettings.json | sed -e 's/\t/  /g' | jq  -rM '.' | cat > x
 git config --global merge.tool vimdiff && git config --global merge.conflictstyle diff3 && git config --global mergetool.prompt false
 # if [[ ${STARTUP_SOURCED[*]} =~ (^|[[:space:]])"$($BASENAME "$cmdfile")"($|[[:space:]]) ]]; then
 /Users/davidrosenberg/Library/Android/sdk/emulator/emulator @Pixel_3a_API_30_x86
+gpg --encrypt --sign --armor -r RECIPIENT@EXAMPLE.COM FILENAME
