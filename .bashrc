@@ -3,10 +3,27 @@
 # SC1090: Not all references will be resolvable
 
 if [ -a $HOME/DEBUG_STARTUP ]; then
-  export DEBUG_STARTUP=${DEBUG_STARTUP-1}
+  if [[ "$(cat $HOME/DEBUG_STARTUP)" == "" ]]; then
+    file_dbg_startup=1
+  else
+    file_dbg_startup=$(cat $HOME/DEBUG_STARTUP)
+  fi
 fi
+export DEBUG_STARTUP=${DEBUG_STARTUP-${file_dbg_startup-0}}
 
-[[ "$DEBUG_STARTUP:" == "1:" ]] && echo "Executing $HOME/.bashrc from the top" 1>&2
+if [ -a $HOME/FAST_STARTUP ]; then
+  if [[ "$(cat $HOME/FAST_STARTUP)" == "" ]]; then
+    file_fast_startup=1
+  else
+    file_fast_startup=$(cat $HOME/FAST_STARTUP)
+  fi
+fi
+export FAST_STARTUP=${FAST_STARTUP-${file_dbg_startup-0}}
+
+
+
+
+[[ "$DEBUG_STARTUP" -gt 0 ]] && echo "Executing $HOME/.bashrc from the top" 1>&2
 export BASHRC_RUN=1
 
 declare -a STARTUP_SOURCED=( )
@@ -102,7 +119,11 @@ if [ -f /usr/local/etc/profile.d/bash_completion.sh ]; then
   source_and_log /usr/local/etc/profile.d/bash_completion.sh
 fi
 
-source_and_log $HOME/.extra
-[ -f ~/.fzf.bash ] && source_and_log ~/.fzf.bash
+if [ ! $FAST_STARTUP -gt 0 ]; then
+  source_and_log $HOME/.extra
+  [ -f ~/.fzf.bash ] && source_and_log ~/.fzf.bash
+else
+  _dbg "Skipping $HOME/.extra and fzf loading for speed" 
+fi
 
 # vim: ft=sh :

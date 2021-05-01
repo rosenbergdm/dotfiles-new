@@ -86,7 +86,7 @@ touch "$HOME/.bash_eternal_history"
 if [ "$(wc -l $HOME/.bash_history | $AWK '{print $1}')" -gt "$(wc -l $HOME/.bash_eternal_history | $AWK '{print $1}')" ]; then
   cp "$HOME/.bash_history" "$HOME/.bash_eternal_history"
 else
-  dbg "!!!! $HOME/.bash_eternal_history is longer than $HOME/.bash_history -- Something strange has happened." 0
+  _dbg "!!!! $HOME/.bash_eternal_history is longer than $HOME/.bash_history -- Something strange has happened." 0
 fi
 
 # vim: ft=sh
