@@ -2,6 +2,10 @@
 # shellcheck disable=SC1090
 # SC1090: Not all references will be resolvable
 
+if [ -a $HOME/DEBUG_STARTUP ]; then
+  export DEBUG_STARTUP=${DEBUG_STARTUP-1}
+fi
+
 [[ "$DEBUG_STARTUP:" == "1:" ]] && echo "Executing $HOME/.bashrc from the top" 1>&2
 export BASHRC_RUN=1
 
