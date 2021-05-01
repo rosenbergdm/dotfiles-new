@@ -157,6 +157,7 @@ $if mode=vi
   #Useful
   "k": history-search-backward
   "j": history-search-forward
+  "\C-r": re-read-init-file
 
   #############
   #  Extras c #
@@ -205,10 +206,12 @@ $if mode=vi
   $endif
   "\e[A": history-search-backward
   "\e[B": history-search-forward
+  "\C-r": re-read-init-file
 
   #Go back in history and replay step one by one ... :)
   Control-o: operate-and-get-next
 
+  Control-L: clear-screen
   Control-l: clear-screen
   Control-b: beginning-of-line
   Control-e: end-of-line
