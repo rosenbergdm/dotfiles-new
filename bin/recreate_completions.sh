@@ -55,7 +55,8 @@ script_status=$((script_status+$?))
 script_status=$((script_status+$?))
 
 #npm
-/Users/davidrosenberg/.nvm/versions/node/v16.0.0/bin/npm completion bash > "$tmpfile" 2>/dev/null && \
+#/Users/davidrosenberg/.nvm/versions/node/v16.0.0/bin/npm completion bash > "$tmpfile" 2>/dev/null && \
+/usr/local/bin/npm completion bash > "$tmpfile" 2>/dev/null && \
   mv "$tmpfile" "$COMPLETION_DIR/npm" && \
   echo "$(date): Recreated npm completion script" | tee -a "$LOGFILE" || \
   echo "$(date): Unable to regenerate npm completion script" | tee -a "$LOGFILE" > /dev/stderr && \

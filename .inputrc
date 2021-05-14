@@ -129,7 +129,7 @@ set convert-meta off
 
 set print-completions-horizontally on
 set match-hidden-files on
-set completion-ignore-case on
+set completion-ignore-case off
 set completion-map-case on
 set page-completions on
 

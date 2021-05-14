@@ -84,6 +84,9 @@ if dein#load_state('~/.cache/dein')
   "JSON / JSONC
   call dein#add('neoclide/jsonc.vim')
 
+  "Go
+  call dein#add('fatih/vim-go', {'do': ':GoUpdateBinaries' })
+
   " Plugin Finalization
   call dein#end()
   call dein#save_state()
