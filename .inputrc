@@ -204,6 +204,8 @@ $if mode=vi
     "\e[5C": forward-word
     "\e[5D": backward-word
   $endif
+  $if R
+    Space: " "
   "\e[A": history-search-backward
   "\e[B": history-search-forward
   "\C-r": re-read-init-file
