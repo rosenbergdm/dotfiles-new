@@ -214,7 +214,7 @@ USAGE: $FUNCNAME VARLIST NEWPATH
   Example:
     \$ > export MANPATH=/usr/share/man:/usr/local/share/man
     \$ > $FUNCNAME MANPATH $HOME/share/man
-    \$ > echo \$MANPATH
+     \$ > echo \$MANPATH
     /usr/share/man:/usr/local/share/man:$HOME/share/man
 EOF
     if [[ "$1" == "--help" || "$1" == "-help" || "$1" == "-h" ]]; then
@@ -300,5 +300,14 @@ ansi2text() {
 }
 MY_FUNCTIONS+=("ansi2txt")
 
+twilio() {
+  if [[ "$@" == "" ]] || [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+    local usage="\$ twilio api:core:messages:create --body \"Message body here\" --from \"+19388882701\" --to \"+17732403395\""
+    printf "\n\nUSAGE:\n\n\t%s\n\n" "$usage"
+  else
+    npx twilio-cli "$@"
+  fi
+}
+MY_FUNCTIONS+=("twilio")
 
 # vim: ft=sh
