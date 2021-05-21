@@ -105,7 +105,7 @@
 
 #Settings
 set mark-directories On
-set horizontal-scroll-mode On
+set horizontal-scroll-mode Off
 set visible-stats on
 set colored-stats on
 set editing-mode vi
@@ -127,7 +127,7 @@ set input-meta on
 set output-meta on
 set convert-meta off
 
-set print-completions-horizontally on
+set print-completions-horizontally off
 set match-hidden-files on
 set completion-ignore-case off
 set completion-map-case on
@@ -157,7 +157,7 @@ $if mode=vi
   #Useful
   "k": history-search-backward
   "j": history-search-forward
-  "\C-r": re-read-init-file
+  "\C-i": re-read-init-file
 
   #############
   #  Extras c #
