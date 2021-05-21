@@ -69,7 +69,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('chrisbra/csv.vim')
 
   "Python
-  call dein#add('psf/black', {'tag': '19.10b0'})
+  call dein#add('psf/black', {'branch': 'stable'})
 
   "R
   call dein#add('ncm2/ncm2')
