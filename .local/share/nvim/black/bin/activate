@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/dmr/.local/share/nvim/black"
+VIRTUAL_ENV="/Users/davidrosenberg/.local/share/nvim/black"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
