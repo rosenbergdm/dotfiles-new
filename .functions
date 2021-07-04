@@ -310,4 +310,29 @@ twilio() {
 }
 MY_FUNCTIONS+=("twilio")
 
+toggle_citrix() {
+  if [[ "$@" == "" ]] || [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+    local usage="\$ toggle_citrix [disable|enable|start|stop] "
+    printf "\n\nUSAGE:\n\n\t%s\n\n" "$usage"
+  else
+    if [[ "$1" == enable ]]; then 
+      prefix= "system/"
+    elif [[ "$1" == disable ]]; then
+      prefix="system/"
+    elif [[ "$1" == "start" ]]; then
+      prefix=""
+    elif [[ "$1" == "stop" ]]; then
+      prefix=""
+    else
+      printf "\n\nERROR: command '%s' not found\n\n" "$1"
+      return 1
+    fi
+    echo "sudo /bin/launchctl $1 ${prefix}com.citrix.ServiceRecords"
+    echo "sudo /bin/launchctl $1 ${prefix}com.citrix.ReceiverHelper"
+    echo "sudo /bin/launchctl $1 ${prefix}com.citrix.AuthManager_Mac"
+    sudo /bin/launchctl $1 ${prefix}com.citrix.ServiceRecords
+    sudo /bin/launchctl $1 ${prefix}com.citrix.ReceiverHelper
+    sudo /bin/launchctl $1 ${prefix}com.citrix.AuthManager_Mac
+  fi
+}
 # vim: ft=sh
