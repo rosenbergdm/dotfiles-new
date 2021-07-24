@@ -206,6 +206,10 @@ $if mode=vi
   $endif
   $if R
     Space: " "
+  $endif
+  $if psql
+    Space: " "
+  $endif
   "\e[A": history-search-backward
   "\e[B": history-search-forward
   "\C-r": re-read-init-file

@@ -43,3 +43,5 @@ git config --global merge.tool vimdiff && git config --global merge.conflictstyl
 # if [[ ${STARTUP_SOURCED[*]} =~ (^|[[:space:]])"$($BASENAME "$cmdfile")"($|[[:space:]]) ]]; then
 /Users/davidrosenberg/Library/Android/sdk/emulator/emulator @Pixel_3a_API_30_x86
 gpg --encrypt --sign --armor -r RECIPIENT@EXAMPLE.COM FILENAME
+convert +append image1.jpg image2.jpg  -resize x650 combined.jpg
+ pbpaste | grep -B1 -A1 Gleason | grep -v volume | sed -e 's/.*grade \(.*\) (Gr.*/\1/g' |  sed -e 's/.).*Prostate, \(.*\)\;.*$/\1/g' | sed -e 's/-.*\([0-9] of [0-9]\).*/\1/g' | grep -v -
