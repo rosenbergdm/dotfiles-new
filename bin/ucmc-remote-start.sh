@@ -95,6 +95,15 @@ error() {
 #{{{ docopt parsing of commandline
 source $(which docopts.sh) --auto "$@"
 if [ -z $1 ];then 
+  printf "Starting '%s'...." "/Applications/Citrix Workspace.app"
+  sleep 10
+  if $(ps -ef | grep 'Citrix Workspace.app' >/dev/null 2>&1); then
+    printf "OK!\n\n\n"
+  else
+    printf "ERROR!\n\n\n"
+    exit 1
+  fi
+
   printf "Starting '%s'...." "$HOME/Applications/Live_.app"
   open "$HOME/Applications/Live_.app"
   if [ "$?" -eq 0 ]; then 
@@ -103,17 +112,18 @@ if [ -z $1 ];then
     printf "ERROR!\n\n\n"
     exit 2
   fi
+
   printf "Starting '%s'...." "$HOME/Applications/Home 3.app"
   open "$HOME/Applications/Home 3.app"
   if [ "$?" -eq 0 ]; then 
     printf "OK!\n\n\n"
   else 
     printf "ERROR!\n\n\n"
-    exit 2
+    exit 3
   fi
 else
   docopts_get_help_string $0
-  exit 3
+  exit 4
 fi
 
 # vim: ft=sh:

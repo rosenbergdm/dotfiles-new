@@ -18,9 +18,10 @@ if [ -a $HOME/FAST_STARTUP ]; then
     file_fast_startup=$(cat $HOME/FAST_STARTUP)
   fi
 fi
-export FAST_STARTUP=${FAST_STARTUP-${file_dbg_startup-0}}
-
-
+export FAST_STARTUP=${FAST_STARTUP-${file_fast_startup-0}}
+if [ $FAST_STARTUP -gt 0 ]; then
+  printf "%s\n\n" "Fast startup enabled"
+fi
 
 
 [[ "$DEBUG_STARTUP" -gt 0 ]] && echo "Executing $HOME/.bashrc from the top" 1>&2
@@ -30,6 +31,7 @@ declare -a STARTUP_SOURCED=( )
 declare -a MY_FUNCTIONS=( )
 STARTUP_SOURCED+=("$HOME/bashrc")
 source $HOME/.commands
+# This is where we get "$PRINTF", etc
 STARTUP_SOURCED+=( $HOME/.commands )
 declare -A thresholds=( [4]="4" [3]="3" [2]="2" [1]="1" [0]="0"\
   [trace]="4" [info]="3" [warn]="2" [error]="1" [always]="0" )
@@ -39,6 +41,30 @@ export STARTUP_SOURCED
 
 # debug messaging {{{
 _dbg() {
+    _usage="
+    cat<<-EOF
+    USAGE: _dbg MESSAGE [level] [-n]
+
+      MESSAGE:    The debugging message you want displayed
+      level:      One of the threshold levels or its corresponding integer: 
+                    4, 3, 2, 1 and 0, and trace, info, warn, error, always.
+      [-n]:       Don't print a trailing newline
+
+
+    $ > _dbg 'TESTING' always
+    TESTING
+
+  "
+  if [ -z "$1" ]; then
+    gprintf "%s\n" "$_usage"
+    return 1
+  elif [ ! -z "$2" ]; then
+    if [ -z "${thresholds[$2]}" ]; then
+      echo "ERROR: level doesn't correspond to a correct level"
+      gprintf "%s\n" "$_usage"
+    fi
+  fi
+
   local thresh=${thresholds["${2:-1}"]}
   if [ ! -z $3 ] && [[ ${3-0} == -n ]]; then
     local newline=''
@@ -47,9 +73,10 @@ _dbg() {
   fi
 
   if [ "${DEBUG_STARTUP-0}" -ge $thresh ]; then
-    $PRINTF "%s$newline" "$1"
+    gprintf "%s$newline" "$1"
   fi
 }
+
 MY_FUNCTIONS+=( _dbg )
 
 set_debug () {
@@ -105,21 +132,24 @@ done
 
 
 # For bash_completion@2
-if [ -f /usr/local/etc/profile.d/bash_completion.sh ]; then
-  # This will end up sourcing "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion"
-  # Then it will read from the following dirs for commands of the form 'cmd', 'cmd.bash' or '_cmd':
-  #   ${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions
-  #   ${XDG_DATA_DIRS:-/usr/local/share:/usr/share}/*/bash-completion/completions
-  #   ${BASH_SOURCE%/}/completions (for scripts) or ./completions (for not being in a script)
-  # For each of these it will load the completion when the command is required
-  # TLDR
-  #   Dynamically loaded completions go in  $HOME/.local/share/bash-completion/completions
-  #   Eagerly loaded completions should be loaded by $HOME/.config/bash/completion
-  #   In the end completions stored in $HOME/.bash_completion will be executed
-  source_and_log /usr/local/etc/profile.d/bash_completion.sh
+if [[ $FAST_STARTUP == 0 ]]; then
+  [[ $DEBUG_STARTUP -gt 0 ]] && gprintf "%s\n" "Not fast, loading completions" 
+  if [ -f /usr/local/etc/profile.d/bash_completion.sh ]; then
+    # This will end up sourcing "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion"
+    # Then it will read from the following dirs for commands of the form 'cmd', 'cmd.bash' or '_cmd':
+    #   ${BASH_COMPLETION_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion}/completions
+    #   ${XDG_DATA_DIRS:-/usr/local/share:/usr/share}/*/bash-completion/completions
+    #   ${BASH_SOURCE%/}/completions (for scripts) or ./completions (for not being in a script)
+    # For each of these it will load the completion when the command is required
+    # TLDR
+    #   Dynamically loaded completions go in  $HOME/.local/share/bash-completion/completions
+    #   Eagerly loaded completions should be loaded by $HOME/.config/bash/completion
+    #   In the end completions stored in $HOME/.bash_completion will be executed
+    source_and_log /usr/local/etc/profile.d/bash_completion.sh
+  fi
 fi
 
-if [ ! $FAST_STARTUP -gt 0 ]; then
+if [[ $FAST_STARTUP == 0 ]]; then
   source_and_log $HOME/.extra
   [ -f ~/.fzf.bash ] && source_and_log ~/.fzf.bash
 else
