@@ -2,6 +2,18 @@
 # shellcheck disable=SC1090
 # SC1090: Not all references will be resolvable
 
+
+# set -E
+# set -o functrace
+shopt -s autocd
+
+set_iterm_title() {
+  if [[ "${TERM_PROGRAM}p" == "iTerm.appp" ]]; then
+     echo -ne "\033]0;$*\007"
+  fi
+}
+
+
 if [ -a $HOME/DEBUG_STARTUP ]; then
   if [[ "$(cat $HOME/DEBUG_STARTUP)" == "" ]]; then
     file_dbg_startup=1
@@ -11,18 +23,30 @@ if [ -a $HOME/DEBUG_STARTUP ]; then
 fi
 export DEBUG_STARTUP=${DEBUG_STARTUP-${file_dbg_startup-0}}
 
+export FAST_STARTUP=${FAST_STARTUP-0}
 if [ -a $HOME/FAST_STARTUP ]; then
-  if [[ "$(cat $HOME/FAST_STARTUP)" == "" ]]; then
+  printf "%s\n\n" "Fast startup enabled by file '$HOME/FAST_STARTUP'"
+  if [[ "$(cat $HOME/FAST_STARTUP | head -n1)" == "" ]]; then
     file_fast_startup=1
   else
-    file_fast_startup=$(cat $HOME/FAST_STARTUP)
+    file_fast_startup=$(cat $HOME/FAST_STARTUP | head -n1)
+  fi
+  FAST_STARTUP=$file_fast_startup
+elif [ ${FAST_STARTUP-0} -gt 0 ]; then
+  printf "%s\n\n" "Fast startup enabled by file '$HOME/FAST_STARTUP'"
+else
+  read -n1 -t0.1 -s _startfast || true
+  if [[ "$_startfast" == "f" ]] || [[ "$_startfast" == "F" ]]; then
+    printf "%s\n\n" "Fast starup enabled by keypress"
+    FAST_STARTUP=1
   fi
 fi
-export FAST_STARTUP=${FAST_STARTUP-${file_fast_startup-0}}
-if [ $FAST_STARTUP -gt 0 ]; then
-  printf "%s\n\n" "Fast startup enabled"
-fi
+export FAST_STARTUP
 
+# export FAST_STARTUP=${FAST_STARTUP-${file_fast_startup-0}}
+# if [ $FAST_STARTUP -gt 0 ]; then
+#   printf "%s\n\n" "Fast startup enabled"
+# fi
 
 [[ "$DEBUG_STARTUP" -gt 0 ]] && echo "Executing $HOME/.bashrc from the top" 1>&2
 export BASHRC_RUN=1
@@ -30,6 +54,7 @@ export BASHRC_RUN=1
 declare -a STARTUP_SOURCED=( )
 declare -a MY_FUNCTIONS=( )
 STARTUP_SOURCED+=("$HOME/bashrc")
+set_iterm_title "Loading '$HOME/.commands'"
 source $HOME/.commands
 # This is where we get "$PRINTF", etc
 STARTUP_SOURCED+=( $HOME/.commands )
@@ -66,7 +91,7 @@ _dbg() {
   fi
 
   local thresh=${thresholds["${2:-1}"]}
-  if [ ! -z $3 ] && [[ ${3-0} == -n ]]; then
+  if [[ "${3}p" == "p" ]] && [[ ${3-0} == "-n" ]]; then
     local newline=''
   else
     local newline='\n'
@@ -90,6 +115,7 @@ source_and_log() {
   local cmdfile="$1"
   local status=1
   local completionfile=${2-THISIS_NOT_A_FILE}
+  set_iterm_title "Running '$cmdfile'"
   _dbg "Attempting to load '$cmdfile'..." error -n
   if [ -e "$cmdfile" ]; then
     if [[ ${STARTUP_SOURCED[*]} =~ (^|[[:space:]])"$($BASENAME "$cmdfile")"($|[[:space:]]) ]]; then
@@ -103,6 +129,7 @@ source_and_log() {
         _dbg " Success."
         STARTUP_SOURCED+=( $($BASENAME "$cmdfile") )
         if [ -e $completionfile ]; then
+          set_iterm_title "Loading completions for '$completionfile'"
           source "$completionfile"
           if [ $? -gt 0 ]; then
             _dbg "Attempting to load completions '$completionfile'... FAIL.  Error loading" error
@@ -117,6 +144,7 @@ source_and_log() {
   else
     _dbg " FAIL.  File does not exist."
   fi
+  set_iterm_title "bash"
   return $status
 }
 MY_FUNCTIONS+=( source_and_log )
@@ -133,7 +161,7 @@ done
 
 # For bash_completion@2
 if [[ $FAST_STARTUP == 0 ]]; then
-  [[ $DEBUG_STARTUP -gt 0 ]] && gprintf "%s\n" "Not fast, loading completions" 
+  set_iterm_title "Loading completions"
   if [ -f /usr/local/etc/profile.d/bash_completion.sh ]; then
     # This will end up sourcing "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion"
     # Then it will read from the following dirs for commands of the form 'cmd', 'cmd.bash' or '_cmd':
@@ -147,7 +175,9 @@ if [[ $FAST_STARTUP == 0 ]]; then
     #   In the end completions stored in $HOME/.bash_completion will be executed
     source_and_log /usr/local/etc/profile.d/bash_completion.sh
   fi
+  set_iterm_title "bash"
 fi
+
 
 if [[ $FAST_STARTUP == 0 ]]; then
   source_and_log $HOME/.extra

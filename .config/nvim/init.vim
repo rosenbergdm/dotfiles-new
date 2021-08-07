@@ -87,6 +87,9 @@ if dein#load_state('~/.cache/dein')
   "Go
   call dein#add('fatih/vim-go', {'do': ':GoUpdateBinaries' })
 
+  "Cisco
+  call dein#add('momata/cisco.vim')
+
   " Plugin Finalization
   call dein#end()
   call dein#save_state()
