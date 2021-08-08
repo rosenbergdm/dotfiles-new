@@ -1,0 +1,9 @@
+#!/bin/sh
+
+
+/usr/local/bin/alacritty -e /Users/davidrosenberg/bin/nvim_standalone $* 
+
+
+
+
+# vim: set ft=sh :

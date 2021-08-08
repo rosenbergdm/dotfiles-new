@@ -43,11 +43,6 @@ else
 fi
 export FAST_STARTUP
 
-# export FAST_STARTUP=${FAST_STARTUP-${file_fast_startup-0}}
-# if [ $FAST_STARTUP -gt 0 ]; then
-#   printf "%s\n\n" "Fast startup enabled"
-# fi
-
 [[ "$DEBUG_STARTUP" -gt 0 ]] && echo "Executing $HOME/.bashrc from the top" 1>&2
 export BASHRC_RUN=1
 
