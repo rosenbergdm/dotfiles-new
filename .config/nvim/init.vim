@@ -90,6 +90,9 @@ if dein#load_state('~/.cache/dein')
   "Cisco
   call dein#add('momata/cisco.vim')
 
+  "Firefox integration
+  call dein#add('glacambre/firenvim', { 'hook_post_update': 'firenvim#install(0)' })
+
   " Plugin Finalization
   call dein#end()
   call dein#save_state()
@@ -145,7 +148,7 @@ set cmdheight=2
 set signcolumn=yes
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-set viewoptions
+" set viewoptions
 set showmode
 set cursorline
 set incsearch
@@ -158,7 +161,7 @@ set swapfile
 set directory^=~/.config/nvim/swap//
 set writebackup
 set nobackup
-set backupcopy
+"set backupcopy
 set backupdir^=~/.config/nvim/backup//
 let mapleader=','
 set pyxversion=3
