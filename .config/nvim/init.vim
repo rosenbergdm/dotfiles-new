@@ -198,6 +198,25 @@ function! s:show_documentation()
   endif
 endfunction
 
+
+" Tell firenvim not to take control unless we ask by pressing <C-e>
+let g:firenvim_config = {  'localSettings': { '.*': { 'takeover': 'never' } } }
+
+"let g:firenvim_config = {
+"    \ 'globalSettings': {
+"    \ 'alt': 'all',
+"    \  },
+    " \ 'localSettings': {
+    "     \ '.*': {
+    "         \ 'cmdline': 'neovim',
+    "         \ 'content': 'text',
+    "         \ 'priority': 0,
+    "         \ 'selector': 'textarea',
+    "         \ 'takeover': 'always',
+    "     \ },
+    " \ }
+" \ }
+
 "}}}
 
 "{{{ Key mappings
