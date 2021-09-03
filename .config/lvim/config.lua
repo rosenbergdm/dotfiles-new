@@ -4,7 +4,8 @@
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "onedarker"
+-- lvim.colorscheme = "onedarker"
+lvim.colorscheme = "spacegray"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -89,6 +90,13 @@ lvim.lang.python.formatters = {
 lvim.lang.python.linters = {
   {
     exe = "flake8",
+    args = {},
+  },
+}
+
+lvim.lang.sh.linters = {
+  {
+    exe = "/usr/local/bin/shellcheck",
     args = {},
   },
 }
