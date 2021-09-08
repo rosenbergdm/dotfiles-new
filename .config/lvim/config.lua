@@ -5,11 +5,49 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.lint_on_save = true
 lvim.colorscheme = "onedarker"
+-- lvim.colorscheme = "spacegray"
+
+-- options 
+local M = {}
+M.load_options = function() 
+  local LVIM_CACHE_DIR = os.getenv("HOME") .. "/.cache/lvim"
+  local myopts = {
+    completeopt = { "menuone", "noselect" },
+    autochdir = true,
+    backupdir = LVIM_CACHE_DIR .. "/backup",
+    undodir = LVIM_CACHE_DIR .. "/undo", -- set an undo directory
+    undofile = true, -- enable persistent undo
+    directory = LVIM_CACHE_DIR .. "/swap",
+    writebackup = true, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+    spell = true,
+  }
+  vim.cmd "set wildmode=longest,list"
+  vim.cmd "set wildignore+=*/.idea/*"
+  vim.cmd "set wildignore+=*/.git/*"
+  vim.cmd "set wildignore+=*/.svn/*"
+  vim.cmd "set wildignore+=*/vendor/*"
+  vim.cmd "set wildignore+=*/node_modules/*"
+  vim.cmd "set wildmode=longest,list"
+
+  for k, v in pairs(myopts) do
+    vim.opt[k] = v
+  end
+end
+
+M.load_options()
+
+lvim.puts = function (varname) 
+  print(vim.inspect(varname))
+end
+
+
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode[";"] = ":"
+lvim.keys.normal_mode["<C-t>"] = ":NvimTreeToggle<CR>"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
@@ -30,15 +68,15 @@ end
 
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["t"] = {
-  name = "+Trouble",
-  r = { "<cmd>Trouble lsp_references<cr>", "References" },
-  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-  d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnosticss" },
-  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-  w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
-}
+-- lvim.builtin.which_key.mappings["t"] = {
+--   name = "+Trouble",
+--   r = { "<cmd>Trouble lsp_references<cr>", "References" },
+--   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
+--   d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnosticss" },
+--   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+--   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
+--   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
+-- }
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -55,13 +93,13 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
 -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
-lvim.lsp.on_attach_callback = function(client, bufnr)
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-end
+-- lvim.lsp.on_attach_callback = function(client, bufnr)
+--   local function buf_set_option(...)
+--     vim.api.nvim_buf_set_option(bufnr, ...)
+--   end
+--   --Enable completion triggered by <c-x><c-o>
+--   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+-- end
 -- you can overwrite the null_ls setup table (useful for setting the root_dir function)
 -- lvim.lsp.null_ls.setup = {
 --   root_dir = require("lspconfig").util.root_pattern("Makefile", ".git", "node_modules"),
@@ -79,30 +117,51 @@ end
 -- end
 
 -- set a formatter if you want to override the default lsp one (if it exists)
-lvim.lang.python.formatters = {
-  {
-    exe = "black",
-    args = {},
-  },
-}
+-- lvim.lang.python.formatters = {
+--   {
+--     exe = "black",
+--     args = {},
+--   },
+-- }
 -- set an additional linter
-lvim.lang.python.linters = {
+-- lvim.lang.python.linters = {
+--   {
+--     exe = "flake8",
+--     args = {},
+--   },
+-- }
+
+-- lvim.lang.lua.linters = {
+--   {
+--     exe = "stylua",
+--     args = {},
+--   }
+-- }
+
+lvim.lang.sh.formatters = {
   {
-    exe = "flake8",
+    exe = "shfmt",
     args = {},
-  },
+  }
 }
 
+lvim.lang.sh.linters = {
+  {
+    exe = "shellcheck",
+    args = {},
+  },
+}
+-- 
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/tokyonight.nvim" },
-  {
-    "ray-x/lsp_signature.nvim",
-    config = function()
-      require("lsp_signature").on_attach()
-    end,
-    event = "InsertEnter",
-  }
+  { "folke/tokyonight.nvim" }
+--   {
+--     "ray-x/lsp_signature.nvim",
+--     config = function()
+--       require("lsp_signature").on_attach()
+--     end,
+--     event = "InsertEnter",
+--   }
   -- },
   -- {
   -- 	    "ackyshake/Spacegray.vim",
@@ -112,8 +171,8 @@ lvim.plugins = {
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
-lvim.autocommands.custom_groups = {
-  { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
-}
+-- lvim.autocommands.custom_groups = {
+--   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
+-- }
 
 -- vim: ft=lua
