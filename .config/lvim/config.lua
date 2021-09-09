@@ -1,5 +1,3 @@
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
@@ -7,48 +5,41 @@ lvim.lint_on_save = false
 -- lvim.colorscheme = "onedarker"
 lvim.colorscheme = "tokyonight"
 
-
 -- options
 local M = {}
 M.load_options = function()
-  local LVIM_CACHE_DIR = os.getenv("HOME") .. "/.cache/lvim"
-  local myopts = {
-    completeopt = { "menuone", "noselect" },
-    autochdir = true,
-    backupdir = LVIM_CACHE_DIR .. "/backup",
-    undodir = LVIM_CACHE_DIR .. "/undo", -- set an undo directory
-    undofile = true, -- enable persistent undo
-    directory = LVIM_CACHE_DIR .. "/swap",
-    writebackup = true, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-    spell = true,
-  }
-  vim.cmd "set wildmode=longest,list"
-  vim.cmd "set wildignore+=*/.idea/*"
-  vim.cmd "set wildignore+=*/.git/*"
-  vim.cmd "set wildignore+=*/.svn/*"
-  vim.cmd "set wildignore+=*/vendor/*"
-  vim.cmd "set wildignore+=*/node_modules/*"
-  vim.cmd "set wildmode=longest,list"
+    local LVIM_CACHE_DIR = os.getenv("HOME") .. "/.cache/lvim"
+    local myopts = {
+        completeopt = {"menuone", "noselect"},
+        autochdir = true,
+        backupdir = LVIM_CACHE_DIR .. "/backup",
+        undodir = LVIM_CACHE_DIR .. "/undo", -- set an undo directory
+        undofile = true, -- enable persistent undo
+        directory = LVIM_CACHE_DIR .. "/swap",
+        writebackup = true, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+        spell = true
+    }
+    vim.cmd "set wildmode=longest,list"
+    vim.cmd "set wildignore+=*/.idea/*"
+    vim.cmd "set wildignore+=*/.git/*"
+    vim.cmd "set wildignore+=*/.svn/*"
+    vim.cmd "set wildignore+=*/vendor/*"
+    vim.cmd "set wildignore+=*/node_modules/*"
+    vim.cmd "set wildmode=longest,list"
 
-  for k, v in pairs(myopts) do
-    vim.opt[k] = v
-  end
+    for k, v in pairs(myopts) do vim.opt[k] = v end
 end
 
 M.load_options()
 
-lvim.puts = function (varname)
-  print(vim.inspect(varname))
-end
-
-
+lvim.puts = function(varname) print(vim.inspect(varname)) end
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode[";"] = ":"
-lvim.keys.normal_mode["<C-t>"] = ":NvimTreeToggle<CR>"
+lvim.keys.normal_mode[",nt"] = ":NvimTreeToggle<CR>"
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
@@ -56,28 +47,36 @@ lvim.keys.normal_mode["<C-t>"] = ":NvimTreeToggle<CR>"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 lvim.builtin.telescope.on_config_done = function()
-  local actions = require "telescope.actions"
-  -- for input mode
-  lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
-  lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
-  lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
-  lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
-  -- for normal mode
-  lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = actions.move_selection_next
-  lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
+    local actions = require "telescope.actions"
+    -- for input mode
+    lvim.builtin.telescope.defaults.mappings.i["<C-j>"] =
+        actions.move_selection_next
+    lvim.builtin.telescope.defaults.mappings.i["<C-k>"] =
+        actions.move_selection_previous
+    lvim.builtin.telescope.defaults.mappings.i["<C-n>"] =
+        actions.cycle_history_next
+    lvim.builtin.telescope.defaults.mappings.i["<C-p>"] =
+        actions.cycle_history_prev
+    -- for normal mode
+    lvim.builtin.telescope.defaults.mappings.n["<C-j>"] =
+        actions.move_selection_next
+    lvim.builtin.telescope.defaults.mappings.n["<C-k>"] =
+        actions.move_selection_previous
 end
 
 -- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+Trouble",
---   r = { "<cmd>Trouble lsp_references<cr>", "References" },
---   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
---   d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnosticss" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
---   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
---   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss" },
--- }
+lvim.builtin.which_key.mappings["P"] = {
+    "<cmd>Telescope projects<CR>", "Projects"
+}
+lvim.builtin.which_key.mappings["t"] = {
+    name = "+Trouble",
+    r = {"<cmd>Trouble lsp_references<cr>", "References"},
+    f = {"<cmd>Trouble lsp_definitions<cr>", "Definitions"},
+    d = {"<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnosticss"},
+    q = {"<cmd>Trouble quickfix<cr>", "QuickFix"},
+    l = {"<cmd>Trouble loclist<cr>", "LocationList"},
+    w = {"<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnosticss"}
+}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -87,9 +86,9 @@ lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
 
 -- if you don't want all the parsers change this to a table of the ones you want
--- lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.ensure_installed = "maintained"
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
--- lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.highlight.enabled = false
 
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
@@ -118,61 +117,36 @@ lvim.builtin.nvimtree.show_icons.git = 1
 -- end
 
 -- set a formatter if you want to override the default lsp one (if it exists)
--- lvim.lang.python.formatters = {
---   {
---     exe = "black",
---     args = {},
---   },
--- }
--- set an additional linter
--- lvim.lang.python.linters = {
---   {
---     exe = "flake8",
---     args = {},
---   },
--- }
+lvim.lang.python.formatters = {{exe = "black", args = {}}}
+lvim.lang.python.linters = {{exe = "flake8", args = {}}}
 
 lvim.lang.lua.formatters = {
-  {
-    exe = "stylua",
-    args = { "-s", "-"},
-  }
+    {
+        exe = "lua_format"
+        -- args = { "-s", "-"},
+    }
 }
+lvim.lang.lua.linters = {{exe = "luacheck"}}
+lvim.lang.sh.formatters = {{exe = "shfmt", args = {}}}
 
--- lvim.lang.sh.formatters = {
---   {
---     exe = "shfmt",
---     args = {},
---   }
--- }
-
--- lvim.lang.sh.linters = {
---   {
---     exe = "shellcheck",
---     args = {},
---   },
--- }
+lvim.lang.sh.linters = {{exe = "shellcheck", args = {}}}
 -- --
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/tokyonight.nvim" },
-  {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  },
---   {
---     "ray-x/lsp_signature.nvim",
---     config = function()
---       require("lsp_signature").on_attach()
---     end,
---     event = "InsertEnter",
---   }
-  -- },
-  -- {
-  -- 	    "ackyshake/Spacegray.vim",
-  --	    config = function() vim.cmd "Spacegray.vim".on_attach() end,
-  --     	    event = "InsertEnter"
-  -- },
+    {"folke/tokyonight.nvim"}, {"folke/trouble.nvim", cmd = "TroubleToggle"}
+    --   {
+    --     "ray-x/lsp_signature.nvim",
+    --     config = function()
+    --       require("lsp_signature").on_attach()
+    --     end,
+    --     event = "InsertEnter",
+    --   }
+    -- },
+    -- {
+    -- 	    "ackyshake/Spacegray.vim",
+    --	    config = function() vim.cmd "Spacegray.vim".on_attach() end,
+    --     	    event = "InsertEnter"
+    -- },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

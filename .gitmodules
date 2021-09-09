@@ -1,0 +1,3 @@
+[submodule "/Users/davidrosenberg/.config/nvim.ch"]
+	path = /Users/davidrosenberg/.config/nvim.ch
+	url = git@github.com:NvChad/NvChad.git
