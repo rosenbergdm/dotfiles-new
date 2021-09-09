@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/Users/davidrosenberg/src/ro-tools/scripts'
+let g:netrw_dirhist_0='/Users/davidrosenberg/.local/share/lunarvim/lvim/lua'
+let g:netrw_dirhist_9='/Users/davidrosenberg/.local/share/lunarvim/lvim'
+let g:netrw_dirhist_8='/Users/davidrosenberg/.local/share/lunarvim'
+let g:netrw_dirhist_7='/Users/davidrosenberg/.local/share/lunarvim/site'
+let g:netrw_dirhist_6='/Users/davidrosenberg/.local/share/lunarvim/site/pack'
+let g:netrw_dirhist_5='/Users/davidrosenberg/.local/share/lunarvim/site/pack/packer'
+let g:netrw_dirhist_4='/Users/davidrosenberg/.local/share/lunarvim/site/pack/packer/start'
+let g:netrw_dirhist_3='/Users/davidrosenberg/.local/share/lunarvim/site/pack/packer/start/packer.nvim'
+let g:netrw_dirhist_2='/Users/davidrosenberg/.local/share/lunarvim/lvim/lua'

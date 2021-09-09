@@ -1,0 +1,291 @@
+[20:00:19.714][info] [#0:/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/main.lua:44]: Lua Lsp startup, root: 	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server
+[20:00:19.715][debug][#0:/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/main.lua:45]: ROOT:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server
+[20:00:19.715][debug][#0:/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/main.lua:46]: LOGPATH:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/log
+[20:00:19.715][debug][#0:/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/main.lua:47]: METAPATH:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta
+[20:00:19.716][debug][#0:/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/main.lua:48]: VERSION:	2.3.6
+[20:00:19.721][info] [#0:script/service/telemetry.lua:21]: Telemetry Token:	4CF7DFFBA630E2A9
+[20:00:19.770][info] [#0:script/pub/pub.lua:48]: Create brave:	1
+[20:00:19.770][info] [#0:script/pub/pub.lua:48]: Create brave:	2
+[20:00:19.770][info] [#0:script/pub/pub.lua:48]: Create brave:	3
+[20:00:19.770][info] [#0:script/pub/pub.lua:48]: Create brave:	4
+[20:00:19.770][debug][#0:script/service/service.lua:137]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 1.133 MB
+        # 00 : 1.133 MB
+        # 01 : 0.000 MB
+        # 02 : 0.000 MB
+        # 03 : 0.000 MB
+        # 04 : 0.000 MB
+    --------------- Coroutine ---------------
+        Total:     0
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      0
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    --------------- Proto ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[20:00:19.900][debug][#0:script/client.lua:209]: Client init	{
+    capabilities = {
+        callHierarchy = {
+            dynamicRegistration = false,
+        },
+        textDocument = {
+            codeAction = {
+                codeActionLiteralSupport = {
+                    codeActionKind = {
+                        valueSet = {
+                            [01] = "",
+                            [02] = "Empty",
+                            [03] = "QuickFix",
+                            [04] = "Refactor",
+                            [05] = "RefactorExtract",
+                            [06] = "RefactorInline",
+                            [07] = "RefactorRewrite",
+                            [08] = "Source",
+                            [09] = "SourceOrganizeImports",
+                            [10] = "quickfix",
+                            [11] = "refactor",
+                            [12] = "refactor.extract",
+                            [13] = "refactor.inline",
+                            [14] = "refactor.rewrite",
+                            [15] = "source",
+                            [16] = "source.organizeImports",
+                        },
+                    },
+                },
+                dynamicRegistration = false,
+            },
+            completion = {
+                completionItem = {
+                    commitCharactersSupport = true,
+                    deprecatedSupport = true,
+                    documentationFormat = {
+                        [1] = "markdown",
+                        [2] = "plaintext",
+                    },
+                    insertReplaceSupport = true,
+                    labelDetailsSupport = true,
+                    preselectSupport = true,
+                    resolveSupport = {
+                        properties = {
+                            [1] = "documentation",
+                            [2] = "detail",
+                            [3] = "additionalTextEdits",
+                        },
+                    },
+                    snippetSupport = true,
+                    tagSupport = {
+                        valueSet = {
+                            [1] = 1,
+                        },
+                    },
+                },
+                completionItemKind = {
+                    valueSet = {
+                        [01] = 1,
+                        [02] = 2,
+                        [03] = 3,
+                        [04] = 4,
+                        [05] = 5,
+                        [06] = 6,
+                        [07] = 7,
+                        [08] = 8,
+                        [09] = 9,
+                        [10] = 10,
+                        [11] = 11,
+                        [12] = 12,
+                        [13] = 13,
+                        [14] = 14,
+                        [15] = 15,
+                        [16] = 16,
+                        [17] = 17,
+                        [18] = 18,
+                        [19] = 19,
+                        [20] = 20,
+                        [21] = 21,
+                        [22] = 22,
+                        [23] = 23,
+                        [24] = 24,
+                        [25] = 25,
+                    },
+                },
+                contextSupport = false,
+                dynamicRegistration = false,
+            },
+            declaration = {
+                linkSupport = true,
+            },
+            definition = {
+                linkSupport = true,
+            },
+            documentHighlight = {
+                dynamicRegistration = false,
+            },
+            documentSymbol = {
+                dynamicRegistration = false,
+                hierarchicalDocumentSymbolSupport = true,
+                symbolKind = {
+                    valueSet = {
+                        [01] = 1,
+                        [02] = 2,
+                        [03] = 3,
+                        [04] = 4,
+                        [05] = 5,
+                        [06] = 6,
+                        [07] = 7,
+                        [08] = 8,
+                        [09] = 9,
+                        [10] = 10,
+                        [11] = 11,
+                        [12] = 12,
+                        [13] = 13,
+                        [14] = 14,
+                        [15] = 15,
+                        [16] = 16,
+                        [17] = 17,
+                        [18] = 18,
+                        [19] = 19,
+                        [20] = 20,
+                        [21] = 21,
+                        [22] = 22,
+                        [23] = 23,
+                        [24] = 24,
+                        [25] = 25,
+                        [26] = 26,
+                    },
+                },
+            },
+            hover = {
+                contentFormat = {
+                    [1] = "markdown",
+                    [2] = "plaintext",
+                },
+                dynamicRegistration = false,
+            },
+            implementation = {
+                linkSupport = true,
+            },
+            publishDiagnostics = {
+                relatedInformation = true,
+                tagSupport = {
+                    valueSet = {
+                        [1] = 1,
+                        [2] = 2,
+                    },
+                },
+            },
+            references = {
+                dynamicRegistration = false,
+            },
+            rename = {
+                dynamicRegistration = false,
+                prepareSupport = true,
+            },
+            signatureHelp = {
+                dynamicRegistration = false,
+                signatureInformation = {
+                    activeParameterSupport = true,
+                    documentationFormat = {
+                        [1] = "markdown",
+                        [2] = "plaintext",
+                    },
+                    parameterInformation = {
+                        labelOffsetSupport = true,
+                    },
+                },
+            },
+            synchronization = {
+                didSave = true,
+                dynamicRegistration = false,
+                willSave = false,
+                willSaveWaitUntil = false,
+            },
+            typeDefinition = {
+                linkSupport = true,
+            },
+        },
+        window = {
+            showDocument = {
+                support = false,
+            },
+            showMessage = {
+                messageActionItem = {
+                    additionalPropertiesSupport = false,
+                },
+            },
+            workDoneProgress = true,
+        },
+        workspace = {
+            applyEdit = true,
+            configuration = true,
+            symbol = {
+                dynamicRegistration = false,
+                hierarchicalWorkspaceSymbolSupport = true,
+                symbolKind = {
+                    valueSet = {
+                        [01] = 1,
+                        [02] = 2,
+                        [03] = 3,
+                        [04] = 4,
+                        [05] = 5,
+                        [06] = 6,
+                        [07] = 7,
+                        [08] = 8,
+                        [09] = 9,
+                        [10] = 10,
+                        [11] = 11,
+                        [12] = 12,
+                        [13] = 13,
+                        [14] = 14,
+                        [15] = 15,
+                        [16] = 16,
+                        [17] = 17,
+                        [18] = 18,
+                        [19] = 19,
+                        [20] = 20,
+                        [21] = 21,
+                        [22] = 22,
+                        [23] = 23,
+                        [24] = 24,
+                        [25] = 25,
+                        [26] = 26,
+                    },
+                },
+            },
+            workspaceEdit = {
+                resourceOperations = {
+                    [1] = "rename",
+                    [2] = "create",
+                    [3] = "delete",
+                },
+            },
+            workspaceFolders = true,
+        },
+    },
+    clientInfo = {
+        name = "Neovim",
+        version = "0.6.0",
+    },
+    initializationOptions = {
+    },
+    processId = 55253,
+    rootPath = "/Users/davidrosenberg/.config/lvim",
+    rootUri = "file:///Users/davidrosenberg/.config/lvim",
+    trace = "off",
+    workspaceFolders = {
+        [1] = {
+            name = "/Users/davidrosenberg/.config/lvim",
+            uri = "file:///Users/davidrosenberg/.config/lvim",
+        },
+    },
+}
+[20:00:19.900][info] [#0:script/language.lua:135]: VSC language: nil
+[20:00:19.900][info] [#0:script/language.lua:136]: LS  language: en-us
+[20:00:19.901][info] [#0:script/workspace/workspace.lua:34]: Workspace inited: 	file:///Users/davidrosenberg/.config/lvim
+[20:00:19.902][info] [#0:script/workspace/workspace.lua:43]: Log path: 	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/log/file_Users_davidrosenberg_.config_lvim.log

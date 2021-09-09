@@ -1,0 +1,104 @@
+================================================================================
+template haskell: quasiquotes
+================================================================================
+
+f =
+  [|body|]
+  [quoter|body|]
+  [quoter|body|with|bars
+and newline|]
+
+---
+
+(haskell
+ (function
+  (variable)
+  (exp_apply
+   (quasiquote (quasiquote_body))
+   (quasiquote (quoter) (quasiquote_body))
+   (quasiquote (quoter) (quasiquote_body)))))
+
+================================================================================
+template haskell: top level splice with parens
+================================================================================
+
+$(a ''Aa)
+$(a ''A.Aa)
+
+---
+
+(haskell
+ (top_splice (splice (exp_parens (exp_apply (exp_name (variable)) (exp_th_quoted_name (type_name (type)))))))
+ (top_splice
+  (splice
+   (exp_parens
+    (exp_apply
+     (exp_name (variable))
+     (exp_th_quoted_name (type_name (qualified_type (module) (type)))))))))
+
+================================================================================
+template haskell: inline splice variable
+================================================================================
+
+f = $a
+
+---
+
+(haskell (function (variable) (splice (exp_name (variable)))))
+
+================================================================================
+template haskell: inline splice parens
+================================================================================
+
+f = $(a . a $ a)
+
+---
+
+(haskell
+ (function
+  (variable)
+  (splice
+   (exp_parens
+    (exp_infix
+     (exp_infix (exp_name (variable)) (operator) (exp_name (variable)))
+     (operator)
+     (exp_name (variable)))))))
+
+================================================================================
+template haskell: inline splice double
+================================================================================
+
+a = $$a
+a = $$(a)
+
+---
+
+(haskell
+ (function (variable) (splice (exp_name (variable))))
+ (function (variable) (splice (exp_parens (exp_name (variable))))))
+
+================================================================================
+template haskell: inline splice in function application
+================================================================================
+
+a = a $(a)
+
+---
+
+(haskell
+ (function
+  (variable)
+  (exp_apply (exp_name (variable)) (splice (exp_parens (exp_name (variable)))))))
+
+================================================================================
+template haskell: top level splice without parens
+================================================================================
+
+derive ''Aa
+derive [''Aa]
+
+---
+
+(haskell
+ (top_splice (exp_apply (exp_name (variable)) (exp_th_quoted_name (type_name (type)))))
+ (top_splice (exp_apply (exp_name (variable)) (exp_list (exp_th_quoted_name (type_name (type)))))))

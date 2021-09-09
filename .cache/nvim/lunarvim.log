@@ -1,0 +1,31 @@
+[ERROR Tue Sep  7 21:02:23 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Not a valid linter: stylua
+[ERROR Tue Sep  7 21:02:23 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Not a valid linter: stylua
+[ERROR Tue Sep  7 21:02:32 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Not a valid linter: stylua
+[ERROR Tue Sep  7 21:02:32 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Not a valid linter: stylua
+[INFO  Wed Sep  8 17:21:36 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Reloaded configuration
+[INFO  Wed Sep  8 17:21:36 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Reloaded configuration
+[INFO  Wed Sep  8 17:21:40 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Starting LunarVim
+[INFO  Wed Sep  8 17:22:24 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Reloaded configuration
+[INFO  Wed Sep  8 17:22:24 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Reloaded configuration
+[INFO  Wed Sep  8 17:22:55 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Starting LunarVim
+[INFO  Wed Sep  8 17:50:51 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Starting LunarVim
+[INFO  Wed Sep  8 17:52:39 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Starting LunarVim
+[INFO  Wed Sep  8 17:54:25 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Starting LunarVim
+[INFO  Wed Sep  8 18:00:11 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Starting LunarVim
+[INFO  Wed Sep  8 18:00:51 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Reloaded configuration
+[INFO  Wed Sep  8 18:00:51 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Reloaded configuration
+[INFO  Wed Sep  8 18:00:53 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Starting LunarVim
+[INFO  Wed Sep  8 18:01:11 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Reloaded configuration
+[INFO  Wed Sep  8 18:01:11 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Reloaded configuration
+[INFO  Wed Sep  8 18:01:13 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Reloaded configuration
+[INFO  Wed Sep  8 18:01:13 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Reloaded configuration
+[INFO  Wed Sep  8 18:01:23 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Reloaded configuration
+[INFO  Wed Sep  8 18:01:23 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Reloaded configuration
+[INFO  Wed Sep  8 18:01:28 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Starting LunarVim
+[INFO  Wed Sep  8 18:01:56 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Starting LunarVim
+[ERROR Wed Sep  8 19:42:21 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Not a valid linter: stylua
+[ERROR Wed Sep  8 19:42:21 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Not a valid linter: stylua
+[ERROR Wed Sep  8 19:44:33 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Not a valid linter: stylua
+[ERROR Wed Sep  8 19:44:33 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Not a valid linter: stylua
+[ERROR Wed Sep  8 19:47:29 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:10: Not a valid linter: stylua
+[ERROR Wed Sep  8 19:47:29 2021] ...vidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua:16: Not a valid linter: stylua

@@ -1,0 +1,900 @@
+[19:56:02.765][info] [#0:/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/main.lua:44]: Lua Lsp startup, root: 	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server
+[19:56:02.766][debug][#0:/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/main.lua:45]: ROOT:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server
+[19:56:02.766][debug][#0:/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/main.lua:46]: LOGPATH:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/log
+[19:56:02.766][debug][#0:/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/main.lua:47]: METAPATH:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta
+[19:56:02.766][debug][#0:/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/main.lua:48]: VERSION:	2.3.6
+[19:56:02.774][info] [#0:script/service/telemetry.lua:21]: Telemetry Token:	4CF7DFFBA630E2A9
+[19:56:02.850][info] [#0:script/pub/pub.lua:48]: Create brave:	1
+[19:56:02.850][info] [#0:script/pub/pub.lua:48]: Create brave:	2
+[19:56:02.854][info] [#0:script/pub/pub.lua:48]: Create brave:	3
+[19:56:02.928][info] [#0:script/pub/pub.lua:48]: Create brave:	4
+[19:56:02.931][debug][#0:script/service/service.lua:137]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 1.133 MB
+        # 00 : 1.133 MB
+        # 01 : 0.000 MB
+        # 02 : 0.000 MB
+        # 03 : 0.000 MB
+        # 04 : 0.000 MB
+    --------------- Coroutine ---------------
+        Total:     0
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      0
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    --------------- Proto ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[19:56:02.953][debug][#0:script/client.lua:209]: Client init	{
+    capabilities = {
+        callHierarchy = {
+            dynamicRegistration = false,
+        },
+        textDocument = {
+            codeAction = {
+                codeActionLiteralSupport = {
+                    codeActionKind = {
+                        valueSet = {
+                            [01] = "",
+                            [02] = "Empty",
+                            [03] = "QuickFix",
+                            [04] = "Refactor",
+                            [05] = "RefactorExtract",
+                            [06] = "RefactorInline",
+                            [07] = "RefactorRewrite",
+                            [08] = "Source",
+                            [09] = "SourceOrganizeImports",
+                            [10] = "quickfix",
+                            [11] = "refactor",
+                            [12] = "refactor.extract",
+                            [13] = "refactor.inline",
+                            [14] = "refactor.rewrite",
+                            [15] = "source",
+                            [16] = "source.organizeImports",
+                        },
+                    },
+                },
+                dynamicRegistration = false,
+            },
+            completion = {
+                completionItem = {
+                    commitCharactersSupport = true,
+                    deprecatedSupport = true,
+                    documentationFormat = {
+                        [1] = "markdown",
+                        [2] = "plaintext",
+                    },
+                    insertReplaceSupport = true,
+                    labelDetailsSupport = true,
+                    preselectSupport = true,
+                    resolveSupport = {
+                        properties = {
+                            [1] = "documentation",
+                            [2] = "detail",
+                            [3] = "additionalTextEdits",
+                        },
+                    },
+                    snippetSupport = true,
+                    tagSupport = {
+                        valueSet = {
+                            [1] = 1,
+                        },
+                    },
+                },
+                completionItemKind = {
+                    valueSet = {
+                        [01] = 1,
+                        [02] = 2,
+                        [03] = 3,
+                        [04] = 4,
+                        [05] = 5,
+                        [06] = 6,
+                        [07] = 7,
+                        [08] = 8,
+                        [09] = 9,
+                        [10] = 10,
+                        [11] = 11,
+                        [12] = 12,
+                        [13] = 13,
+                        [14] = 14,
+                        [15] = 15,
+                        [16] = 16,
+                        [17] = 17,
+                        [18] = 18,
+                        [19] = 19,
+                        [20] = 20,
+                        [21] = 21,
+                        [22] = 22,
+                        [23] = 23,
+                        [24] = 24,
+                        [25] = 25,
+                    },
+                },
+                contextSupport = false,
+                dynamicRegistration = false,
+            },
+            declaration = {
+                linkSupport = true,
+            },
+            definition = {
+                linkSupport = true,
+            },
+            documentHighlight = {
+                dynamicRegistration = false,
+            },
+            documentSymbol = {
+                dynamicRegistration = false,
+                hierarchicalDocumentSymbolSupport = true,
+                symbolKind = {
+                    valueSet = {
+                        [01] = 1,
+                        [02] = 2,
+                        [03] = 3,
+                        [04] = 4,
+                        [05] = 5,
+                        [06] = 6,
+                        [07] = 7,
+                        [08] = 8,
+                        [09] = 9,
+                        [10] = 10,
+                        [11] = 11,
+                        [12] = 12,
+                        [13] = 13,
+                        [14] = 14,
+                        [15] = 15,
+                        [16] = 16,
+                        [17] = 17,
+                        [18] = 18,
+                        [19] = 19,
+                        [20] = 20,
+                        [21] = 21,
+                        [22] = 22,
+                        [23] = 23,
+                        [24] = 24,
+                        [25] = 25,
+                        [26] = 26,
+                    },
+                },
+            },
+            hover = {
+                contentFormat = {
+                    [1] = "markdown",
+                    [2] = "plaintext",
+                },
+                dynamicRegistration = false,
+            },
+            implementation = {
+                linkSupport = true,
+            },
+            publishDiagnostics = {
+                relatedInformation = true,
+                tagSupport = {
+                    valueSet = {
+                        [1] = 1,
+                        [2] = 2,
+                    },
+                },
+            },
+            references = {
+                dynamicRegistration = false,
+            },
+            rename = {
+                dynamicRegistration = false,
+                prepareSupport = true,
+            },
+            signatureHelp = {
+                dynamicRegistration = false,
+                signatureInformation = {
+                    activeParameterSupport = true,
+                    documentationFormat = {
+                        [1] = "markdown",
+                        [2] = "plaintext",
+                    },
+                    parameterInformation = {
+                        labelOffsetSupport = true,
+                    },
+                },
+            },
+            synchronization = {
+                didSave = true,
+                dynamicRegistration = false,
+                willSave = false,
+                willSaveWaitUntil = false,
+            },
+            typeDefinition = {
+                linkSupport = true,
+            },
+        },
+        window = {
+            showDocument = {
+                support = false,
+            },
+            showMessage = {
+                messageActionItem = {
+                    additionalPropertiesSupport = false,
+                },
+            },
+            workDoneProgress = true,
+        },
+        workspace = {
+            applyEdit = true,
+            configuration = true,
+            symbol = {
+                dynamicRegistration = false,
+                hierarchicalWorkspaceSymbolSupport = true,
+                symbolKind = {
+                    valueSet = {
+                        [01] = 1,
+                        [02] = 2,
+                        [03] = 3,
+                        [04] = 4,
+                        [05] = 5,
+                        [06] = 6,
+                        [07] = 7,
+                        [08] = 8,
+                        [09] = 9,
+                        [10] = 10,
+                        [11] = 11,
+                        [12] = 12,
+                        [13] = 13,
+                        [14] = 14,
+                        [15] = 15,
+                        [16] = 16,
+                        [17] = 17,
+                        [18] = 18,
+                        [19] = 19,
+                        [20] = 20,
+                        [21] = 21,
+                        [22] = 22,
+                        [23] = 23,
+                        [24] = 24,
+                        [25] = 25,
+                        [26] = 26,
+                    },
+                },
+            },
+            workspaceEdit = {
+                resourceOperations = {
+                    [1] = "rename",
+                    [2] = "create",
+                    [3] = "delete",
+                },
+            },
+            workspaceFolders = true,
+        },
+    },
+    clientInfo = {
+        name = "Neovim",
+        version = "0.6.0",
+    },
+    initializationOptions = {
+    },
+    processId = 54513,
+    rootPath = "/Users/davidrosenberg/.local/share/lunarvim/lvim",
+    rootUri = "file:///Users/davidrosenberg/.local/share/lunarvim/lvim",
+    trace = "off",
+    workspaceFolders = {
+        [1] = {
+            name = "/Users/davidrosenberg/.local/share/lunarvim/lvim",
+            uri = "file:///Users/davidrosenberg/.local/share/lunarvim/lvim",
+        },
+    },
+}
+[19:56:02.953][info] [#0:script/language.lua:135]: VSC language: nil
+[19:56:02.953][info] [#0:script/language.lua:136]: LS  language: en-us
+[19:56:02.955][info] [#0:script/workspace/workspace.lua:34]: Workspace inited: 	file:///Users/davidrosenberg/.local/share/lunarvim/lvim
+[19:56:02.955][info] [#0:script/workspace/workspace.lua:43]: Log path: 	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/log/file_Users_davidrosenberg_.local_share_lunarvim_lvim.log
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.960][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.961][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.961][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.961][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.961][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.961][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.961][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:02.961][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:03.017][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.017][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.017][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.017][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.018][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.018][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.018][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.018][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.018][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.018][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.018][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.018][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.018][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.018][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.019][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.019][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.019][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.020][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.020][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.027][debug][#0:script/provider/provider.lua:28]: load config from client
+[19:56:03.028][debug][#0:script/provider/provider.lua:35]: loaded config dump:	{
+    Lua = {
+        diagnostics = {
+            globals = {
+                [1] = "vim",
+                [2] = "lvim",
+            },
+        },
+        runtime = {
+            path = {
+                [1] = "./?.lua",
+                [2] = "/Users/davidrosenberg/src/neovim/.deps/usr/share/luajit-2.1.0-beta3/?.lua",
+                [3] = "/usr/local/share/lua/5.1/?.lua",
+                [4] = "/usr/local/share/lua/5.1/?/init.lua",
+                [5] = "/Users/davidrosenberg/src/neovim/.deps/usr/share/lua/5.1/?.lua",
+                [6] = "/Users/davidrosenberg/src/neovim/.deps/usr/share/lua/5.1/?/init.lua",
+            },
+            version = "LuaJIT",
+        },
+        telemetry = {
+            enable = false,
+        },
+        workspace = {
+            library = {
+                ["/Users/davidrosenberg/.local/share/lunarvim/lvim/lua"] = true,
+                ["/usr/local/share/nvim/runtime/lua"] = true,
+                ["/usr/local/share/nvim/runtime/lua/vim/lsp"] = true,
+            },
+            maxPreload = 100000,
+            preloadFileSize = 1000,
+        },
+    },
+}
+[19:56:03.058][info] [#0:script/plugin.lua:57]: plugin path:	nil
+[19:56:03.059][info] [#0:script/plugin.lua:57]: plugin path:	nil
+[19:56:03.059][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:03.059][info] [#0:script/plugin.lua:57]: plugin path:	nil
+[19:56:03.059][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:03.059][info] [#0:script/plugin.lua:57]: plugin path:	nil
+[19:56:03.059][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:03.063][info] [#0:script/plugin.lua:57]: plugin path:	nil
+[19:56:03.063][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:03.069][info] [#0:script/plugin.lua:57]: plugin path:	nil
+[19:56:03.069][debug][#0:script/provider/semantic-tokens.lua:105]: Refresh semantic tokens.
+[19:56:03.069][debug][#0:script/provider/provider.lua:28]: load config from client
+[19:56:03.069][debug][#0:script/provider/provider.lua:35]: loaded config dump:	{
+    Lua = {
+        diagnostics = {
+            globals = {
+                [1] = "vim",
+                [2] = "lvim",
+            },
+        },
+        runtime = {
+            path = {
+                [1] = "./?.lua",
+                [2] = "/Users/davidrosenberg/src/neovim/.deps/usr/share/luajit-2.1.0-beta3/?.lua",
+                [3] = "/usr/local/share/lua/5.1/?.lua",
+                [4] = "/usr/local/share/lua/5.1/?/init.lua",
+                [5] = "/Users/davidrosenberg/src/neovim/.deps/usr/share/lua/5.1/?.lua",
+                [6] = "/Users/davidrosenberg/src/neovim/.deps/usr/share/lua/5.1/?/init.lua",
+            },
+            version = "LuaJIT",
+        },
+        telemetry = {
+            enable = false,
+        },
+        workspace = {
+            library = {
+                ["/Users/davidrosenberg/.local/share/lunarvim/lvim/lua"] = true,
+                ["/usr/local/share/nvim/runtime/lua"] = true,
+                ["/usr/local/share/nvim/runtime/lua/vim/lsp"] = true,
+            },
+            maxPreload = 100000,
+            preloadFileSize = 1000,
+        },
+    },
+}
+[19:56:03.070][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.070][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.070][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.070][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.070][warn] [#0:script/proto/proto.lua:99]: Response of [workspace/semanticTokens/refresh] error [-32601]: MethodNotFound
+[19:56:03.940][info] [#0:script/workspace/workspace.lua:313]: Preload start.
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	plugin/
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	dein
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	tags*
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	.netrwhist
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	pythonpath.vim
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	nodepath.vim
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	autoload/plugged/*
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	vimspector-config/gadgets/*
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	paths.vim
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	session
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	wiki/
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	pack/
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	utils/java/*
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	lv-config.lua
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	lua-language-server/
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	eclipse.jdt.ls/
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	.language-servers/
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	.debuggers/
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	spell/
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	nv-settings.lua
+[19:56:03.941][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	lv-settings.lua
+[19:56:03.942][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	lua/lv-user/
+[19:56:03.942][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	lua/lv-user-config/
+[19:56:03.942][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	*.tmp
+[19:56:03.942][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	*.temp
+[19:56:03.942][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	*.bak
+[19:56:03.942][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	*.backup
+[19:56:03.942][info] [#0:script/workspace/workspace.lua:97]: Ignore by .gitignore:	*.old
+[19:56:03.942][info] [#0:script/workspace/workspace.lua:126]: Ignore by library:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:03.942][info] [#0:script/workspace/workspace.lua:126]: Ignore by library:	/usr/local/share/nvim/runtime/lua
+[19:56:03.942][info] [#0:script/workspace/workspace.lua:126]: Ignore by library:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:03.946][debug][#0:script/workspace/workspace.lua:165]: getLibraryMatchers	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:03.946][debug][#0:script/workspace/workspace.lua:165]: getLibraryMatchers	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:03.946][debug][#0:script/workspace/workspace.lua:165]: getLibraryMatchers	/usr/local/share/nvim/runtime/lua	/usr/local/share/nvim/runtime/lua
+[19:56:03.946][debug][#0:script/workspace/workspace.lua:165]: getLibraryMatchers	/usr/local/share/nvim/runtime/lua/vim/lsp	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:03.946][info] [#0:script/workspace/workspace.lua:318]: Scan files at:	/Users/davidrosenberg/.local/share/lunarvim/lvim
+[19:56:03.979][info] [#0:script/workspace/workspace.lua:323]: Scan library at:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:03.987][info] [#0:script/workspace/workspace.lua:323]: Scan library at:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:03.989][info] [#0:script/workspace/workspace.lua:323]: Scan library at:	/usr/local/share/nvim/runtime/lua
+[19:56:03.993][info] [#0:script/workspace/workspace.lua:323]: Scan library at:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:03.994][info] [#0:script/workspace/workspace.lua:346]: Found 239 files.
+[19:56:03.994][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/shared.lua , size = 16.093 KB
+[19:56:03.994][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.012][info] [#0:script/workspace/workspace.lua:349]: Loaded 1/239 files
+[19:56:04.013][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/rpc.lua , size = 21.033 KB
+[19:56:04.013][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:04.033][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/diagnostic.lua , size = 47.734 KB
+[19:56:04.033][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:04.081][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/protocol.lua , size = 38.178 KB
+[19:56:04.081][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:04.095][info] [#0:script/workspace/workspace.lua:349]: Loaded 4/239 files
+[19:56:04.097][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/health.lua , size = 0.843 KB
+[19:56:04.097][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:04.100][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/codelens.lua , size = 6.616 KB
+[19:56:04.100][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:04.112][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/log.lua , size = 3.622 KB
+[19:56:04.112][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:04.116][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/util.lua , size = 65.770 KB
+[19:56:04.116][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:04.193][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/buf.lua , size = 18.077 KB
+[19:56:04.193][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:04.205][info] [#0:script/workspace/workspace.lua:349]: Loaded 9/239 files
+[19:56:04.207][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/handlers.lua , size = 18.263 KB
+[19:56:04.207][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua/vim/lsp
+[19:56:04.230][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/treesitter/languagetree.lua , size = 15.415 KB
+[19:56:04.230][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.252][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/_meta.lua , size = 19.111 KB
+[19:56:04.252][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.281][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/treesitter/health.lua , size = 1.143 KB
+[19:56:04.281][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.283][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/treesitter/query.lua , size = 16.371 KB
+[19:56:04.283][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.296][info] [#0:script/workspace/workspace.lua:349]: Loaded 14/239 files
+[19:56:04.297][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/treesitter/language.lua , size = 1.218 KB
+[19:56:04.297][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.299][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/treesitter/highlighter.lua , size = 8.089 KB
+[19:56:04.299][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.317][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/highlight.lua , size = 3.317 KB
+[19:56:04.317][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.321][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/diagnostic.lua , size = 47.734 KB
+[19:56:04.321][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/protocol.lua , size = 38.178 KB
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/health.lua , size = 0.843 KB
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/codelens.lua , size = 6.616 KB
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/util.lua , size = 65.770 KB
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/log.lua , size = 3.622 KB
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/buf.lua , size = 18.077 KB
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/handlers.lua , size = 18.263 KB
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp/rpc.lua , size = 21.033 KB
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/lsp.lua , size = 53.992 KB
+[19:56:04.322][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.371][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/inspect.lua , size = 9.502 KB
+[19:56:04.371][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.397][info] [#0:script/workspace/workspace.lua:349]: Loaded 28/239 files
+[19:56:04.399][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/uri.lua , size = 3.171 KB
+[19:56:04.399][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.404][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/compat.lua , size = 0.508 KB
+[19:56:04.404][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.405][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/treesitter.lua , size = 2.849 KB
+[19:56:04.405][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.408][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/vim/F.lua , size = 0.757 KB
+[19:56:04.408][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.409][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///usr/local/share/nvim/runtime/lua/man.lua , size = 4.848 KB
+[19:56:04.409][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/usr/local/share/nvim/runtime/lua
+[19:56:04.414][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/builtin.lua , size = 0.279 KB
+[19:56:04.414][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.415][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/package.lua , size = 2.672 KB
+[19:56:04.415][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.417][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/ffi.lua , size = 2.252 KB
+[19:56:04.417][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.420][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/bit.lua , size = 1.138 KB
+[19:56:04.420][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.423][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/io.lua , size = 6.292 KB
+[19:56:04.423][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.431][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/debug.lua , size = 6.903 KB
+[19:56:04.431][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.450][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/coroutine.lua , size = 2.431 KB
+[19:56:04.450][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.452][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/jit.lua , size = 0.638 KB
+[19:56:04.452][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.453][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/math.lua , size = 7.617 KB
+[19:56:04.453][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.460][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/string.lua , size = 5.937 KB
+[19:56:04.460][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.465][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/os.lua , size = 4.162 KB
+[19:56:04.465][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.468][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/basic.lua , size = 13.723 KB
+[19:56:04.468][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.477][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/table.lua , size = 2.712 KB
+[19:56:04.477][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT en-us
+[19:56:04.480][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/plugin-loader.lua , size = 1.103 KB
+[19:56:04.480][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.481][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/keymappings.lua , size = 5.356 KB
+[19:56:04.481][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.502][info] [#0:script/workspace/workspace.lua:349]: Loaded 48/239 files
+[19:56:04.503][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/interface/popup.lua , size = 1.913 KB
+[19:56:04.503][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.505][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/interface/text.lua , size = 1.950 KB
+[19:56:04.505][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.508][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/info.lua , size = 6.139 KB
+[19:56:04.508][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.513][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/autocmds.lua , size = 3.870 KB
+[19:56:04.513][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.516][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/dashboard.lua , size = 5.922 KB
+[19:56:04.516][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.518][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/autopairs.lua , size = 2.453 KB
+[19:56:04.518][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.521][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/terminal.lua , size = 4.147 KB
+[19:56:04.521][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.525][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/telescope.lua , size = 4.333 KB
+[19:56:04.525][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.528][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/builtins/init.lua , size = 0.483 KB
+[19:56:04.528][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.529][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lspinstall.lua , size = 0.321 KB
+[19:56:04.529][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.530][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/project.lua , size = 1.775 KB
+[19:56:04.530][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.531][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/commands.lua , size = 0.378 KB
+[19:56:04.531][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.532][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/gitsigns.lua , size = 1.459 KB
+[19:56:04.532][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.533][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/comment.lua , size = 0.794 KB
+[19:56:04.533][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.534][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/which-key.lua , size = 10.188 KB
+[19:56:04.534][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.558][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/cmp.lua , size = 3.126 KB
+[19:56:04.558][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.562][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/nvimtree.lua , size = 2.875 KB
+[19:56:04.562][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.566][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua , size = 1.352 KB
+[19:56:04.566][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.568][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/init.lua , size = 0.957 KB
+[19:56:04.568][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.569][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/colors.lua , size = 0.278 KB
+[19:56:04.569][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.569][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/conditions.lua , size = 0.455 KB
+[19:56:04.569][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.570][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/styles.lua , size = 2.786 KB
+[19:56:04.570][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.572][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/components.lua , size = 4.358 KB
+[19:56:04.572][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.577][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/utils.lua , size = 0.529 KB
+[19:56:04.577][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.578][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/treesitter.lua , size = 2.465 KB
+[19:56:04.578][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.580][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/dap.lua , size = 1.842 KB
+[19:56:04.580][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.582][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/bufferline.lua , size = 0.479 KB
+[19:56:04.582][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.583][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/config/init.lua , size = 1.183 KB
+[19:56:04.583][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.584][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/config/settings.lua , size = 3.580 KB
+[19:56:04.584][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.587][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/config/my_settings.lua , size = 4.072 KB
+[19:56:04.587][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.589][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/config/defaults.lua , size = 24.195 KB
+[19:56:04.589][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.625][info] [#0:script/workspace/workspace.lua:349]: Loaded 79/239 files
+[19:56:04.625][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/plugins.lua , size = 3.881 KB
+[19:56:04.625][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.629][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/utils/init.lua , size = 3.311 KB
+[19:56:04.629][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.634][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/utils/ft.lua , size = 1.203 KB
+[19:56:04.634][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.636][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/init.lua , size = 4.662 KB
+[19:56:04.636][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.640][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/kind.lua , size = 0.518 KB
+[19:56:04.640][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.641][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/utils.lua , size = 0.591 KB
+[19:56:04.641][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.642][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/null-ls/linters.lua , size = 2.049 KB
+[19:56:04.642][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.644][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/null-ls/init.lua , size = 1.111 KB
+[19:56:04.644][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.646][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/null-ls/services.lua , size = 1.099 KB
+[19:56:04.646][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.647][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/null-ls/formatters.lua , size = 2.136 KB
+[19:56:04.647][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.649][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/handlers.lua , size = 3.638 KB
+[19:56:04.649][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.653][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/peek.lua , size = 4.150 KB
+[19:56:04.653][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.658][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/mykeymappings.lua , size = 5.509 KB
+[19:56:04.658][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.685][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/impatient/cachepack.lua , size = 0.000 KB
+[19:56:04.685][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.686][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/impatient/profile.lua , size = 3.910 KB
+[19:56:04.686][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.689][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lualine/themes/onedarker.lua , size = 1.045 KB
+[19:56:04.689][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.691][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/palette.lua , size = 0.848 KB
+[19:56:04.691][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.691][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/markdown.lua , size = 0.937 KB
+[19:56:04.691][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.693][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/init.lua , size = 0.709 KB
+[19:56:04.693][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.694][info] [#0:script/workspace/workspace.lua:349]: Loaded 98/239 files
+[19:56:04.694][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/Git.lua , size = 0.256 KB
+[19:56:04.694][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.694][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/LSP.lua , size = 4.894 KB
+[19:56:04.694][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.699][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/config.lua , size = 0.582 KB
+[19:56:04.699][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.700][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/Whichkey.lua , size = 0.209 KB
+[19:56:04.700][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.700][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/util.lua , size = 0.522 KB
+[19:56:04.700][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.701][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/highlights.lua , size = 3.869 KB
+[19:56:04.701][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.705][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/Treesitter.lua , size = 2.189 KB
+[19:56:04.705][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.708][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/impatient.lua , size = 7.988 KB
+[19:56:04.708][info] [#0:script/workspace/workspace.lua:233]: ++++As library of:	/Users/davidrosenberg/.local/share/lunarvim/lvim/lua
+[19:56:04.716][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/my_init.lua , size = 2.045 KB
+[19:56:04.718][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/tex.lua , size = 0.026 KB
+[19:56:04.719][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/asm.lua , size = 0.026 KB
+[19:56:04.719][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/lua.lua , size = 0.026 KB
+[19:56:04.719][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/ps1.lua , size = 0.058 KB
+[19:56:04.720][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/vim.lua , size = 0.026 KB
+[19:56:04.720][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/erlang.lua , size = 0.029 KB
+[19:56:04.720][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/bicep.lua , size = 0.028 KB
+[19:56:04.721][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/python.lua , size = 0.081 KB
+[19:56:04.721][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/zsh.lua , size = 0.025 KB
+[19:56:04.721][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/gdscript.lua , size = 0.031 KB
+[19:56:04.721][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/ruby.lua , size = 0.050 KB
+[19:56:04.722][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/json.lua , size = 0.027 KB
+[19:56:04.722][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/scala.lua , size = 0.028 KB
+[19:56:04.722][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/perl.lua , size = 0.027 KB
+[19:56:04.722][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/zig.lua , size = 0.026 KB
+[19:56:04.723][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/cpp.lua , size = 0.026 KB
+[19:56:04.723][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/scss.lua , size = 0.026 KB
+[19:56:04.723][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/dockerfile.lua , size = 0.033 KB
+[19:56:04.723][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/nix.lua , size = 0.026 KB
+[19:56:04.724][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/solidity.lua , size = 0.031 KB
+[19:56:04.724][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/sql.lua , size = 0.026 KB
+[19:56:04.724][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/haskell.lua , size = 0.030 KB
+[19:56:04.724][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/java.lua , size = 0.027 KB
+[19:56:04.725][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/rust.lua , size = 0.078 KB
+[19:56:04.725][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/sass.lua , size = 0.026 KB
+[19:56:04.725][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/puppet.lua , size = 0.029 KB
+[19:56:04.725][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/vue.lua , size = 0.061 KB
+[19:56:04.726][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/javascript.lua , size = 0.033 KB
+[19:56:04.726][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/elm.lua , size = 0.026 KB
+[19:56:04.726][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/rmd.lua , size = 0.106 KB
+[19:56:04.726][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/javascriptreact.lua , size = 0.072 KB
+[19:56:04.727][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/fortran.lua , size = 0.030 KB
+[19:56:04.727][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/typescriptreact.lua , size = 0.067 KB
+[19:56:04.727][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/sh.lua , size = 0.025 KB
+[19:56:04.727][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/go.lua , size = 0.025 KB
+[19:56:04.728][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/graphql.lua , size = 0.030 KB
+[19:56:04.728][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/crystal.lua , size = 0.030 KB
+[19:56:04.728][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/html.lua , size = 0.062 KB
+[19:56:04.728][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/cmake.lua , size = 0.028 KB
+[19:56:04.729][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/swift.lua , size = 0.028 KB
+[19:56:04.729][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/less.lua , size = 0.026 KB
+[19:56:04.729][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/clojure.lua , size = 0.030 KB
+[19:56:04.729][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/euphoria3.lua , size = 0.351 KB
+[19:56:04.730][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/yaml.lua , size = 0.027 KB
+[19:56:04.730][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/toml.lua , size = 0.038 KB
+[19:56:04.730][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/c.lua , size = 0.072 KB
+[19:56:04.730][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/beancount.lua , size = 0.032 KB
+[19:56:04.732][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/cs.lua , size = 0.025 KB
+[19:56:04.733][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/typescript.lua , size = 0.033 KB
+[19:56:04.735][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/php.lua , size = 0.026 KB
+[19:56:04.737][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/netrw.lua , size = 0.062 KB
+[19:56:04.739][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/css.lua , size = 0.026 KB
+[19:56:04.741][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/d.lua , size = 0.024 KB
+[19:56:04.743][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/julia.lua , size = 0.028 KB
+[19:56:04.744][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/svelte.lua , size = 0.063 KB
+[19:56:04.746][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/dart.lua , size = 0.027 KB
+[19:56:04.747][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/sbt.lua , size = 0.028 KB
+[19:56:04.749][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/r.lua , size = 0.106 KB
+[19:56:04.758][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/terraform.lua , size = 0.032 KB
+[19:56:04.760][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/elixir.lua , size = 0.405 KB
+[19:56:04.760][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/fish.lua , size = 0.027 KB
+[19:56:04.761][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftplugin/kotlin.lua , size = 0.029 KB
+[19:56:04.761][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/init.lua , size = 1.777 KB
+[19:56:04.764][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftdetect/bicep.lua , size = 0.062 KB
+[19:56:04.764][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftdetect/nix.lua , size = 0.058 KB
+[19:56:04.765][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftdetect/zig.lua , size = 0.105 KB
+[19:56:04.765][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftdetect/julia.lua , size = 0.059 KB
+[19:56:04.765][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftdetect/plaintex.lua , size = 0.058 KB
+[19:56:04.765][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/ftdetect/fish.lua , size = 0.061 KB
+[19:56:04.766][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/utils/lush-template/lua/lush_theme/lush_template.lua , size = 15.958 KB
+[19:56:04.770][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/utils/installer/config.example-no-ts.lua , size = 4.262 KB
+[19:56:04.773][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/utils/installer/config.example.lua , size = 4.303 KB
+[19:56:04.776][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/keymappings.lua , size = 5.356 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/plugin-loader.lua , size = 1.103 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/interface/popup.lua , size = 1.913 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/interface/text.lua , size = 1.950 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/info.lua , size = 6.139 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/autocmds.lua , size = 3.870 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/dashboard.lua , size = 5.922 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/autopairs.lua , size = 2.453 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/telescope.lua , size = 4.333 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/terminal.lua , size = 4.147 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lspinstall.lua , size = 0.321 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/builtins/init.lua , size = 0.483 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/project.lua , size = 1.775 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/commands.lua , size = 0.378 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/gitsigns.lua , size = 1.459 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/comment.lua , size = 0.794 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/cmp.lua , size = 3.126 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/which-key.lua , size = 10.188 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/nvimtree.lua , size = 2.875 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/log.lua , size = 1.352 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/init.lua , size = 0.957 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/colors.lua , size = 0.278 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/conditions.lua , size = 0.455 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/styles.lua , size = 2.786 KB
+[19:56:04.777][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/components.lua , size = 4.358 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/lualine/utils.lua , size = 0.529 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/treesitter.lua , size = 2.465 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/dap.lua , size = 1.842 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/core/bufferline.lua , size = 0.479 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/config/settings.lua , size = 3.580 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/config/init.lua , size = 1.183 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/config/my_settings.lua , size = 4.072 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/config/defaults.lua , size = 24.195 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/plugins.lua , size = 3.881 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/utils/init.lua , size = 3.311 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/utils/ft.lua , size = 1.203 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/init.lua , size = 4.662 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/kind.lua , size = 0.518 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/utils.lua , size = 0.591 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/null-ls/linters.lua , size = 2.049 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/null-ls/init.lua , size = 1.111 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/null-ls/services.lua , size = 1.099 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/null-ls/formatters.lua , size = 2.136 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/handlers.lua , size = 3.638 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lsp/peek.lua , size = 4.150 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/mykeymappings.lua , size = 5.509 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/impatient/cachepack.lua , size = 0.000 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/impatient/profile.lua , size = 3.910 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/lualine/themes/onedarker.lua , size = 1.045 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/palette.lua , size = 0.848 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/markdown.lua , size = 0.937 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/init.lua , size = 0.709 KB
+[19:56:04.778][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/Git.lua , size = 0.256 KB
+[19:56:04.779][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/LSP.lua , size = 4.894 KB
+[19:56:04.779][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/config.lua , size = 0.582 KB
+[19:56:04.779][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/Whichkey.lua , size = 0.209 KB
+[19:56:04.779][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/util.lua , size = 0.522 KB
+[19:56:04.779][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/highlights.lua , size = 3.869 KB
+[19:56:04.779][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/Treesitter.lua , size = 2.189 KB
+[19:56:04.779][info] [#0:script/workspace/workspace.lua:231]: Preload file at: file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/impatient.lua , size = 7.988 KB
+[19:56:04.945][info] [#0:script/workspace/workspace.lua:349]: Loaded 239/239 files
+[19:56:04.945][info] [#0:script/workspace/workspace.lua:358]: Preload finish.
+[19:56:04.946][debug][#0:script/provider/provider.lua:214]: didOpen	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/init.lua
+[19:56:05.956][debug][#0:script/core/noder.lua:1412]: compileNodes:	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/init.lua
+[19:56:05.957][debug][#0:script/core/noder.lua:1416]: compileNodes finish:	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/init.lua
+[19:56:05.957][debug][#0:script/core/noder.lua:1412]: compileNodes:	file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/basic.lua
+[19:56:05.959][debug][#0:script/core/noder.lua:1416]: compileNodes finish:	file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/basic.lua
+[19:56:05.959][debug][#0:script/core/noder.lua:1412]: compileNodes:	file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/package.lua
+[19:56:05.960][debug][#0:script/core/noder.lua:1416]: compileNodes finish:	file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/package.lua
+[19:56:05.960][debug][#0:script/core/noder.lua:1412]: compileNodes:	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/config.lua
+[19:56:05.961][debug][#0:script/core/noder.lua:1416]: compileNodes finish:	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/onedarker/config.lua
+[19:56:05.962][debug][#0:script/core/noder.lua:1412]: compileNodes:	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/utils/installer/config.example-no-ts.lua
+[19:56:05.962][debug][#0:script/core/noder.lua:1416]: compileNodes finish:	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/utils/installer/config.example-no-ts.lua
+[19:56:05.962][debug][#0:script/core/noder.lua:1412]: compileNodes:	file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/builtin.lua
+[19:56:05.962][debug][#0:script/core/noder.lua:1416]: compileNodes finish:	file:///Users/davidrosenberg/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/meta/LuaJIT%20en-us/builtin.lua
+[19:56:05.962][debug][#0:script/core/noder.lua:1412]: compileNodes:	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/utils/installer/config.example.lua
+[19:56:05.962][debug][#0:script/core/noder.lua:1416]: compileNodes finish:	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/utils/installer/config.example.lua
+[19:56:05.962][debug][#0:script/core/noder.lua:1412]: compileNodes:	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/config/defaults.lua
+[19:56:05.969][debug][#0:script/core/noder.lua:1416]: compileNodes finish:	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/config/defaults.lua
+[19:56:05.979][debug][#0:script/proto/proto.lua:131]: Method [textDocument/didOpen] takes [0.943]sec.
+[19:56:06.018][debug][#0:script/provider/diagnostic.lua:338]: 全文诊断耗时：	0.070718
+[19:57:03.096][debug][#0:script/service/service.lua:137]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 40.936 MB
+        # 00 : 34.912 MB
+        # 01 : 1.921 MB
+        # 02 : 1.921 MB
+        # 03 : 1.189 MB
+        # 04 : 0.994 MB
+    --------------- Coroutine ---------------
+        Total:     64
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      64
+    --------------- Cache ---------------
+        Total: 2
+        Dead:  1
+    --------------- Proto ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[19:58:03.269][debug][#0:script/service/service.lua:137]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 41.348 MB
+        # 00 : 35.323 MB
+        # 01 : 1.921 MB
+        # 02 : 1.921 MB
+        # 03 : 1.189 MB
+        # 04 : 0.994 MB
+    --------------- Coroutine ---------------
+        Total:     68
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      68
+    --------------- Cache ---------------
+        Total: 2
+        Dead:  1
+    --------------- Proto ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[19:58:16.275][debug][#0:script/provider/provider.lua:222]: didClose	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/init.lua
+[19:58:16.277][debug][#0:script/provider/provider.lua:214]: didOpen	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/init.lua
+[19:59:03.454][debug][#0:script/service/service.lua:137]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 41.903 MB
+        # 00 : 35.879 MB
+        # 01 : 1.921 MB
+        # 02 : 1.921 MB
+        # 03 : 1.189 MB
+        # 04 : 0.994 MB
+    --------------- Coroutine ---------------
+        Total:     76
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      76
+    --------------- Cache ---------------
+        Total: 2
+        Dead:  1
+    --------------- Proto ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[19:59:03.585][debug][#0:script/provider/provider.lua:214]: didOpen	file:///Users/davidrosenberg/.local/share/lunarvim/lvim/lua/plugins.lua
+[19:59:25.138][info] [#0:script/provider/provider.lua:113]: Server shutdown.
+[19:59:25.147][info] [#0:script/provider/provider.lua:108]: Server exited.

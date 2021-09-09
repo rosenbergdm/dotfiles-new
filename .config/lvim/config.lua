@@ -3,13 +3,14 @@
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.lint_on_save = true
-lvim.colorscheme = "onedarker"
--- lvim.colorscheme = "spacegray"
+lvim.lint_on_save = false
+-- lvim.colorscheme = "onedarker"
+lvim.colorscheme = "tokyonight"
 
--- options 
+
+-- options
 local M = {}
-M.load_options = function() 
+M.load_options = function()
   local LVIM_CACHE_DIR = os.getenv("HOME") .. "/.cache/lvim"
   local myopts = {
     completeopt = { "menuone", "noselect" },
@@ -36,7 +37,7 @@ end
 
 M.load_options()
 
-lvim.puts = function (varname) 
+lvim.puts = function (varname)
   print(vim.inspect(varname))
 end
 
@@ -83,12 +84,12 @@ lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Project
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.nvimtree.show_icons.git = 1
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = "maintained"
-lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = true
+-- lvim.builtin.treesitter.ensure_installed = "maintained"
+-- lvim.builtin.treesitter.ignore_install = { "haskell" }
+-- lvim.builtin.treesitter.highlight.enabled = true
 
 -- generic LSP settings
 -- you can set a custom on_attach function that will be used for all the language servers
@@ -131,30 +132,34 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   },
 -- }
 
--- lvim.lang.lua.linters = {
+lvim.lang.lua.formatters = {
+  {
+    exe = "stylua",
+    args = { "-s", "-"},
+  }
+}
+
+-- lvim.lang.sh.formatters = {
 --   {
---     exe = "stylua",
+--     exe = "shfmt",
 --     args = {},
 --   }
 -- }
 
-lvim.lang.sh.formatters = {
-  {
-    exe = "shfmt",
-    args = {},
-  }
-}
-
-lvim.lang.sh.linters = {
-  {
-    exe = "shellcheck",
-    args = {},
-  },
-}
--- 
+-- lvim.lang.sh.linters = {
+--   {
+--     exe = "shellcheck",
+--     args = {},
+--   },
+-- }
+-- --
 -- Additional Plugins
 lvim.plugins = {
-  { "folke/tokyonight.nvim" }
+  { "folke/tokyonight.nvim" },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
 --   {
 --     "ray-x/lsp_signature.nvim",
 --     config = function()

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/davidrosenberg/.local/share/lunarvim'
+let g:netrw_dirhist_9='/Users/davidrosenberg/.config/lvim/plugin'
+let g:netrw_dirhist_8='/Users/davidrosenberg/.local/share/nvim'
+let g:netrw_dirhist_7='/Users/davidrosenberg/.local/share/nvim/lspinstall'
+let g:netrw_dirhist_6='/Users/davidrosenberg/.local/share/nvim'
+let g:netrw_dirhist_5='/Users/davidrosenberg'
+let g:netrw_dirhist_4='/Users/davidrosenberg/.ipython'
+let g:netrw_dirhist_3='/Users/davidrosenberg/.ipython/nbextensions'
+let g:netrw_dirhist_2='/Users/davidrosenberg/.ipython'
+let g:netrw_dirhist_1='/Users/davidrosenberg/.ipython/nbextensions'
